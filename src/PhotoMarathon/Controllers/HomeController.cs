@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace PhotoMarathon.Controllers
 {
@@ -15,15 +11,21 @@ namespace PhotoMarathon.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            return View();
+        }
 
+        public IActionResult Partners()
+        {
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            return View();
+        }
 
+        public IActionResult Rules()
+        {
             return View();
         }
 
