@@ -18,14 +18,6 @@ h6.heading {
 	color: #66757F;
 }
 
-h6.heading span {
-	background-color: #2d3337;
-}
-
-.dark-background h6.heading span {
-	background-color: #292f33;
-}
-
 h6.heading:after {
 	background-color: #ccd6dd\9\0;
 	background-image: -webkit-linear-gradient(left, #66757F, rgba(45, 51, 55, 0));
