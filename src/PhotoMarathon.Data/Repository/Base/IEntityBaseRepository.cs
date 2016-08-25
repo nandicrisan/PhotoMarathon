@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace PhotoMarathon.Data.Repository.Base
+namespace PhotoMarathon.Data.Repository
 {
     public interface IEntityBaseRepository<T> where T : class, new()
     {
