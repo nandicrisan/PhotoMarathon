@@ -4,17 +4,16 @@ namespace PhotoMarathon.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IDbFactory dbFactory;
         private BaseDbContext dbContext;
 
-        public UnitOfWork(IDbFactory dbFactory)
+        public UnitOfWork(BaseDbContext dbContext)
         {
-            this.dbFactory = dbFactory;
+            this.dbContext = dbContext;
         }
 
         public BaseDbContext DbContext
         {
-            get { return dbContext ?? (dbContext = dbFactory.Init()); }
+            get { return dbContext; }
         }
 
         public void Commit()

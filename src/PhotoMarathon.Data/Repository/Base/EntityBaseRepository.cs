@@ -15,21 +15,15 @@ namespace PhotoMarathon.Data.Repository
         private BaseDbContext dataContext;
         private readonly DbSet<T> dbSet;
 
-        protected IDbFactory DbFactory
-        {
-            get;
-            private set;
-        }
-
-        protected BaseDbContext DbContext
-        {
-            get { return dataContext ?? (dataContext = DbFactory.Init()); }
-        }
+        private readonly BaseDbContext DbContext;
+        //{
+        //    get { return dataContext ?? (dataContext = DbFactory.Init()); }
+        //}
         #endregion
 
-        public EntityBaseRepository(IDbFactory dbFactory)
+        public EntityBaseRepository(BaseDbContext dbContext)
         {
-            DbFactory = dbFactory;
+            DbContext = dbContext;
             dbSet = DbContext.Set<T>();
         }
 
@@ -37,6 +31,7 @@ namespace PhotoMarathon.Data.Repository
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
+            //dataContext.SaveChanges();
         }
 
         public virtual void Update(T entity)

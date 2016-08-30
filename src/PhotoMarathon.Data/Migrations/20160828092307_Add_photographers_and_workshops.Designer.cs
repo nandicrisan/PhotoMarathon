@@ -8,9 +8,10 @@ using PhotoMarathon.Data;
 namespace PhotoMarathon.Data.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160828092307_Add_photographers_and_workshops")]
+    partial class Add_photographers_and_workshops
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -77,7 +78,7 @@ namespace PhotoMarathon.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkShops");
+                    b.ToTable("WorkShop");
                 });
 
             modelBuilder.Entity("PhotoMarathon.Data.Entities.Photographer", b =>

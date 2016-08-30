@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="~/css/Layout/style.css" />
         <link rel="stylesheet" href="~/css/Layout/style-dark.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet"href="~/css/animate.css"/>
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -21,14 +22,17 @@
         <link rel="stylesheet" href="~/css/Layout/style.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/Layout/style-dark.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/animate.css" />
     </environment>
+    <script type="text/javascript">
+        localStorage.setItem("siteRoot", "@Url.Action("", null, null, "http")")
+    </script>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
 <body>
     <header id="top" class="navbar navbar-fixed-top" role="banner">
         <div class="container">
             <div class="inner">
-
                 <div class="site-title">
                     <h1><a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo3.png" alt="PhotoMarathon" class="img-responsive img-logo" width="200"></a></h1>
                     <a href="#site-menu" class="site-menu-toggle">
@@ -67,14 +71,13 @@
                         <h5 class="photo-lett">Abonează-te la Photoletter </h5>
                         <div class="sep red"></div>
                         <div class="margin-1"></div>
-                        <form action="contact1.html" class="no-bottom">
                             <label for="name" class="sr-only">Nume</label>
-                            <input type="text" class="underline" name="name" id="name" placeholder="Nume..." required="">
+                            <input type="text" class="underline" name="name" id="news-name" placeholder="Nume..." required="">
+                            <p class="hidden input-validation" id="news-name-valid">Te rugăm să completezi numele.</p>
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" class="underline" name="email" id="email" placeholder="Adresa de email..." required="">
-                            <div class="margin-1"></div>
-                            <input type="submit" value="Trimite">
-                        </form>
+                            <input type="email" class="underline" name="email" id="news-email" placeholder="Adresa de email..." required="">
+                            <p class="input-validation hidden" id="news-email-valid">Adresa de e-mail nu este validă.</p>
+                        <input type="submit" id="send-newsletter" onclick="Main.NewsLetterSubscribe()" value="Trimite">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -97,6 +100,7 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/owl.carousel/owl.carousel.min.js"></script>
         <script src="~/js/Layout/site.js" asp-append-version="true"></script>
+        <script src="~/js/Layout/jquery.noty.packaged.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -109,7 +113,7 @@
         </script>
         <script src="~/lib/owl.carousel/owl.carousel.min.js" asp-append-version="true"></script>
         <script src="~/js/Layout/site.js" asp-append-version="true"></script>
-        @*<script src="~/js/site.min.js" asp-append-version="true"></script>*@
+        <script src="~/js/Layout/jquery.noty.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("scripts", required: false)
 </body>

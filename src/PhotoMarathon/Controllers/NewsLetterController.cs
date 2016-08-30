@@ -13,10 +13,15 @@ namespace PhotoMarathon.Controllers
         }
         public IActionResult Add(Newsletter newsLetter)
         {
+            if (!ModelState.IsValid)
+                return StatusCode(200, ModelState.Values);
+            var exist = newsLetterService.Get(newsLetter.Email);
+            if(exist.Status != Service.Utils.ResultStatus.NOT_FOUND)
+                return StatusCode(200, "Te-ai înscris deja la photoletter.");
             var addRes = newsLetterService.Add(newsLetter);
             if (!addRes.IsOk())
                 return StatusCode((int)addRes.Status);
-            return StatusCode(200);
+            return StatusCode(200, "Te-ai înscris cu succes la newsletter!");
         }
     }
 }

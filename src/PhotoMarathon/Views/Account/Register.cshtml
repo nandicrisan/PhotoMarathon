@@ -1,8 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Register";
+﻿@model PhotoMarathon.Data.Entities.Photographer
+@{
+    ViewData["Title"] = "Înscriere";
+    List<PhotoMarathon.Data.Entities.WorkShop> workShops = ViewBag.WorkShops;
 }
 
-<div id="hero" style="background:black;">
+@*<div id="hero" style="background:black;">
     <div class="inner">
         <div class="container">
             <div class="row">
@@ -14,38 +16,52 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 <main id="content" role="main">
-    <div class="container">
-        <div style="height:500px;"></div>
-    </div>
-</main>
-
-@*<main id="content" role="main">
     <div class="container container-boxes">
         <div class="row">
             <div class="col-sm-12">
-                <div class="box white-bg">
+                <div class="box white-bg black-input">
                     <h3>Înscrie-te</h3>
                     <p>
                         Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
                     </p>
                     <div class="sep red"></div>
                     <div class="margin-1"></div>
-                    <form action="contact1.html" class="no-bottom">
-                        <label for="name" class="sr-only">Nume</label>
-                        <input type="text" class="underline" name="name" id="name" placeholder="Nume" required>
+                    <form asp-controller="Account" asp-action="Register"  method="post"  class="no-bottom">
+                        <label asp-for="FirstName" class="sr-only">Nume</label>
+                        <input asp-for="FirstName" class="underline" placeholder="Nume">
+                        <span asp-validation-for="FirstName" class="input-validation-side"></span>
                         <label for="prename" class="sr-only">Prenume</label>
-                        <input type="text" class="underline" name="prename" id="prename" placeholder="Prenume" required>
+                        <input asp-for="LastName" class="underline" placeholder="Prenume">
+                        <span asp-validation-for="LastName" class="input-validation-side"></span>
                         <label for="email" class="sr-only">Email</label>
-                        <input type="email" class="underline" name="email" id="email" placeholder="Adresa de email" required>
+                        <input asp-for="Email"  class="underline" placeholder="Adresa de email">
+                        <span asp-validation-for="Email" class="input-validation-side"></span>
                         <label for="phone" class="sr-only">Nr. de telefon</label>
-                        <input type="number" class="underline" name="phone" id="phone" placeholder="Nr. de telefon" required>
-                        <label for="fotoa" class="sr-only">Fotograf amator</label>
-                        <input type="checkbox" name="fotoa"/>
-                        <label for="fotop" class="sr-only">Fotograf profesionist</label>
-                        <input type="checkbox" name="fotop"/>
+                        <input asp-for="PhoneNumber" class="underline" placeholder="Nr. de telefon">
+                        <span asp-validation-for="PhoneNumber" class="input-validation-side"></span>
+                        <div class="margin-1"></div>
+                        <p for="fotop" class="radio-label">Fotograf amator</p>
+                        <input type="radio" class="radio-input" name="fotop"/>
+                        <p for="fotop" class="radio-label">Fotograf profesionist</p>
+                        <input type="radio" class="radio-input" name="fotop"/>
+                        <div class="margin-1"></div>
+                        <p>Mă înscriu la:</p>
+                        <p class="radio-label">Workshop</p>
+                        <input type="radio" class="radio-input" id="register-type" name="registertype" />
+                        <div class="form-group">
+                            <select class="form-control">
+                                @foreach (var workShop in workShops)
+                                {
+                                    <option value="@workShop.Id">@workShop.Name</option>
+                                }
+                            </select>
+                        </div>
+                        </br>
+                        <p class="radio-label">Maratonul foto</p>
+                        <input type="radio" class="radio-input" name="registertype" />
                         <div class="margin-1"></div>
                         <input type="submit" value="Trimite">
                     </form>
@@ -55,4 +71,5 @@
             </div>
         </div>
     </div>
-</main>*@
+</main>
+<script src="~/js/Account/register.min.js" asp-append-version="true"></script>

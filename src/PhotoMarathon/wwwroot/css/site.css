@@ -94,7 +94,44 @@
 
 /*Footer*/
 .photo-lett {
-    text-align:left;
-    color:white;
-    margin-top:24px;
+    text-align: left;
+    color: white;
+    margin-top: 24px;
+}
+
+.input-validation {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.black-input input {
+    color: black;
+}
+
+    .black-input input :hover {
+        border-color: #b5bec4;
+    }
+
+    .black-input input :focus {
+        border-color: #292f33 !important;
+    }
+
+.radio-label {
+    padding-top: 4px !important;
+    padding-bottom: 4px!important;
+    display: inline;
+}
+
+.radio-input {
+    margin-right: 15px !important;
+}
+
+.input-validation-side {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 0px;
+    text-align: left;
+    position:absolute
 }

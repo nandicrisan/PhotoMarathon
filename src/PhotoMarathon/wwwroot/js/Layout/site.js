@@ -1,3 +1,5 @@
+var Main = {};
+
 /* enable CSS features that have JavaScript */
 jQuery('html').removeClass('no-js');
 
@@ -104,7 +106,54 @@ jQuery(document).ready(function () {
             $('.navbar').removeClass('shrink');
         }
     });
+
+    //News letter 
+    Main.NewsLetterSubscribe = function () {
+        if ($('#news-name').val() == "") {
+            $("#news-name-valid").removeClass("hidden");
+            $("#news-name-valid").addClass("animated bounceInRight");
+        }
+        else {
+            $("#news-name-valid").addClass("hidden");
+        }
+        if (!$('#news-email')[0].checkValidity()) {
+            $("#news-email-valid").removeClass("hidden");
+            $("#news-email-valid").addClass("animated bounceInRight");
+        }
+        else {
+            $("#news-email-valid").addClass("hidden");
+        }
+        if ($('#news-email')[0].checkValidity() && $('#news-name')[0].checkValidity()) {
+            $.ajax({
+                url: localStorage.getItem("siteRoot") + "/NewsLetter/Add",
+                type: "POST",
+                data: {
+                    Name: $("#news-name").val(),
+                    Email: $("#news-email").val()
+                },
+                success: function (data) {
+                    noty({
+                        layout: 'top',
+                        type: 'success',
+                        timeout: 1400,
+                        text: data
+                    });
+                    $("#news-name").val(""),
+                    $("#news-email").val("")
+                },
+                error: function () {
+                    noty({
+                        layout: 'top',
+                        type: 'error',
+                        timeout: 1400,
+                        text: 'Error'
+                    });
+                }
+            });
+        }
+    }
 });
+
 
 /* A fix for the iOS orientationchange zoom bug */
 !function (a) { function m() { d.setAttribute("content", g), h = !0 } function n() { d.setAttribute("content", f), h = !1 } function o(b) { return a.orientation, 90 == Math.abs(a.orientation) ? (h && m(), void 0) : (l = b.accelerationIncludingGravity, i = Math.abs(l.x), j = Math.abs(l.y), 0 == j || i / j > 1.2 ? h && n() : h || m(), void 0) } var b = navigator.userAgent; if (/iPhone|iPad|iPod/.test(navigator.platform) && /OS [1-5]_[0-9_]* like Mac OS X/i.test(b) && b.indexOf("AppleWebKit") > -1 && -1 == b.indexOf("CriOS")) { var c = a.document; if (c.querySelector) { var d = c.querySelector("meta[name=viewport]"); if (d) { var i, j, l, e = d && d.getAttribute("content"), f = e + ",maximum-scale=1", g = e + ",maximum-scale=10", h = !0; a.addEventListener("orientationchange", m, !1), a.addEventListener("devicemotion", o, !1) } } } }(this);

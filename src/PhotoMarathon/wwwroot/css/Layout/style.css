@@ -733,7 +733,8 @@ select {
     input[type=email].underline,
     input[type=search].underline,
     input[type=date].underline,
-    input[type=number], .underline input[type=tel].underline,
+    input[type=number].underline,
+    input[type=tel].underline,
     input[type=url].underline,
     textarea.underline,
     select.underline {
@@ -745,43 +746,43 @@ select {
         padding-right: 0;
     }
 
-        input[type=text]:hover,
-        input[type=password]:hover,
-        input[type=email]:hover,
-        input[type=search]:hover,
-        input[type=date]:hover,
-        input[type=number]:hover,
-        input[type=tel]:hover,
-        input[type=url]:hover,
-        textarea:hover,
-        select:hover {
-            border-color: #b5bec4;
-        }
+    input[type=text]:hover,
+    input[type=password]:hover,
+    input[type=email]:hover,
+    input[type=search]:hover,
+    input[type=date]:hover,
+    input[type=number]:hover,
+    input[type=tel]:hover,
+    input[type=url]:hover,
+    textarea:hover,
+    select:hover {
+        border-color: #b5bec4;
+    }
 
-        input[type=text]:focus,
-        input[type=password]:focus,
-        input[type=email]:focus,
-        input[type=search]:focus,
-        input[type=date]:focus,
-        input[type=number]:focus,
-        input[type=tel]:focus,
-        input[type=url]:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #292f33;
-        }
+    input[type=text]:focus,
+    input[type=password]:focus,
+    input[type=email]:focus,
+    input[type=search]:focus,
+    input[type=date]:focus,
+    input[type=number]:focus,
+    input[type=tel]:focus,
+    input[type=url]:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #292f33;
+    }
 
-            input[type=text]:focus:invalid,
-            input[type=password]:focus:invalid,
-            input[type=email]:focus:invalid,
-            input[type=search]:focus:invalid,
-            input[type=date]:focus:invalid,
-            input[type=number]:focus:invalid,
-            input[type=tel]:focus:invalid,
-            input[type=url]:focus:invalid,
-            textarea:focus:invalid {
-                border-color: #cb3315;
-            }
+        input[type=text]:focus:invalid,
+        input[type=password]:focus:invalid,
+        input[type=email]:focus:invalid,
+        input[type=search]:focus:invalid,
+        input[type=date]:focus:invalid,
+        input[type=number]:focus:invalid,
+        input[type=tel]:focus:invalid,
+        input[type=url]:focus:invalid,
+        textarea:focus:invalid {
+            border-color: #cb3315;
+        }
 
     input:invalid,
     textarea:invalid {
@@ -1420,7 +1421,7 @@ img.round {
 
         .tab-container .tabs li {
             float: left;
-            margin:0 2em 0 !important;
+            margin: 0 2em 0 !important;
         }
 
             .tab-container .tabs li.active {

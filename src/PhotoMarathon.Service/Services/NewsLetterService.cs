@@ -3,12 +3,14 @@ using PhotoMarathon.Data.Infrastructure;
 using PhotoMarathon.Data.Repository;
 using PhotoMarathon.Service.Utils;
 using System;
+using System.Linq.Expressions;
 
 namespace PhotoMarathon.Service.Services
 {
     public interface INewsLetterService : IBaseService
     {
         Result<Newsletter> Add(Newsletter newsLetter);
+        Result<Newsletter> Get(string email);
     }
     public class NewsLetterService : BaseService, INewsLetterService
     {
@@ -25,6 +27,7 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
+                newsLetter.DateAdded = DateTime.Now;
                 newsLetterRepository.Add(newsLetter);
                 SaveChanges();
                 return new Result<Newsletter>(newsLetter);
@@ -32,6 +35,22 @@ namespace PhotoMarathon.Service.Services
             catch (Exception ex)
             {
                 return new Result<Newsletter>(ex); 
+            }
+        }
+
+        public Result<Newsletter> Get(string email)
+        {
+            try
+            {
+                Expression<Func<Newsletter, bool>> predicate = p => p.Email.ToLower() == email.ToLower();
+                var newsletter = newsLetterRepository.Get(predicate);
+                if (newsletter == null)
+                    return new Result<Newsletter>(ResultStatus.NOT_FOUND);
+                return new Result<Newsletter>(newsletter);
+            }
+            catch (Exception ex)
+            {
+                return new Result<Newsletter>(ex);
             }
         }
     }

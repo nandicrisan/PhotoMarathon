@@ -7,6 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PhotoMarathon.Service.Services;
+using PhotoMarathon.Data.Repository;
+using PhotoMarathon.Data.Entities;
+using PhotoMarathon.Data.Infrastructure;
+using PhotoMarathon.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PhotoMarathon
 {
@@ -33,9 +39,18 @@ namespace PhotoMarathon
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BaseDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("PhotoMarathonConnectionString")));
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
-
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<INewsLetterService, NewsLetterService>();
+            services.AddTransient<IGeneralService, GeneralService>();
+            //Repositories
+            services.AddTransient<IEntityBaseRepository<Newsletter>, EntityBaseRepository<Newsletter>>();
+            services.AddTransient<IEntityBaseRepository<WorkShop>, EntityBaseRepository<WorkShop>>();
+            services.AddTransient<IEntityBaseRepository<Photographer>, EntityBaseRepository<Photographer>>();
             services.AddMvc();
         }
 
