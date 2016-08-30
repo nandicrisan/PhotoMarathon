@@ -3,6 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <title>@ViewData["Title"] - PhotoMarathon</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -80,16 +86,16 @@
                         <input type="submit" id="send-newsletter" onclick="Main.NewsLetterSubscribe()" value="Trimite">
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <p>
                         <a asp-controller="Home" asp-action="Index" class="mini-logo img-responsive"><img src="~/images/logo3.png" alt="PhotoMarathon" width="175"></a>
                     </p>
                     <p>&copy; 2016 Photo Marathon. Toate drepturile rezervate.</p>
                     <p>
-                        <a href="#" class="social-link"><i class="fa fa-behance"></i></a>
-                        <a href="#" class="social-link"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="social-link"><i class="fa fa-dribbble"></i></a>
-                        <a href="#" class="social-link"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/photomarathon.ro/" target="_blank" class="social-link"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/photomarathon.ro/" target="_blank" class="social-link"><i class="fa fa-instagram"></i></a>
+                        <a href="https://ro.pinterest.com/photomarathon/" target="_blank" class="social-link"><i class="fa fa-pinterest"></i></a>
+                        <a href="https://www.youtube.com/channel/UC7xgv1Th5Fd3YbrEYqzAoyA" target="_blank" class="social-link"><i class="fa fa-youtube"></i></a>
                     </p>
                 </div>
             </div>
