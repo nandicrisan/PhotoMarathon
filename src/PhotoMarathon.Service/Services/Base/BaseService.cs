@@ -1,6 +1,6 @@
 ﻿using PhotoMarathon.Data.Infrastructure;
 
-namespace PhotoMarathon.Service.Services.Base
+namespace PhotoMarathon.Service.Services
 {
 
 

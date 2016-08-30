@@ -3,6 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <title>@ViewData["Title"] - PhotoMarathon</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -60,29 +66,36 @@
         @RenderBody()
     </div>
     <footer id="footer" role="contentinfo">
-        <div class="col-sm-6">
-            <p>
-                <a asp-controller="Home" asp-action="Index" class="mini-logo img-responsive"><img src="~/images/logo3.png" alt="PhotoMarathon" width="175"></a>
-            </p>
-            <p>&copy; 2016 Photo Marathon. Toate drepturile rezervate.</p>
-            <p>
-                <a href="https://www.facebook.com/photomarathon.ro/" class="social-link"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com/photomarathon.ro/" class="social-link"><i class="fa fa-instagram"></i></a>
-                <a href="https://ro.pinterest.com/photomarathon/" class="social-link"><i class="fa fa-pinterest"></i></a>
-                <a href="https://www.youtube.com/channel/UC7xgv1Th5Fd3YbrEYqzAoyA" class="social-link"><i class="fa fa-youtube"></i></a>
-            </p>
-        </div>
-        <div class="col-sm-6">
-            <p>
-                <a asp-controller="Home" asp-action="Index" class="mini-logo img-responsive"><img src="~/images/logo3.png" alt="PhotoMarathon" width="175"></a>
-            </p>
-            <p>&copy; 2016 Photo Marathon. Toate drepturile rezervate.</p>
-            <p>
-                <a href="https://www.facebook.com/photomarathon.ro/" class="social-link"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com/photomarathon.ro/" class="social-link"><i class="fa fa-instagram"></i></a>
-                <a href="https://ro.pinterest.com/photomarathon/" class="social-link"><i class="fa fa-pinterest"></i></a>
-                <a href="https://www.youtube.com/channel/UC7xgv1Th5Fd3YbrEYqzAoyA" class="social-link"><i class="fa fa-youtube"></i></a>
-            </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="box white-bg">
+                        <h5 class="photo-lett">Abonează-te la Photoletter </h5>
+                        <div class="sep red"></div>
+                        <div class="margin-1"></div>
+                        <form action="contact1.html" class="no-bottom">
+                            <label for="name" class="sr-only">Nume</label>
+                            <input type="text" class="underline" name="name" id="name" placeholder="Nume..." required="">
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" class="underline" name="email" id="email" placeholder="Adresa de email..." required="">
+                            <div class="margin-1"></div>
+                            <input type="submit" value="Trimite">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <p>
+                        <a asp-controller="Home" asp-action="Index" class="mini-logo img-responsive"><img src="~/images/logo3.png" alt="PhotoMarathon" width="175"></a>
+                    </p>
+                    <p>&copy; 2016 Photo Marathon. Toate drepturile rezervate.</p>
+                    <p>
+                        <a href="#" class="social-link"><i class="fa fa-behance"></i></a>
+                        <a href="#" class="social-link"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="social-link"><i class="fa fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fa fa-facebook"></i></a>
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
     <environment names="Development">

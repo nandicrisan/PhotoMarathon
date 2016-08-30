@@ -91,3 +91,10 @@
             vertical-align: baseline !important;
             padding-top: 15px !important;
         }
+
+/*Footer*/
+.photo-lett {
+    text-align:left;
+    color:white;
+    margin-top:24px;
+}

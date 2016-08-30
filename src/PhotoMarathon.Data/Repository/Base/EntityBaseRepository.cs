@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using LinqKit.Core;
 using PhotoMarathon.Data.Entities.Base;
 
-namespace PhotoMarathon.Data.Repository.Base
+namespace PhotoMarathon.Data.Repository
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
