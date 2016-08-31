@@ -4,20 +4,6 @@
     List<PhotoMarathon.Data.Entities.WorkShop> workShops = ViewBag.WorkShops;
 }
 
-@*<div id="hero" style="background:black;">
-        <div class="inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <h3>Pagină în construcție</h3>
-                        <p>Reveniți mai târziu</p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-    </div>*@
-
 <main id="content" role="main">
     <div class="container container-boxes">
         <div class="row">
@@ -43,30 +29,52 @@
                         <input asp-for="PhoneNumber" class="underline" placeholder="Nr. de telefon">
                         <span asp-validation-for="PhoneNumber" class="input-validation-side"></span>
                         <div class="margin-1"></div>
-                        <p for="fotop" class="radio-label">Fotograf amator</p>
-                        <input type="radio" class="radio-input" name="IsProfessionist" value="false"/>
-                        <p for="fotop" class="radio-label">Fotograf profesionist</p>
+                        <p for="fotop" class="radio-label vertical-align-middle">Fotograf amator &nbsp;</p>
+                        <input type="radio" class="radio-input" name="IsProfessionist" value="false" />
+                        <p for="fotop" class="radio-label vertical-align-middle"> &nbsp;Fotograf profesionist &nbsp;</p>
                         <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
-                        <p class="radio-label">Workshop</p>
-                        <input asp-for="RegisterForWorkShop" class="radio-input" id="register-type" />
-                        <div class="form-group" id="workshops" style="display:none;">
-                            <select class="form-control" name="Workshop.Id">
-                                @foreach (var workShop in workShops)
-                                {
-                                    <option value="@workShop.Id">@workShop.Name</option>
-                                }
-                            </select>
+
+                        <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
+                        <div class="squaredFour display-inline-block">
+                            <input type="checkbox" value="None" id="workshop" name="check" />
+                            <label for="workshop"></label>
                         </div>
-                        </br>
-                        <p class="radio-label">Maratonul foto</p>
-                        <input asp-for="RegisterForMarathon" class="radio-input"/>
+                        @*<input asp-for="RegisterForWorkShop" class="radio-input" id="register-type" />*@
+                        <div class="row">
+                            <div class="form-group col-md-6" id="workshops" style="display:none;">
+                                <select class="form-control" name="Workshop.Id">
+                                    @foreach (var workShop in workShops)
+                                    {
+                                        <option value="@workShop.Id">@workShop.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <p class="display-inline-block">Maratonul foto &nbsp;</p>
+                        <div class="squaredFour display-inline-block">
+                            <input type="checkbox" value="None" id="photoMarathon" name="check" />
+                            <label for="photoMarathon"></label>
+                        </div>
+                        @*<input asp-for="RegisterForMarathon" class="radio-input" />*@
+                        <br />
+                        <div class="squaredFour display-inline-block">
+                            <input type="checkbox" value="None" id="rules" name="check" />
+                            <label for="rules"></label>
+                        </div>
+                        <p class="display-inline-block">&nbsp; Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> si sunt de acord cu toate conditiile.</p>
+                        <br />
+                        <div class="squaredFour display-inline-block">
+                            <input type="checkbox" value="None" id="newsletter" name="check" />
+                            <label for="newsletter"></label>
+                        </div>
+                        <p class="display-inline-block">&nbsp; Vreau să primesc și alte informatii legate de Photo Marathon 2016</p>
+
                         <div class="margin-1"></div>
                         <input type="submit" value="Trimite">
                     </form>
-                    <p>Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> si sunt de acord cu toate conditiile.</p>
-                    <p>Vreau să primesc și alte informatii legate de Photo Marathon 2016</p>
                 </div>
             </div>
         </div>
@@ -75,7 +83,7 @@
 
 @section scripts
 {
-    <script src="~/js/Account/register.min.js" asp-append-version="true"></script>
+    <script src="~/js/Account/register.js" asp-append-version="true"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.1/jquery.validate.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
 }
