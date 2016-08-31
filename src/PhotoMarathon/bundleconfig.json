@@ -43,7 +43,7 @@
   {
     "outputFileName": "wwwroot/js/Account/register.min.js",
     "inputFiles": [
-      "wwwroot/js/Account/register/register.js"
+      "wwwroot/js/Account/register.js"
     ],
     "minify": {
       "enabled": true,

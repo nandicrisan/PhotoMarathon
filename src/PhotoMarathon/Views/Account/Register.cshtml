@@ -5,18 +5,18 @@
 }
 
 @*<div id="hero" style="background:black;">
-    <div class="inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <h3>Pagină în construcție</h3>
-                    <p>Reveniți mai târziu</p>
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h3>Pagină în construcție</h3>
+                        <p>Reveniți mai târziu</p>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 <main id="content" role="main">
     <div class="container container-boxes">
@@ -29,30 +29,30 @@
                     </p>
                     <div class="sep red"></div>
                     <div class="margin-1"></div>
-                    <form asp-controller="Account" asp-action="Register"  method="post"  class="no-bottom">
+                    <form asp-controller="Account" asp-action="Register" method="post" class="no-bottom">
                         <label asp-for="FirstName" class="sr-only">Nume</label>
                         <input asp-for="FirstName" class="underline" placeholder="Nume">
-                        <span asp-validation-for="FirstName" class="input-validation-side"></span>
+                        <span asp-validation-for="FirstName" class="input-validation-side rubberBand"></span>
                         <label for="prename" class="sr-only">Prenume</label>
                         <input asp-for="LastName" class="underline" placeholder="Prenume">
                         <span asp-validation-for="LastName" class="input-validation-side"></span>
                         <label for="email" class="sr-only">Email</label>
-                        <input asp-for="Email"  class="underline" placeholder="Adresa de email">
+                        <input asp-for="Email" class="underline" placeholder="Adresa de email">
                         <span asp-validation-for="Email" class="input-validation-side"></span>
                         <label for="phone" class="sr-only">Nr. de telefon</label>
                         <input asp-for="PhoneNumber" class="underline" placeholder="Nr. de telefon">
                         <span asp-validation-for="PhoneNumber" class="input-validation-side"></span>
                         <div class="margin-1"></div>
                         <p for="fotop" class="radio-label">Fotograf amator</p>
-                        <input type="radio" class="radio-input" name="fotop"/>
+                        <input type="radio" class="radio-input" name="IsProfessionist" value="false"/>
                         <p for="fotop" class="radio-label">Fotograf profesionist</p>
-                        <input type="radio" class="radio-input" name="fotop"/>
+                        <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
                         <p class="radio-label">Workshop</p>
-                        <input type="radio" class="radio-input" id="register-type" name="registertype" />
-                        <div class="form-group">
-                            <select class="form-control">
+                        <input asp-for="RegisterForWorkShop" class="radio-input" id="register-type" />
+                        <div class="form-group" id="workshops" style="display:none;">
+                            <select class="form-control" name="Workshop.Id">
                                 @foreach (var workShop in workShops)
                                 {
                                     <option value="@workShop.Id">@workShop.Name</option>
@@ -61,7 +61,7 @@
                         </div>
                         </br>
                         <p class="radio-label">Maratonul foto</p>
-                        <input type="radio" class="radio-input" name="registertype" />
+                        <input asp-for="RegisterForMarathon" class="radio-input"/>
                         <div class="margin-1"></div>
                         <input type="submit" value="Trimite">
                     </form>
@@ -72,4 +72,10 @@
         </div>
     </div>
 </main>
-<script src="~/js/Account/register.min.js" asp-append-version="true"></script>
+
+@section scripts
+{
+    <script src="~/js/Account/register.min.js" asp-append-version="true"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.1/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}

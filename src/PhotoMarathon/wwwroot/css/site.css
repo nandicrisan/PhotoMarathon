@@ -120,7 +120,7 @@
 
 .radio-label {
     padding-top: 4px !important;
-    padding-bottom: 4px!important;
+    padding-bottom: 4px !important;
     display: inline;
 }
 
@@ -133,5 +133,9 @@
     font-size: 13px;
     margin-bottom: 0px;
     text-align: left;
-    position:absolute
+    position: relative;
+    bottom: 40px;
+    float: right;
+    z-index:5;
+    line-height:0px;
 }
