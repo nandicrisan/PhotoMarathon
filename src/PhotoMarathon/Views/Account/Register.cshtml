@@ -38,13 +38,12 @@
 
                         <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
                         <div class="squaredFour display-inline-block">
-                            <input type="checkbox" value="None" id="workshop" name="check" />
+                            <input asp-for="RegisterForWorkShop" type="checkbox" value="true" id="workshop" name="check" />
                             <label for="workshop"></label>
                         </div>
-                        @*<input asp-for="RegisterForWorkShop" class="radio-input" id="register-type" />*@
                         <div class="row">
                             <div class="form-group col-md-6" id="workshops" style="display:none;">
-                                <select class="form-control" name="Workshop.Id">
+                                <select class="form-control" name="WorkshopId">
                                     @foreach (var workShop in workShops)
                                     {
                                         <option value="@workShop.Id">@workShop.Name</option>
@@ -55,23 +54,23 @@
 
                         <p class="display-inline-block">Maratonul foto &nbsp;</p>
                         <div class="squaredFour display-inline-block">
-                            <input type="checkbox" value="None" id="photoMarathon" name="check" />
+                            <input asp-for="RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
                             <label for="photoMarathon"></label>
                         </div>
-                        @*<input asp-for="RegisterForMarathon" class="radio-input" />*@
                         <br />
                         <div class="squaredFour display-inline-block">
-                            <input type="checkbox" value="None" id="rules" name="check" />
+                            <input asp-for="Rules" type="checkbox" id="rules" name="check" />
                             <label for="rules"></label>
                         </div>
                         <p class="display-inline-block">&nbsp; Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> si sunt de acord cu toate conditiile.</p>
+
                         <br />
                         <div class="squaredFour display-inline-block">
-                            <input type="checkbox" value="None" id="newsletter" name="check" />
+                            <input asp-for="HasNewsLetter" type="checkbox" value="true" id="newsletter" name="check" />
                             <label for="newsletter"></label>
                         </div>
                         <p class="display-inline-block">&nbsp; Vreau să primesc și alte informatii legate de Photo Marathon 2016</p>
-
+                        <span asp-validation-for="Rules" class="input-validation"></span>
                         <div class="margin-1"></div>
                         <input type="submit" value="Trimite">
                     </form>

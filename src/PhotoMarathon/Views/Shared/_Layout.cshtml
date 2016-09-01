@@ -32,10 +32,16 @@
     </environment>
     <script type="text/javascript">
         localStorage.setItem("siteRoot", "@Url.Action("", null, null, "http")")
+        //Error or success messages
+        @if (ViewData["Message"] != null)
+        {
+            <text>var ServerMessage = '@ViewData["Message"]';</text>
+            <text>var ServerMessageType = '@ViewData["ServerMessageType"]';</text>
+        }
     </script>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
-<body>
+<body> 
     <header id="top" class="navbar navbar-fixed-top" role="banner">
         <div class="container">
             <div class="inner">

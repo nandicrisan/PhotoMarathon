@@ -1,6 +1,7 @@
 ﻿using PhotoMarathon.Data.Entities.Base;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoMarathon.Data.Entities
 {
@@ -28,7 +29,11 @@ namespace PhotoMarathon.Data.Entities
 
         public bool RegisterForMarathon { get; set; }
 
+        public bool Rules { get; set; }
+
         public bool HasNewsLetter { get; set; }
+
+        public int? WorkshopId { get; set; }
         public virtual WorkShop Workshop { get; set; }
 
         public DateTime DateAdded { get; set; }    }

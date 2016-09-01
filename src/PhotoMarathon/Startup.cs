@@ -47,6 +47,7 @@ namespace PhotoMarathon
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<INewsLetterService, NewsLetterService>();
             services.AddTransient<IGeneralService, GeneralService>();
+            services.AddTransient<IAccountService, AccountService>();
             //Repositories
             services.AddTransient<IEntityBaseRepository<Newsletter>, EntityBaseRepository<Newsletter>>();
             services.AddTransient<IEntityBaseRepository<WorkShop>, EntityBaseRepository<WorkShop>>();

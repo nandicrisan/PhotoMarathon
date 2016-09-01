@@ -152,6 +152,17 @@ jQuery(document).ready(function () {
             });
         }
     }
+
+    //Messages
+    if (typeof ServerMessageif !== 'undefined')
+    {
+        noty({
+            layout: 'top',
+            type: ServerMessageType,
+            timeout: 1400,
+            text: ServerMessage
+        });
+    }
 });
 
 /* A fix for the iOS orientationchange zoom bug */

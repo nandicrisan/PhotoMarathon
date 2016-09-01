@@ -13,9 +13,11 @@ namespace PhotoMarathon.Controllers
     public class AccountController : Controller
     {
         private readonly IGeneralService generalService;
-        public AccountController(IGeneralService generalService)
+        private readonly IAccountService accountService;
+        public AccountController(IGeneralService generalService, IAccountService accountService)
         {
             this.generalService = generalService;
+            this.accountService = accountService;
         }
 
         // GET: /<controller>/
@@ -28,6 +30,7 @@ namespace PhotoMarathon.Controllers
         public IActionResult Register()
         {
             var photographer = new Photographer();
+            photographer.HasNewsLetter = true;
             ViewBag.WorkShops = generalService.GetWorkShpos().Data;
             return View(photographer);
         }
@@ -37,8 +40,23 @@ namespace PhotoMarathon.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.WorkShops = generalService.GetWorkShpos().Data;
-                return View();
+                return View(photographer);
             }
+            if (!photographer.Rules)
+            {
+                ViewBag.WorkShops = generalService.GetWorkShpos().Data;
+                ModelState.AddModelError("Rules", "Te rugăm să confirmi că ai citit şi eşti de acord cu Regulament");
+                return View(photographer);
+            }
+            var result = accountService.AddPhotographer(photographer);
+            if (!result.IsOk())
+            {
+                ModelState.AddModelError("Rules", "Sa intampinat o eroare te rugam incerci tarziu.");
+                ViewBag.WorkShops = generalService.GetWorkShpos().Data;
+                return View(photographer);
+            }
+            ViewData["Message"] = "Te-ai înregistrat cu succes!";
+            ViewData["ServerMessageType"] = "success";
             return RedirectToAction("Index", "Home");
         }
     }
