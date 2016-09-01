@@ -210,11 +210,11 @@ input[type=checkbox] {
     vertical-align: middle !important;
 }
 
-.owl-carousel .owl-wrapper {
+.partners .owl-carousel .owl-wrapper {
     display: table !important;
 }
 
-.owl-carousel .owl-item {
+.partners .owl-carousel .owl-item {
     display: table-cell;
     float: none !important;
     vertical-align: middle;
@@ -223,4 +223,12 @@ input[type=checkbox] {
 
 .float-left {
     float: left;
+}
+
+.position-relative {
+    position: static !important;
+}
+
+.font-size-82 {
+    font-size: 82px;
 }
