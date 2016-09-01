@@ -1899,7 +1899,7 @@ img.round {
     transition: max-height 0.3s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
-    #site-menu li:hover a {
+    #site-menu li:not(.current-menu-item):hover a {
         outline: 2px solid rgba(255, 255, 255, 0.85);
     }
 
@@ -2900,7 +2900,7 @@ img.round {
                 content: '';
                 position: absolute;
                 bottom: 0;
-                left: 0.75em;
+                left: 0.8em;
                 width: 13px;
                 height: 2px;
                 background-color: #292f33;
@@ -3870,7 +3870,7 @@ img.round {
 
     #site-menu nav > ul > li.current-menu-item > a:after,
     #site-menu nav > ul > li.current-menu-parent > a:after {
-        left: 1.25em;
+        left: 0.8em;
     }
 
     #site-menu li.menu-item-search.hover {

@@ -66,6 +66,9 @@
         <script src="~/js/About/page.js" asp-append-version="true"></script>
     </environment>
     <script>
-        About.InitCarousel();
+        $(document).ready(function () {
+            Main.SetActiveMenuItem(1);
+            About.InitCarousel();
+        })
     </script>
 }

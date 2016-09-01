@@ -207,15 +207,20 @@ input[type=checkbox] {
 }
 
 .vertical-align-middle {
-    vertical-align:middle !important;
+    vertical-align: middle !important;
 }
 
 .owl-carousel .owl-wrapper {
-  display: table !important;
+    display: table !important;
 }
+
 .owl-carousel .owl-item {
-  display: table-cell;
-  float: none !important;
-  vertical-align: middle;
-  padding:0 25px;
+    display: table-cell;
+    float: none !important;
+    vertical-align: middle;
+    padding: 0 25px;
+}
+
+.float-left {
+    float: left;
 }

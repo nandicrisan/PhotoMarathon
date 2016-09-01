@@ -33,3 +33,10 @@
         <p>Pentru mai multe detalii, citește <a asp-controller="Home" asp-action="Rules">regulamentul competiției!</a></p>
     </div>
 </main>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            Main.SetActiveMenuItem(4);
+        })
+    </script>
+}
