@@ -2,78 +2,85 @@
     ViewData["Title"] = "Expoziții";
 }
 
-<div id="hero" style="background:black;">
-    <div class="inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <h3>Pagină în construcție</h3>
-                    <p>Reveniți mai târziu</p>
+@*<div id="hero" style="background:black;">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h3>Pagină în construcție</h3>
+                        <p>Reveniți mai târziu</p>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@
 
 <main id="content" role="main">
     <div class="container">
-        <div style="height:500px;"></div>
-    </div>
-</main>
-@*<main id="content" role="main">
-        <div class="container">
-            <div class="margin-4"></div>
+        <div class="col-md-3">
+            <img src="~/images/expoPage.jpg" class="img-responsive" />
+        </div>
+        <div class="col-md-9">
+            <div class="margin-3"></div>
             <div class="inner">
                 <div>
                     <h4>Expoziții</h4>
                     <p>Timp de 4 zile, maratonul de expoziții oferă o experiență unică vizitatorilor, adunând cele mai creative lucrări fotografice în spaţii neconvenționale din Cluj-Napoca. Cele 4 expoziții derulate atipic încurajează vizitatorii să pătrundă în universul fotografiei și să cunoască artistul prin intermediul creațiilor expuse, oferindu-le posibilitatea de a experimenta prin intermediul simţurilor arta fotografică.</p>
                 </div>
 
-                <div class="tab-container">
-                    <ul class="tabs clearfix">
-                        <li class="active team-member">
-                            <a href="#tab-1" class="team-photo">
-                                <img src="~/images/profile.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
-                            </a>
-                        </li>
-                        <li class="team-member">
-                            <a href="#tab-2" class="team-photo">
-                                <img src="~/images/profile.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
-                            </a>
-                        </li>
-                        <li class="team-member">
-                            <a href="#tab-3" class="team-photo">
-                                <img src="~/images/profile.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
-                            </a>
-                        </li>
-                        <li class="team-member">
-                            <a href="#tab-4" class="team-photo">
-                                <img src="~/images/profile.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div id="tab-1" class="tab_content" style="display:block">
-                        <p>We are a digital agency with 20 plus years of collective experience in adv business like this takes much More effort than doing your own business at of travelling.</p>
-                        <p>More effort than doing your own business at of travelling, worries about making train connections.</p>
+                @*<div class="tab-container">
+                        <ul class="tabs clearfix">
+                            <li class="active team-member">
+                                <a href="#tab-1" class="team-photo">
+                                    <img src="~/images/profile.jpg" width="640" height="640" alt="">
+                                    <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
+                                </a>
+                            </li>
+                            <li class="team-member">
+                                <a href="#tab-2" class="team-photo">
+                                    <img src="~/images/profile.jpg" width="640" height="640" alt="">
+                                    <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
+                                </a>
+                            </li>
+                            <li class="team-member">
+                                <a href="#tab-3" class="team-photo">
+                                    <img src="~/images/profile.jpg" width="640" height="640" alt="">
+                                    <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
+                                </a>
+                            </li>
+                            <li class="team-member">
+                                <a href="#tab-4" class="team-photo">
+                                    <img src="~/images/profile.jpg" width="640" height="640" alt="">
+                                    <span class="info"><span class="text"><span class="name">Mike Gradski</span><span class="description">Web Designer</span></span></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div id="tab-1" class="tab_content" style="display:block">
+                            <p>We are a digital agency with 20 plus years of collective experience in adv business like this takes much More effort than doing your own business at of travelling.</p>
+                            <p>More effort than doing your own business at of travelling, worries about making train connections.</p>
+                        </div>
+                        <div id="tab-2" class="tab_content" style="display:none">
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+                            <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                        </div>
+                        <div id="tab-3" class="tab_content" style="display:none">
+                            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+                        </div>
+                        <div id="tab-4" class="tab_content" style="display:none">
+                            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+                        </div>
                     </div>
-                    <div id="tab-2" class="tab_content" style="display:none">
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-                        <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                    </div>
-                    <div id="tab-3" class="tab_content" style="display:none">
-                        <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-                    </div>
-                    <div id="tab-4" class="tab_content" style="display:none">
-                        <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="margin-2"></div>
+                    <div class="clear"></div>*@
             </div>
+            <div class="margin-3"></div>
         </div>
-    </main>*@
+    </div>
+</main>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            Main.SetActiveMenuItem(2);
+        })
+    </script>
+}
