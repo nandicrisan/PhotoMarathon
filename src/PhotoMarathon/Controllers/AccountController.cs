@@ -45,13 +45,13 @@ namespace PhotoMarathon.Controllers
             if (!photographer.Rules)
             {
                 ViewBag.WorkShops = generalService.GetWorkShpos().Data;
-                ModelState.AddModelError("Rules", "Te rugăm să confirmi că ai citit şi eşti de acord cu Regulament");
+                ModelState.AddModelError("Rules", "Te rugăm să confirmi că ai citit şi eşti de acord cu regulamentul");
                 return View(photographer);
             }
             var result = accountService.AddPhotographer(photographer);
             if (!result.IsOk())
             {
-                ModelState.AddModelError("Rules", "Sa intampinat o eroare te rugam incerci tarziu.");
+                ModelState.AddModelError("Rules", "Eroare! Te rugăm să încerci mai târziu.");
                 ViewBag.WorkShops = generalService.GetWorkShpos().Data;
                 return View(photographer);
             }

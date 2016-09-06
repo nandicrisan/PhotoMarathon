@@ -1,22 +1,26 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
+<div>
+    <h3 class="text-center image-title ubuntu-font">
+        Împreună punem arta fotografică în mişcare!
+    </h3>
+    <img src="~/images/wallp5.jpg" class="img-responsive" />
+</div>
+<div class="contentDiv">
+    <a href="#description"><i class="fa fa-chevron-down arrow" aria-hidden="true"></i></a>
+</div>
 <main id="content" role="main">
     <div class="container">
         <div class="inner">
-            <div class="margin-4"></div>
+            <a name="description"></a>
+            <div class="margin-5"></div>
             <div class="row">
-                <div class="col-md-6">
-                    <h4>Împreună punem arta fotografica în mişcare!</h4>
-                    <img class="img-responsive" src="~/images/aboutwallp.jpg" />
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        PHOTO MARATHON este singurul eveniment din România care oferă atât fotografilor amatori, cât şi celor profesionişti, oportunitatea de a experimenta arta fotografică, într-o manieră inedită, punându-le la încercare imaginaţia şi creativitatea.
-                    </p>
-                    <p>Desfăşurat în perioada 13-16 octombrie, pe parcursul a 4 zile, PHOTO MARATHON aduce în acelaşi loc peste 300 de pasionaţi de fotografie din zona Transilvaniei, oferindu-le acestora o experienţă unică şi completă prin cele trei componente:</p>
-                    <div class="margin-4"></div>
-                </div>
+                <p>
+                    PHOTO MARATHON este singurul eveniment din România care oferă atât fotografilor amatori, cât şi celor profesionişti, oportunitatea de a experimenta arta fotografică, într-o manieră inedită, punându-le la încercare imaginaţia şi creativitatea.
+                </p>
+                <p>Desfăşurat în perioada 13-16 octombrie, pe parcursul a 4 zile, PHOTO MARATHON aduce în acelaşi loc peste 300 de pasionaţi de fotografie din zona Transilvaniei, oferindu-le acestora o experienţă unică şi completă prin cele trei componente:</p>
+                <div class="margin-4"></div>
             </div>
 
             <div class="owl-carousel owl-services owl-red-dots text-center">
@@ -27,26 +31,26 @@
                     <div class="owl-dots position-relative"><div class="owl-dot active"><span style="width:35px;"></span></div></div>
                     <div class="margin-1"></div>
                     <p class="small">
-                        maratonul fotografic, unic in zona Transilvaniei, care oferă participanţilor oportunitatea de a-şi testa limitele şi creativitatea, câştigând premii în valoare de 6.000 lei
+                        Maratonul fotografic, unic în zona Transilvaniei, oferă participanților oportunitatea de a-și testa limitele și creativitatea, câștigând premii în valoare de 6.000 de lei.
                     </p>
                     <div class="margin-5"></div>
                 </div>
                 <div class="service-item">
-                    <i class="fa fa-braille font-size-82" aria-hidden="true"></i>
+                    <i class="fa fa-file-image-o font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
-                    <h6>Maratonul de ateliere</h6>
+                    <h6>Maratonul de workshop-uri</h6>
                     <div class="owl-dots position-relative"><div class="owl-dot active"><span style="width:35px;"></span></div></div>
                     <div class="margin-1"></div>
-                    <p class="small">pe parcursul unei singure zile, maratonul de ateliere oferă fotografilor profesionişti și amatori workshop-uri pe teme</p>
+                    <p class="small">Pe parcursul unei singure zile, maratonul de ateliere oferă fotografilor profesioniști și amatori workshop-uri prin care să își dezvolte și să-și aprofundeze tehnicile și tacticile de lucru. </p>
                     <div class="margin-5"></div>
                 </div>
                 <div class="service-item">
-                    <i class="fa fa-building font-size-82" aria-hidden="true"></i>
+                    <i class="fa fa-picture-o font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
                     <h6>Maratonul de expozitii</h6>
                     <div class="owl-dots position-relative"><div class="owl-dot active"><span style="width:35px;"></span></div></div>
                     <div class="margin-1"></div>
-                    <p class="small">timp de 4 zile, maratonul de expoziţii provoacă vizitatorii să cunoască şi să simtă fotografia prin intermediul simţurilor umane: vizual, olfactiv, tactil şi auditiv.</p>
+                    <p class="small">Timp de 4 zile, maratonul de expoziţii provoacă vizitatorii să cunoască şi să simtă fotografia prin intermediul simţurilor umane: vizual, olfactiv, tactil şi auditiv.</p>
                     <div class="margin-5"></div>
                 </div>
             </div>
@@ -57,7 +61,7 @@
                 <p>
                     Mai mult decât atât, cei care iau parte la acest eveniment, intră automat în comunitatea Photo Marathon, beneficiind de acces la expozițiile, competițiile și evenimentele organizate special pentru a dezvolta comunitatea fotografilor amatori și profesioniști.
                 </p>
-                <p class="text-center"><a asp-action="Register" asp-controller="Account">Te-am convins? Înscrie-te acum la PHOTO MARATHON.</a></p>
+                <p class="text-center"><a asp-action="Register" asp-controller="Account">Te-am convins? Înscrie-te acum la PHOTO MARATHON!</a></p>
             </div>
         </div>
         <div class="margin-4"></div>
@@ -75,6 +79,7 @@
         $(document).ready(function () {
             Main.SetActiveMenuItem(1);
             About.InitCarousel();
+            About.InitArrow();
         })
     </script>
 }

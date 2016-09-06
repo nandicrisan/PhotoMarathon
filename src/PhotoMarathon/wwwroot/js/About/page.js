@@ -28,3 +28,14 @@ About.InitCarousel = function () {
         loop: true
     });
 }
+
+About.InitArrow = function () {
+    $(document).scroll(function () {
+        var y = $(this).scrollTop();
+        if (y < 300) {
+            $('.arrow').fadeIn();
+        } else {
+            $('.arrow').fadeOut();
+        }
+    });
+}
