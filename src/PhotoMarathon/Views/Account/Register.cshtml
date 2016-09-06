@@ -35,12 +35,12 @@
                         <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
-
-                        <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
+                       
                         <div class="squaredFour display-inline-block">
                             <input asp-for="RegisterForWorkShop" type="checkbox" value="true" id="workshop" name="check" />
                             <label for="workshop"></label>
                         </div>
+                        <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
                         <div class="row">
                             <div class="form-group col-md-6" id="workshops" style="display:none;">
                                 <select class="form-control" name="WorkshopId">
@@ -51,12 +51,12 @@
                                 </select>
                             </div>
                         </div>
-
-                        <p class="display-inline-block">Maratonul foto &nbsp;</p>
+                       
                         <div class="squaredFour display-inline-block">
                             <input asp-for="RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
                             <label for="photoMarathon"></label>
                         </div>
+                        <p class="display-inline-block">Maratonul foto &nbsp;</p>
                         <br />
                         <div class="squaredFour display-inline-block">
                             <input asp-for="Rules" type="checkbox" id="rules" name="check" />
