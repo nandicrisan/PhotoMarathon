@@ -239,3 +239,10 @@ input[type=checkbox] {
 .ubuntu-font {
     font-family: 'Ubuntu Condensed', sans-serif !important;
 }
+
+.red-line {
+    width: 35px;
+    height: 4px;
+    display: inline-block;
+    border-radius: 1px;
+}
