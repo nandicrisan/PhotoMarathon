@@ -6,15 +6,20 @@
 
 <main id="content" role="main">
     <div class="container container-boxes">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box white-bg black-input">
+        <div class="row box white-bg">
+            <div class="col-sm-3">
+                <div class="margin-1"></div>
+                <img src="~/images/register-banner.png" />
+            </div>
+            <div class="col-sm-9">
+                <div class="black-input">
                     <h3 class="ubuntu-font">Înscrie-te</h3>
                     <p>
                         Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
                     </p>
-                    <div class="sep red"></div>
-                    <div class="margin-1"></div>
+                    <div class="sep red">
+                    </div>
+                    @*<div class="margin-1"></div>*@
                     <form asp-controller="Account" asp-action="Register" method="post" class="no-bottom">
                         <label asp-for="FirstName" class="sr-only">Nume</label>
                         <input asp-for="FirstName" class="underline" placeholder="Nume">
@@ -35,7 +40,7 @@
                         <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
-                       
+
                         <div class="squaredFour display-inline-block">
                             <input asp-for="RegisterForWorkShop" type="checkbox" value="true" id="workshop" name="check" />
                             <label for="workshop"></label>
@@ -51,7 +56,7 @@
                                 </select>
                             </div>
                         </div>
-                       
+
                         <div class="squaredFour display-inline-block">
                             <input asp-for="RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
                             <label for="photoMarathon"></label>
@@ -62,9 +67,8 @@
                             <input asp-for="Rules" type="checkbox" id="rules" name="check" />
                             <label for="rules"></label>
                         </div>
-                        <p class="display-inline-block">&nbsp; Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> și sunt de acord cu toate condițiile.</p>
-
-                        <br />
+                        <p class="display-inline-block margin-bottom-none">&nbsp; Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> și sunt de acord cu toate condițiile.</p>
+                        <div class="row"></div>
                         <div class="squaredFour display-inline-block">
                             <input asp-for="HasNewsLetter" type="checkbox" value="true" id="newsletter" name="check" />
                             <label for="newsletter"></label>
