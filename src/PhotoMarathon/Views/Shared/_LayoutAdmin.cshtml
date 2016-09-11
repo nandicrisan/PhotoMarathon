@@ -18,15 +18,18 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic%7CRoboto:400,700%7CDroid+Serif">
         <link rel="stylesheet" type="text/css" href="~/css/LayoutAdmin/admin-layout.min.css">
     </environment>
+    <script type="text/javascript">
+        localStorage.setItem("siteRoot", "@Url.Action("", null, null, "http")")
+    </script>
 </head>
 <body class="skin-black">
     <div class="wrapper">
         @Html.Partial("LayoutAdmin/_HeaderAdmin")
         @Html.Partial("LayoutAdmin/_LeftSideMenu")
         <div class="content-wrapper">
-            <div class="container">
+            <section class="content">
                 @RenderBody()
-            </div>
+            </section>
         </div>
         @Html.Partial("LayoutAdmin/_FooterAdmin")
         <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>

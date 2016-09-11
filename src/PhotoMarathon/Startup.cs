@@ -13,6 +13,7 @@ using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Data.Infrastructure;
 using PhotoMarathon.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PhotoMarathon
 {
@@ -42,16 +43,25 @@ namespace PhotoMarathon
             services.AddDbContext<BaseDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("PhotoMarathonConnectionString")));
 
+            //services.AddDbContext<AccountDbContext>(options =>
+            //   options.UseSqlServer(Configuration.GetConnectionString("PhotoMarathonConnectionString")));
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<INewsLetterService, NewsLetterService>();
             services.AddTransient<IGeneralService, GeneralService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IBlogService, BlogService>();
             //Repositories
             services.AddTransient<IEntityBaseRepository<Newsletter>, EntityBaseRepository<Newsletter>>();
             services.AddTransient<IEntityBaseRepository<WorkShop>, EntityBaseRepository<WorkShop>>();
             services.AddTransient<IEntityBaseRepository<Photographer>, EntityBaseRepository<Photographer>>();
+            services.AddTransient<IEntityBaseRepository<BlogItem>, EntityBaseRepository<BlogItem>>();
+            //identity
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<BaseDbContext>()
+                .AddDefaultTokenProviders();
             services.AddMvc();
         }
 
@@ -77,11 +87,22 @@ namespace PhotoMarathon
 
             app.UseStaticFiles();
 
+            app.UseIdentity();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                LoginPath = "/account/login",
+
+                AuthenticationScheme = "Cookies",
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
             });
         }
     }

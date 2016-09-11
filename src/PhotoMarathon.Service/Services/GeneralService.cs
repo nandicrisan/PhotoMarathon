@@ -2,10 +2,8 @@
 using PhotoMarathon.Data.Infrastructure;
 using PhotoMarathon.Data.Repository;
 using PhotoMarathon.Service.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PhotoMarathon.Service.Services
 {

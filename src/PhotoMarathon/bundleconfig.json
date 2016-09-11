@@ -50,5 +50,63 @@
       "renameLocals": true
     },
     "sourceMap": false
+  },
+  //admin/photographers
+  {
+    "outputFileName": "wwwroot/js/Admin/photographers/photographer.min.js",
+    "inputFiles": [
+      "wwwroot/js/Admin/photographers/init.js",
+      "wwwroot/js/Admin/photographers/photographer.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  //admin/photoletter
+  {
+    "outputFileName": "wwwroot/js/Admin/photoletter/photoletter.min.js",
+    "inputFiles": [
+      "wwwroot/js/Admin/photoletter/init.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/Admin/photoletter/photoletter.min.js",
+    "inputFiles": [
+      "wwwroot/js/Admin/photoletter/init.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/Admin/blog/blog.min.js",
+    "inputFiles": [
+      "wwwroot/js/Admin/blog/init.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/Admin/addblogitem/addblogitem.min.js",
+    "inputFiles": [
+      "wwwroot/js/Admin/addblogitem/init.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
   }
 ]

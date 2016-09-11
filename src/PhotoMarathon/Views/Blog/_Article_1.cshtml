@@ -1,0 +1,18 @@
+﻿@model PhotoMarathon.Data.Entities.BlogItem
+@{
+    Layout = null;
+}
+<div class="box col-sm-8">
+    <div class="thumb featured">
+        <div class="photo">
+            <a href="~/blog/article/@Model.Id">
+                <img src="~/images/Blog/@Model.MainImageName" alt="" width="715" height="715">
+                <span class="info">
+                    <strong class="big-title">@Model.Title</strong>
+                    <span class="excerpt">Your content might be the king, but are you presenting it as one? Do people look where they should?</span>
+                    <em class="arrow-right"></em>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

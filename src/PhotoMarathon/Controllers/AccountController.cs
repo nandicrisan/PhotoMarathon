@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PhotoMarathon.Data.Entities;
+using PhotoMarathon.Models;
 using PhotoMarathon.Service.Services;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using System.Threading.Tasks;
 
 namespace PhotoMarathon.Controllers
 {
@@ -14,10 +12,19 @@ namespace PhotoMarathon.Controllers
     {
         private readonly IGeneralService generalService;
         private readonly IAccountService accountService;
-        public AccountController(IGeneralService generalService, IAccountService accountService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public AccountController(IGeneralService generalService,
+            IAccountService accountService,
+               UserManager<ApplicationUser> userManager,
+           SignInManager<ApplicationUser> signInManager)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
             this.generalService = generalService;
             this.accountService = accountService;
+
         }
 
         // GET: /<controller>/
@@ -58,6 +65,37 @@ namespace PhotoMarathon.Controllers
             ViewData["Message"] = "Te-ai înregistrat cu succes!";
             ViewData["ServerMessageType"] = "success";
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(AccountViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.UserName, };
+                var signImRes = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, true, false);
+                if (signImRes.Succeeded)
+                    return RedirectToAction("Index", "Admin");
+                else
+                    ModelState.AddModelError("UserName", "Numele de utilizator sau parola au fost introduse greșit");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }
