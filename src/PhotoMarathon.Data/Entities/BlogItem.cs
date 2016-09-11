@@ -11,6 +11,7 @@ namespace PhotoMarathon.Data.Entities
         public string Title { get; set; }
         [Required]
         public string CreatedBy { get; set; }
+        public string ShortDescription { get; set; }
         public string MainImageName { get; set; }
         public DateTime DateAdded { get; set; }
         public string Content { get; set; }

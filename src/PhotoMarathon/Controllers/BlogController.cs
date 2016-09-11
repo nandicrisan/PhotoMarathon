@@ -14,11 +14,13 @@ namespace PhotoMarathon.Controllers
         {
             this.blogService = blogService;
         }
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int id = 1)
         {
             var filter = new BlogFilter();
-            filter.iPage = page;
+            filter.iPage = id;
             filter.iDisplayLength = 6;
+            ViewBag.Pages = (blogService.Count(filter).Data / 6) + 1;
+            ViewBag.CurrentPage = id;
             var blogItems = blogService.GetBlogItemsByFilter(filter);
             return View(blogItems.Data);
         }
