@@ -1899,9 +1899,14 @@ img.round {
     transition: max-height 0.3s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
-    #site-menu li:not(.current-menu-item):hover a {
+    #site-menu li:not(.current-menu-item):hover {
         outline: 2px solid rgba(255, 255, 255, 0.85);
+        transform: skew(25deg);
     }
+
+        #site-menu li:not(.current-menu-item):hover a {
+            transform: skew(-25deg);
+        }
 
 #top.open-mobile-menu #site-menu {
     visibility: visible;
