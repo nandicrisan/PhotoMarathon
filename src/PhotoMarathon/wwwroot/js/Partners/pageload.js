@@ -26,6 +26,7 @@ Partners.InitPage = function () {
             992: {
                 items: 4
             }
-        }
+        },
+        autoWidth: true,
     });
 }

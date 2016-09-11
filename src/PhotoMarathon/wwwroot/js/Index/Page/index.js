@@ -5,18 +5,33 @@ Main.InitCalendar = function () {
     var nextMonth = moment().add('month', 1).format('YYYY-MM');
     var lotsOfEvents = [
         {
-            end: '2016-11-08',
-            start: '2016-12-04',
-            title: 'Monday to Friday Event'
-        }, {
-            end: '2016-11-20',
-            start: '2016-12-15',
-            title: 'Another Long Event'
+            date: '2016-10-13',
+            title: 'Expoziții'
         },
         {
-            date: '2016-09-20',
-            title: 'Another Long Event'
-        }
+            date: '2016-10-14',
+            title: 'Expoziții'
+        },
+        {
+            date: '2016-10-14',
+            title: 'Workshop-uri'
+        },
+        {
+            date: '2016-10-15',
+            title: 'Expoziții'
+        },
+        {
+            date: '2016-10-15',
+            title: 'Maraton Foto'
+        },
+        {
+            date: '2016-10-16',
+            title: 'Expoziții'
+        },
+        {
+            date: '2016-10-16',
+            title: 'Jurizare & premiere'
+        },
     ];
 
     $('#mini-clndr').clndr({
@@ -27,20 +42,26 @@ Main.InitCalendar = function () {
         weekOffset: 1,
         clickEvents: {
             click: function (target) {
-                console.log(target);
+                $("#events").removeClass("animated slideOutRight");
+                $("#mini-clndr").removeClass("animated slideInLeft");
+
+                $("#mini-clndr").addClass("animated slideOutLeft");
+                $("#events").css("display", "inline-block");
+                $("#events").addClass("animated slideInRight");
             },
-            onMonthChange: function (month) {
-                console.log('you just went to ' + month.format('MMMM, YYYY'));
-            }
         },
         doneRendering: function () {
             console.log('this would be a fine place to attach custom event handlers.');
         },
         dateParameter: 'date',
-        //multiDayEvents: {
-        //    endDate: 'end',
-        //    startDate: 'start'
-        //},
         adjacentDaysChangeMonth: true
     });
+}
+
+Main.BackToCalendar = function () {
+    $("#events").removeClass("animated slideInRight");
+    $("#events").addClass("animated slideOutRight");
+
+    $("#mini-clndr").removeClass("animated slideOutLeft");
+    $("#mini-clndr").addClass("animated slideInLeft");
 }

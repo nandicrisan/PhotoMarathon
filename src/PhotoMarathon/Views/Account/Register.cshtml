@@ -7,19 +7,20 @@
 <main id="content" role="main">
     <div class="container container-boxes">
         <div class="row box white-bg">
-            <div class="col-sm-3">
-                <div class="margin-1"></div>
-                <img src="~/images/register-banner.png" />
-            </div>
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <div class="black-input">
                     <h3 class="ubuntu-font">Înscrie-te</h3>
                     <p>
                         Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
                     </p>
-                    <div class="sep red">
-                    </div>
-                    @*<div class="margin-1"></div>*@
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="margin-1"></div>
+                <img src="~/images/start-line2.jpg" />
+            </div>
+            <div class="col-sm-9">
+                <div class="black-input">
                     <form asp-controller="Account" asp-action="Register" method="post" class="no-bottom">
                         <label asp-for="FirstName" class="sr-only">Nume</label>
                         <input asp-for="FirstName" class="underline" placeholder="Nume">
