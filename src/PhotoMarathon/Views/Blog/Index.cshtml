@@ -1,231 +1,87 @@
-﻿@{
+﻿@model List<PhotoMarathon.Data.Entities.BlogItem>
+@{
     ViewData["Title"] = "Blog";
+    var counter = 1;
 }
 
-<div id="hero" style="background:black;">
-    <div class="inner">
-        <div class="container">
+<main id="content" role="main">
+    <div class="container container-masonry">
+        <div class="inner">
             <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <h3>Pagină în construcție</h3>
-                    <p>Reveniți mai târziu</p>
+                <div class="col-sm-9">
+                    <div class="row">
+                        @*<div class="clear"></div>*@
+                        @foreach (var blogItem in Model)
+                        {
+                            @Html.Partial("_Article_" + counter, blogItem)
+                            counter++;
+                        }
+
+                        <div class="box col-sm-12 text-center">
+                            <div class="margin-2"></div>
+                            <a href="blog-sidebar.html" class="button filled">1</a>
+                            <a href="blog-sidebar.html" class="button">2</a>
+                            <span class="margin-left-right">…</span>
+                            <a href="blog-sidebar.html" class="button">8</a>
+                            <a href="blog-sidebar.html" class="button">Next</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="clear"></div>
+
+                <div class="col-sm-3">
+                    <div class="widget widget_search">
+                        <form class="searchform" method="get" action="search.html">
+                            <input type="text" value="" name="s" placeholder="Search…">
+                            <input type="submit" value="">
+                        </form>
+                    </div>
+
+                    <div class="widget">
+                        <h6 class="title">Despre noi</h6>
+                        <p class="no-bottom">PHOTO MARATHON este singurul eveniment din România care oferă atât fotografilor amatori, cât şi celor profesionişti, oportunitatea de a experimenta arta fotografică, într-o manieră inedită, punându-le la încercare imaginaţia şi creativitatea.</p>
+                    </div>
+
+                    <div class="widget widget_categories">
+                        <h6 class="title">Categorii</h6>
+                        <ul>
+                            <li class="cat-item"><a href="blog.html">Advertising</a></li>
+                            <li class="cat-item current-cat"><a href="blog.html">Branding</a></li>
+                            <li class="cat-item"><a href="blog.html">Marketing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget widget-thumbs">
+                        <h6 class="title">Flickr Gallery</h6>
+                        <div class="thumbs">
+                            <a href="#"><img src="../img/sample-random8.jpg" alt="" width="100" height="100"></a>
+                            <a href="#"><img src="../img/sample-random9.jpg" alt="" width="100" height="100"></a>
+                            <a href="#"><img src="../img/sample-random10.jpg" alt="" width="100" height="100"></a>
+                            <a href="#"><img src="../img/sample-random11.jpg" alt="" width="100" height="100"></a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="widget widget_archives">
+                        <h6 class="title">Archives</h6>
+                        <ul class="fa-ul">
+                            <li class="cat-item current-cat">
+                                <i class="fa-li fa fa-caret-down fa-colored"></i><a href="blog.html">2015</a>
+                                <ul class="fa-ul">
+                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Jan</a> (15)</li>
+                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Mar</a> (9)</li>
+                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Jun</a> (12)</li>
+                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Aug</a> (3)</li>
+                                </ul>
+                            </li>
+                            <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">2014</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<main id="content" role="main">
-    <div class="container">
-        <div style="height:500px;"></div>
     </div>
 </main>
-
-
-@*<main id="content" role="main">
-        <div class="container container-masonry">
-            <div class="inner">
-                <div class="row">
-
-                    <div class="col-sm-9">
-                        <div class="row">
-
-                            <div class="box col-sm-8">
-                                <div class="thumb featured">
-                                    <div class="photo">
-                                        <a href="post.html">
-                                            <img src="~/images/sample-thumb.png" alt="" width="715" height="715">
-                                            <span class="info"><strong class="big-title">Dominance, focal points and hierarchy</strong><span class="excerpt">Your content might be the king, but are you presenting it as one? Do people look where they should?</span><em class="arrow-right"></em></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="box col-sm-4">
-                                <div class="post-box vertical clearfix">
-                                    <a href="post.html" class="image-link arrow-icon"><img src="~/images/sample-thumb.png" width="434" height="434" alt=""></a>
-                                    <div class="extra-info">
-                                        <p class="meta small">1 day ago by <a href="#">Nicole</a></p>
-                                        <h5><a href="post.html">Harnessing Flexbox For Today’s Webapps</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="box col-sm-8">
-                                <div class="post-box horizontal clearfix">
-                                    <a href="post.html" class="image-link play-icon"><img src="~/images/sample-thumb.png" width="434" height="434" alt=""></a>
-                                    <div class="extra-info">
-                                        <p class="meta small">2 days ago by <a href="#">Andrew</a></p>
-                                        <h5><a href="post.html">Putting Mobile Backend as a service into practice</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="box col-sm-4">
-                                <div class="post-box post-link clearfix">
-                                    <div class="extra-info">
-                                        <p class="meta small">4 days ago by <a href="#">Sheila</a></p>
-                                        <h5><a href="post.html">http://exastudios/demo-home/page1</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="clear"></div>
-
-                            <div class="box col-sm-4">
-                                <div class="post-box vertical clearfix">
-                                    <div class="extra-info">
-                                        <p class="meta small">5 day ago by <a href="#">Sheila</a></p>
-                                        <h5><a href="post.html">Conducting User Research in other countries</a></h5>
-                                    </div>
-                                    <a href="post.html" class="image-link arrow-icon dark-overlay"><img src="~/images/sample-thumb.png" width="434" height="434" alt=""></a>
-                                </div>
-                            </div>
-
-                            <div class="box col-sm-8">
-                                <div class="owl-carousel owl-testimonials owl-red-dots">
-                                    <img src="~/images/sample-testimonial.png" width="1140" height="1140" alt="">
-                                    <img src="~/images/sample-testimonial.png" width="1140" height="1140" alt="">
-                                </div>
-                            </div>
-
-                            <div class="box col-sm-12 text-center">
-                                <div class="margin-2"></div>
-                                <a href="blog-sidebar.html" class="button filled">1</a>
-                                <a href="blog-sidebar.html" class="button">2</a>
-                                <span class="margin-left-right">&hellip;</span>
-                                <a href="blog-sidebar.html" class="button">8</a>
-                                <a href="blog-sidebar.html" class="button">Next</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="widget widget_search">
-                            <form class="searchform" method="get" action="search.html" role="search">
-                                <input type="text" value="" name="s" placeholder="Search&hellip;">
-                                <input type="submit" value="&#xf002;">
-                            </form>
-                        </div>
-
-                        <div class="widget">
-                            <h6 class="title">About Us</h6>
-                            <p class="no-bottom">We are a digital agency with 20 plus years of collective experience in the business.</p>
-                        </div>
-
-                        <div class="widget widget_categories">
-                            <h6 class="title">Categories</h6>
-                            <ul>
-                                <li class="cat-item"><a href="blog.html">Advertising</a></li>
-                                <li class="cat-item current-cat"><a href="blog.html">Branding</a></li>
-                                <li class="cat-item"><a href="blog.html">Marketing</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="widget widget-thumbs">
-                            <h6 class="title">Flickr Gallery</h6>
-                            <div class="thumbs">
-                                <a href="#"><img src="~/images/sample-thumb.png" alt="" width="100" height="100"></a>
-                                <a href="#"><img src="~/images/sample-thumb.png" alt="" width="100" height="100"></a>
-                                <a href="#"><img src="~/images/sample-thumb.png" alt="" width="100" height="100"></a>
-                                <a href="#"><img src="~/images/sample-thumb.png" alt="" width="100" height="100"></a>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-
-                        <div class="widget widget_archives">
-                            <h6 class="title">Archives</h6>
-                            <ul class="fa-ul">
-                                <li class="cat-item current-cat">
-                                    <i class="fa-li fa fa-caret-down fa-colored"></i><a href="blog.html">2015</a>
-                                    <ul class="fa-ul">
-                                        <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Jan</a> (15)</li>
-                                        <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Mar</a> (9)</li>
-                                        <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Jun</a> (12)</li>
-                                        <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Aug</a> (3)</li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">2014</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="widget widget_calendar no-bottom">
-                            <h6 class="title">September 2015</h6>
-                            <table id="wp-calendar">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" title="Monday">M</th>
-                                        <th scope="col" title="Tuesday">T</th>
-                                        <th scope="col" title="Wednesday">W</th>
-                                        <th scope="col" title="Thursday">T</th>
-                                        <th scope="col" title="Friday">F</th>
-                                        <th scope="col" title="Saturday">S</th>
-                                        <th scope="col" title="Sunday">S</th>
-                                    </tr>
-                                </thead>
-
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="3" id="prev"><a href="blog.html">« Jun</a></td>
-                                        <td class="pad">&nbsp;</td>
-                                        <td colspan="3" id="next" class="pad">&nbsp;</td>
-                                    </tr>
-                                </tfoot>
-
-                                <tbody>
-                                    <tr>
-                                        <td colspan="1" class="pad">&nbsp;</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>6</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>8</td>
-                                        <td>9</td>
-                                        <td>10</td>
-                                        <td id="today">11</td>
-                                        <td>12</td>
-                                        <td>13</td>
-                                    </tr>
-                                    <tr>
-                                        <td>14</td>
-                                        <td>15</td>
-                                        <td><a href="#">16</a></td>
-                                        <td>17</td>
-                                        <td>18</td>
-                                        <td>19</td>
-                                        <td>20</td>
-                                    </tr>
-                                    <tr>
-                                        <td>21</td>
-                                        <td>22</td>
-                                        <td>23</td>
-                                        <td>24</td>
-                                        <td>25</td>
-                                        <td>26</td>
-                                        <td>27</td>
-                                    </tr>
-                                    <tr>
-                                        <td>28</td>
-                                        <td>29</td>
-                                        <td>30</td>
-                                        <td class="pad" colspan="4">&nbsp;</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </main>*@
+<link rel="stylesheet" href="~/css/Blog/blog.css" />
 @section scripts{
     <script>
         $(document).ready(function () {

@@ -1,0 +1,76 @@
+﻿.post-box {
+    background-color: #fff;
+}
+
+    .post-box .extra-info h5:after {
+        content: "";
+        text-align: right;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: 1.4em;
+        background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+        background: -o-linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+.widget {
+    padding: 30px;
+    margin-top: 15px;
+    margin-bottom: 45px;
+    -webkit-box-shadow: 10px 10px 0 0 #f1f5f8;
+    box-shadow: 10px 10px 0 0 #f1f5f8;
+}
+.widget {
+	padding: 30px;
+	margin-top: 15px;
+	margin-bottom: 45px;
+	background-color: #fff;
+	-webkit-box-shadow: 10px 10px 0 0 #f1f5f8;
+	box-shadow: 10px 10px 0 0 #f1f5f8;
+}
+
+.widget.widget_search,
+.widget.widget_calendar {
+	padding: 0;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.widget ul {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+.widget ul.fa-ul {
+	padding-left: 1.2em;
+}
+
+.widget ul ul {
+	padding-left: 1em;
+}
+
+.widget li {
+	margin-left: 0;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	list-style: none;
+}
+
+.widget li a {
+	color: #66757f;
+}
+
+.widget li a:hover,
+.widget li a:hover,
+.widget li.current-cat > a {
+	color: #ff2641;
+}

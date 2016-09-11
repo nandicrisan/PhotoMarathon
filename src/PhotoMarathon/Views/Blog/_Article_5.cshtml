@@ -1,0 +1,13 @@
+﻿@model PhotoMarathon.Data.Entities.BlogItem
+@{
+    Layout = null;
+}
+<div class="box col-sm-4">
+    <div class="post-box vertical clearfix">
+        <div class="extra-info">
+            <p class="meta small">@((int)DateTime.Now.Subtract(Model.DateAdded).TotalDays) day(s) ago by <a href="#">@Model.CreatedBy</a></p>
+            <h5><a href="post.html">@Model.Title</a></h5>
+        </div>
+        <a href="~/blog/article/@Model.Id" class="image-link arrow-icon dark-overlay"><img src="~/images/Blog/@Model.MainImageName" width="434" height="434" alt=""></a>
+    </div>
+</div>
