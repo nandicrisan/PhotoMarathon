@@ -40,6 +40,7 @@ Main.InitCalendar = function () {
         template: $('#calendar-template').html(),
         events: lotsOfEvents,
         weekOffset: 1,
+        startWithMonth: "2016-10-1",
         clickEvents: {
             click: function (target) {
                 $("#events").removeClass("animated slideOutRight");
