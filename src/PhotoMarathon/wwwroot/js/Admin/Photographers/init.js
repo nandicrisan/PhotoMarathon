@@ -19,10 +19,10 @@
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (full[4] != "True") {
-                            return "<i class='fa fa-check' aria-hidden='true'></i>";
+                            return "Profesionist";
                         }
                         else {
-                            return "<i class='fa fa-times' aria-hidden='true'></i>";
+                            return "Amator";
                         }
                     }
                 },//Is professionist or amator
@@ -30,11 +30,11 @@
                 {
                     "bSortable": true,
                     "mRender": function (data, type, full) {
-                        if (full[6] != "True") {
-                            return "<i class='fa fa-check' aria-hidden='true'></i>";
+                        if (full[6] == "True") {
+                            return "Da";
                         }
                         else {
-                            return "<i class='fa fa-times' aria-hidden='true'></i>";
+                            return "Nu";
                         }
                     }
                 },//Register for marathon

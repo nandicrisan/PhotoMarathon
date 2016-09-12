@@ -1,5 +1,6 @@
-﻿$(document).ready(function () {
-    $("#blog-item-table").dataTable({
+﻿var Blog = {};
+$(document).ready(function () {
+   Blog.Table =  $("#blog-item-table").dataTable({
         "responsive": true,
         "bProcessing": true,
         "bServerSide": true,
@@ -15,6 +16,14 @@
                 { "bSortable": true },//Created by
                 { "bSortable": true },//Date added
                 { "bSortable": false },//Content
+                {
+                    "bSortable": false,
+                    "mRender": function (data, type, full) {
+                        var opButtons = "<button onclick='Blog.Delete(" + full[4] + ")' class='btn btn-danger btn-sm'><i class='fa fa-fw fa-trash'></i></button>  ";
+                        opButtons += "<a href='/admin/AddBlogItem/" + full[4] + "' class='btn btn-success btn-sm'><i class='fa fa-fw fa-edit '></i></button>";
+                        return opButtons;
+                    }
+                }
         ],
     });
 });

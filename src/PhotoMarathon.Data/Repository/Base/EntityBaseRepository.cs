@@ -14,17 +14,12 @@ namespace PhotoMarathon.Data.Repository
         #region Properties
         private BaseDbContext dataContext;
         private readonly DbSet<T> dbSet;
-
-        private readonly BaseDbContext DbContext;
-        //{
-        //    get { return dataContext ?? (dataContext = DbFactory.Init()); }
-        //}
         #endregion
 
         public EntityBaseRepository(BaseDbContext dbContext)
         {
-            DbContext = dbContext;
-            dbSet = DbContext.Set<T>();
+            dataContext = dbContext;
+            dbSet = dataContext.Set<T>();
         }
 
         #region IEntityBaseRepository Implementation

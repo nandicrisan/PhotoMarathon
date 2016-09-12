@@ -5,6 +5,7 @@
 /// <reference path="js/admin/addblogitem/addblogitem.min.js" />
 /// <reference path="js/admin/addblogitem/init.js" />
 /// <reference path="js/admin/blog/blog.min.js" />
+/// <reference path="js/admin/blog/blog-admin.js" />
 /// <reference path="js/admin/blog/init.js" />
 /// <reference path="js/admin/photographers/init.js" />
 /// <reference path="js/admin/photographers/photographer.js" />

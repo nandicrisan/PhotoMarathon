@@ -35,10 +35,10 @@
     <script type="text/javascript">
         localStorage.setItem("siteRoot", "@Url.Action("", null, null, "http")")
         //Error or success messages
-        @if (ViewData["Message"] != null)
+        @if (TempData["Message"] != null)
         {
-            <text>var ServerMessage = '@ViewData["Message"]';</text>
-            <text>var ServerMessageType = '@ViewData["ServerMessageType"]';</text>
+            <text>var ServerMessage = '@TempData["Message"]';</text>
+            <text>var ServerMessageType = '@TempData["ServerMessageType"]';</text>
         }
     </script>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)

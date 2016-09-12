@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Models;
 using PhotoMarathon.Service.Services;
+using PhotoMarathon.Service.Utils;
+using System;
 using System.Threading.Tasks;
 
 namespace PhotoMarathon.Controllers
@@ -12,19 +14,21 @@ namespace PhotoMarathon.Controllers
     {
         private readonly IGeneralService generalService;
         private readonly IAccountService accountService;
+        private readonly INewsLetterService newsLetterService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public AccountController(IGeneralService generalService,
             IAccountService accountService,
-               UserManager<ApplicationUser> userManager,
-           SignInManager<ApplicationUser> signInManager)
+            UserManager<ApplicationUser> userManager,
+            INewsLetterService newsLetterService,
+            SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             this.generalService = generalService;
             this.accountService = accountService;
-
+            this.newsLetterService = newsLetterService;
         }
 
         // GET: /<controller>/
@@ -56,14 +60,20 @@ namespace PhotoMarathon.Controllers
                 return View(photographer);
             }
             var result = accountService.AddPhotographer(photographer);
-            if (!result.IsOk())
+            var newsLetter = new Newsletter {
+                DateAdded = DateTime.Now,
+                Email = photographer.Email,
+                Name = photographer.FirstName + " " + photographer.LastName
+            };
+            var addNewsLetter = newsLetterService.Add(newsLetter);
+            if (!result.IsOk() || !result.IsOk())
             {
                 ModelState.AddModelError("Rules", "Eroare! Te rugăm să încerci mai târziu.");
                 ViewBag.WorkShops = generalService.GetWorkShpos().Data;
                 return View(photographer);
             }
-            ViewData["Message"] = "Te-ai înregistrat cu succes!";
-            ViewData["ServerMessageType"] = "success";
+            TempData.Add("Message", "Te-ai înregistrat cu succes!");
+            TempData.Add("ServerMessageType", "success");
             return RedirectToAction("Index", "Home");
         }
 

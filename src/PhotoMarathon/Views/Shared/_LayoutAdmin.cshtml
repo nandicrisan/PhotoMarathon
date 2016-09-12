@@ -22,6 +22,12 @@
     </environment>
     <script type="text/javascript">
         localStorage.setItem("siteRoot", "@Url.Action("", null, null, "http")")
+        //Error or success messages
+        @if (TempData["Message"] != null)
+        {
+            <text>var ServerMessage = '@TempData["Message"]';</text>
+            <text>var ServerMessageType = '@TempData["ServerMessageType"]';</text>
+        }
     </script>
 </head>
 <body class="skin-black">
@@ -36,7 +42,8 @@
         @Html.Partial("LayoutAdmin/_FooterAdmin")
         <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-        <script src="~/js/LayoutAdmin/admin-layout.min.js" asp-append-version="true"></script>
+        <script src="~/js/Layout/jquery.noty.packaged.js" asp-append-version="true"></script>
+        <script src="~/js/LayoutAdmin/admin-layout.js" asp-append-version="true"></script>
         @RenderSection("scripts", required: false)
     </div>
 </body>

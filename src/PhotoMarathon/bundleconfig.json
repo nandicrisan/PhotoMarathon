@@ -90,7 +90,8 @@
   {
     "outputFileName": "wwwroot/js/Admin/blog/blog.min.js",
     "inputFiles": [
-      "wwwroot/js/Admin/blog/init.js"
+      "wwwroot/js/Admin/blog/init.js",
+      "wwwroot/js/Admin/blog/blog-admin.js"
     ],
     "minify": {
       "enabled": true,

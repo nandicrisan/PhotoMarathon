@@ -5,6 +5,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Service.Filters;
 using PhotoMarathon.Service.Services;
+using PhotoMarathon.Service.Utils;
 using System;
 using System.IO;
 
@@ -85,6 +86,7 @@ namespace PhotoMarathon.Controllers
                 aaData = result.Data
             });
         }
+        #region Blog
         public IActionResult Blog()
         {
             return View();
@@ -107,10 +109,21 @@ namespace PhotoMarathon.Controllers
                 aaData = result.Data
             });
         }
-        public IActionResult AddBlogItem()
+        public IActionResult AddBlogItem(int id = 0)
         {
             var blogItem = new BlogItem();
+            if (id != 0)
+            {
+                blogItem = blogService.Get(id).Data;
+            }
             return View(blogItem);
+        }
+        public IActionResult DeleteBlog(int id)
+        {
+            var deleteRes = blogService.Delete(id);
+            if (deleteRes.IsOk())
+                return StatusCode((int)deleteRes.Status, deleteRes.Message);
+            return StatusCode(200);
         }
         [HttpPost]
         public IActionResult AddBlogItem(BlogItem blogitem)
@@ -119,21 +132,38 @@ namespace PhotoMarathon.Controllers
             if (!ModelState.IsValid)
                 return View(blogitem);
             var file = Request.Form.Files["main-image"];
-            var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-            string fileName, savedName;
-            fileName = Path.GetFileName(file.FileName);
-            var extension = Path.GetExtension(fileName);
-            savedName = Guid.NewGuid().ToString() + extension;
-            var path = Path.Combine(webRootPath+"\\images\\blog\\", savedName);
-            blogitem.MainImageName = savedName;
-            using (FileStream fs = System.IO.File.Create(path))
+            if (file.Length != 0)
             {
-                file.CopyTo(fs);
-                fs.Flush();
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                string fileName, savedName;
+                fileName = Path.GetFileName(file.FileName);
+                var extension = Path.GetExtension(fileName);
+                savedName = Guid.NewGuid().ToString() + extension;
+                var path = Path.Combine(webRootPath + "\\images\\blog\\", savedName);
+                blogitem.MainImageName = savedName;
+                using (FileStream fs = System.IO.File.Create(path))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
             }
-            //Success verification
-            blogService.Add(blogitem);
+            Result<BlogItem> addRes;
+            if (blogitem.Id == 0)
+                addRes = blogService.Add(blogitem);
+            else
+                addRes = blogService.Edit(blogitem);
+            if (addRes.IsOk())
+            {
+                TempData.Add("Message", "Salvat");
+                TempData.Add("ServerMessageType", "success");
+            }
+            else
+            {
+                TempData.Add("Message", addRes.Message ?? "");
+                TempData.Add("ServerMessageType", "error");
+            }
             return RedirectToAction("Blog");
         }
+        #endregion
     }
 }

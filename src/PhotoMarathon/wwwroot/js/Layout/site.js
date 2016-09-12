@@ -154,7 +154,7 @@ jQuery(document).ready(function () {
     }
 
     //Messages
-    if (typeof ServerMessageif !== 'undefined')
+    if (typeof ServerMessage !== 'undefined')
     {
         noty({
             layout: 'top',

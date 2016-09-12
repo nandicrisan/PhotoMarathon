@@ -17,6 +17,8 @@ namespace PhotoMarathon.Service.Services
         Result<List<string[]>> BuildForDatatable(BlogFilter filter);
         Result<int> Count(BlogFilter filter);
         Result<BlogItem> Get(int id);
+        Result Delete(int id);
+        Result<BlogItem> Edit(BlogItem blogItem);
     }
     public class BlogService : BaseService, IBlogService
     {
@@ -73,15 +75,12 @@ namespace PhotoMarathon.Service.Services
             if (!findResult.IsOk()) return new Result<List<string[]>>(findResult.Status);
             foreach (var blogItem in findResult.Data)
             {
-                var content = blogItem.Content;
-                if (content.Length > 350)
-                    content = content.Substring(0, 349) + "...";
-
                 aaData.Add(new string[] {
                     blogItem.Title,
                     blogItem.CreatedBy,
                     blogItem.DateAdded.ToString(),
-                    content
+                    blogItem.ShortDescription,
+                    blogItem.Id.ToString()
                 });
             }
             return new Result<List<string[]>>(aaData);
@@ -106,6 +105,38 @@ namespace PhotoMarathon.Service.Services
             try
             {
                 return new Result<BlogItem>(blogRepository.GetById(id));
+            }
+            catch (Exception ex)
+            {
+                return new Result<BlogItem>(ex);
+            }
+        }
+
+        public Result Delete(int id)
+        {
+            try
+            {
+                var blogItem = blogRepository.GetById(id);
+                if (blogItem == null)
+                    return new Result(ResultStatus.NOT_FOUND);
+                blogRepository.Delete(blogItem);
+                SaveChanges();
+                return new Result();
+            }
+            catch (Exception ex)
+            {
+                return new Result(ex);
+            }
+        }
+
+        public Result<BlogItem> Edit(BlogItem blogItem)
+        {
+            try
+            {
+                blogItem.DateAdded = DateTime.Now;
+                blogRepository.Update(blogItem);
+                SaveChanges();
+                return new Result<BlogItem>(blogItem);
             }
             catch (Exception ex)
             {

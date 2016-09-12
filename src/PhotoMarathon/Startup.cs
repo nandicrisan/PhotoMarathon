@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PhotoMarathon.Service.Services;
-using PhotoMarathon.Data.Repository;
+using PhotoMarathon.Data;
 using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Data.Infrastructure;
-using PhotoMarathon.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using PhotoMarathon.Data.Repository;
+using PhotoMarathon.Service.Services;
 
 namespace PhotoMarathon
 {
@@ -63,6 +59,7 @@ namespace PhotoMarathon
                 .AddEntityFrameworkStores<BaseDbContext>()
                 .AddDefaultTokenProviders();
             services.AddMvc();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +85,7 @@ namespace PhotoMarathon
             app.UseStaticFiles();
 
             app.UseIdentity();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
