@@ -67,11 +67,12 @@
 .navbar .rotate {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    -ms-transform: rotate(8deg); /* IE 9 */
-    -webkit-transform: rotate(8deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(8deg);
+    -webkit-transform: rotate(8deg);
     transform: rotate(8deg);
-    width: 145px;
-    margin-top: -2px;
+    width: 170px;
+    margin-top: 9px;
+    -webkit-backface-visibility: hidden;
 }
 
 .navbar {
