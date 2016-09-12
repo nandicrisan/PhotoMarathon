@@ -67,11 +67,12 @@
 .navbar .rotate {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    -ms-transform: rotate(8deg); /* IE 9 */
-    -webkit-transform: rotate(8deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(8deg);
+    -webkit-transform: rotate(8deg);
     transform: rotate(8deg);
-    width: 145px;
-    margin-top: -2px;
+    width: 170px;
+    margin-top: 9px;
+    -webkit-backface-visibility: hidden;
 }
 
 .navbar {
@@ -245,38 +246,4 @@ input[type=checkbox] {
     height: 4px;
     display: inline-block;
     border-radius: 1px;
-}
-.button.filled, .button:active, button:active, input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active {
-    background-color: rgb(41, 47, 51);
-    color: rgb(255, 255, 255);
-    border-color: rgb(41, 47, 51);
-}
-button:hover, button:focus, input[type=submit]:hover, input[type=submit]:focus, input[type=reset]:hover, input[type=reset]:focus, input[type=button]:hover, input[type=button]:focus, .button:hover, .button:focus {
-    border-color: #292f33;
-}
-.button, button, input[type="button"], input[type="reset"], input[type="submit"] {
-    display: inline-block;
-    line-height: normal;
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-    font-family: Droid, Arial, sans-serif;
-    font-size: 1em;
-    font-weight: inherit;
-    vertical-align: middle;
-    text-decoration: none;
-    color: rgb(41, 47, 51);
-    cursor: pointer;
-    -webkit-appearance: none;
-    padding: 1em 2em;
-    margin: 0px 0px 1.2em;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(204, 214, 221);
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) 0px 0px;
-    outline: 0px;
-    border-radius: 0px;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
