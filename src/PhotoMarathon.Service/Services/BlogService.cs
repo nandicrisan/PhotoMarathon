@@ -3,9 +3,11 @@ using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Data.Infrastructure;
 using PhotoMarathon.Data.Repository;
 using PhotoMarathon.Service.Filters;
+using PhotoMarathon.Service.ServiceModel;
 using PhotoMarathon.Service.Utils;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq.Expressions;
 
 namespace PhotoMarathon.Service.Services
@@ -19,6 +21,7 @@ namespace PhotoMarathon.Service.Services
         Result<BlogItem> Get(int id);
         Result Delete(int id);
         Result<BlogItem> Edit(BlogItem blogItem);
+        Result<List<DateFilter>> GetDateFilter();
     }
     public class BlogService : BaseService, IBlogService
     {
@@ -144,11 +147,54 @@ namespace PhotoMarathon.Service.Services
             }
         }
 
+        public Result<List<DateFilter>> GetDateFilter()
+        {
+            try
+            {
+                var start = new DateTime(2016, 8, 1);
+                var tempDate = DateTime.Now.AddMonths(1);
+                var end = new DateTime(tempDate.Year, tempDate.Month, 1);
+                var currentYear = 2016;
+                var returnDates = new List<DateFilter>();
+                DateFilter tempDateFilter = null;
+                for (DateTime date = start; date.Date <= end.Date; date = date.AddMonths(1))
+                {
+                    Expression<Func<BlogItem, bool>> predicate = p => p.DateAdded > date && p.DateAdded < date.AddMonths(1);
+                    if (date.Year == currentYear)
+                    {
+                        if (tempDateFilter != null)
+                            returnDates.Add(tempDateFilter);
+                        tempDateFilter = new DateFilter
+                        {
+                            Year = currentYear,
+                            Months = new List<MonthFilter>()
+                        };
+                        currentYear++;
+                    }
+                    var articleCount = blogRepository.Count(predicate);
+                    tempDateFilter.Months.Add(new MonthFilter
+                    {
+                        Month = date.Month,
+                        Items = articleCount,
+                        MonthName = date.ToString("MMM", CultureInfo.DefaultThreadCurrentUICulture)
+                    });
+                }
+                returnDates.Add(tempDateFilter);
+                return new Result<List<DateFilter>>(returnDates);
+            }
+            catch (Exception ex)
+            {
+                return new Result<List<DateFilter>>(ex);
+            }
+        }
+
         #region private functions
         private static Expression<Func<BlogItem, bool>> CreatePredicate(BlogFilter filter)
         {
             var predicate = PredicateBuilder.True<BlogItem>();
             if (filter == null) return predicate;
+            if (filter.start != null && filter.end != null)
+                predicate = predicate.And(p => p.DateAdded > filter.start.Value && p.DateAdded < filter.end.Value);
             return predicate;
         }
         private static bool GetOrderDirection(BlogFilter filter)

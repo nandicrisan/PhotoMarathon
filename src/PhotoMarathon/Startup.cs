@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Data.Infrastructure;
 using PhotoMarathon.Data.Repository;
 using PhotoMarathon.Service.Services;
+using System.Globalization;
 
 namespace PhotoMarathon
 {
@@ -101,6 +103,19 @@ namespace PhotoMarathon
                 AuthenticationScheme = "Cookies",
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
+            });
+            var supportedCultures = new[]
+              {
+                  new CultureInfo("ro-RO")
+              };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("ro-RO"),
+                // Formatting numbers, dates, etc.
+                SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
+                SupportedUICultures = supportedCultures
             });
         }
     }
