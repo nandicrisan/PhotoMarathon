@@ -76,6 +76,7 @@ namespace PhotoMarathon.Service.Services
                     photographer.FirstName,
                     photographer.LastName,
                     photographer.Email,
+                    photographer.PhoneNumber,
                     photographer.DateAdded.ToString(),
                     photographer.IsProfessionist.ToString(),
                     workshopName,
@@ -120,7 +121,7 @@ namespace PhotoMarathon.Service.Services
                     return new Func<Photographer, object>(c => c.LastName);
                 case 2:
                     return new Func<Photographer, object>(c => c.Email);
-                case 3:
+                case 4:
                     return new Func<Photographer, object>(c => c.DateAdded);
                 default:
                     return new Func<Photographer, object>(q => q.DateAdded);

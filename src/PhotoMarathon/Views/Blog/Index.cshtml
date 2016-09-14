@@ -1,4 +1,4 @@
-﻿@model List<PhotoMarathon.Data.Entities.BlogItem>
+﻿@model PhotoMarathon.Models.BlogViewModel
 @{
     ViewData["Title"] = "Blog";
     var counter = 1;
@@ -10,8 +10,7 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row">
-                        @*<div class="clear"></div>*@
-                        @foreach (var blogItem in Model)
+                        @foreach (var blogItem in Model.Articles)
                         {
                             @Html.Partial("_Article_" + counter, blogItem)
                             if (counter == 4)
@@ -23,9 +22,9 @@
 
                         <div class="box col-sm-12 text-center">
                             <div class="margin-2"></div>
-                            @for (int i = 1; i <= ViewBag.Pages; i++)
+                            @for (int i = 1; i <= Model.Pages; i++)
                             {
-                                <a href="~/blog?p=@i" class="button @(i == ViewBag.CurrentPage ? "filled":"")">@i</a>
+                                <a href="~/blog?p=@i" class="button @(i == Model.CurrentPage ? "filled":"")">@i</a>
                             }
                         </div>
                     </div>
@@ -43,29 +42,21 @@
                         <h6 class="title">Despre noi</h6>
                         <p class="no-bottom">PHOTO MARATHON este singurul eveniment din România care oferă atât fotografilor amatori, cât şi celor profesionişti, oportunitatea de a experimenta arta fotografică, într-o manieră inedită, punându-le la încercare imaginaţia şi creativitatea.</p>
                     </div>
-
-                    <div class="widget widget_categories">
-                        <h6 class="title">Categorii</h6>
-                        <ul>
-                            <li class="cat-item"><a href="blog.html">Advertising</a></li>
-                            <li class="cat-item current-cat"><a href="blog.html">Branding</a></li>
-                            <li class="cat-item"><a href="blog.html">Marketing</a></li>
-                        </ul>
-                    </div>
-
                     <div class="widget widget_archives">
                         <h6 class="title">Archives</h6>
                         <ul class="fa-ul">
-                            <li class="cat-item current-cat">
-                                <i class="fa-li fa fa-caret-down fa-colored"></i><a href="blog.html">2015</a>
-                                <ul class="fa-ul">
-                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Jan</a> (15)</li>
-                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Mar</a> (9)</li>
-                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Jun</a> (12)</li>
-                                    <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">Aug</a> (3)</li>
-                                </ul>
-                            </li>
-                            <li class="cat-item"><i class="fa-li fa fa-caret-right"></i><a href="blog.html">2014</a></li>
+                            @foreach (var datef in Model.DateFilter)
+                            {
+                                <li class="cat-item @(datef.Year == Model.SelectedYear ? "current-cat":"")">
+                                    <i class="fa-li fa fa-caret-down fa-colored"></i><a href="~/blog?p=@Model.CurrentPage&y=@datef.Year">@datef.Year</a>
+                                    <ul class="fa-ul">
+                                        @foreach (var month in datef.Months)
+                                        {
+                                            <li class="cat-item @(month.Month == Model.SelectedMonth ? "current-cat":"")"><i class="fa-li fa fa-caret-right"></i><a href="~/blog?p=@Model.CurrentPage&y=@datef.Year&m=@month.Month">@month.MonthName</a> (@month.Items)</li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
