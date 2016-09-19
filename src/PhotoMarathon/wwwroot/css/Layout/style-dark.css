@@ -280,18 +280,6 @@ a:focus {
 	color: #66757f;
 }
 
-.tab-container .tab_content {
-	border-top-color: #66757F;
-}
-
-.tab-container .tabs li a {
-	color: #8899a6;
-}
-
-.tab-container .tabs li.active a {
-	color: #fff;
-}
-
 .owl-carousel.owl-slider {
 	background-color: #22272A;
 }

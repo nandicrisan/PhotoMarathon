@@ -247,3 +247,9 @@ input[type=checkbox] {
     display: inline-block;
     border-radius: 1px;
 }
+.dropdown {
+    color:#8899a6 !important;
+}
+#work-shop-container {
+    margin-top:48px;
+}
