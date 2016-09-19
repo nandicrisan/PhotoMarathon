@@ -1435,7 +1435,7 @@ img.round {
                     bottom: -1px;
                     width: 100%;
                     height: 1px;
-                    background-color: #ff2641;
+                    background-color: #00b9e4;
                 }
 
             .tab-container .tabs li a {
@@ -3584,7 +3584,7 @@ img.round {
     .team-member,
     .team-member.team-info {
         margin: 1em 4%;
-        width: 19%;
+        width: 23%;
     }
 
     .clients-grid .client a {
