@@ -1,6 +1,9 @@
 ﻿@model PhotoMarathon.Data.Entities.BlogItem
 @{
     ViewData["Title"] = "Articol";
+    if (Model.Title != null) {
+        ViewData["Title"] = Model.Title;
+    }
 }
 
 <main id="content" class="white-background" role="main">
