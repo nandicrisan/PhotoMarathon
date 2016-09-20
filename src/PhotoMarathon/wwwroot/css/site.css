@@ -259,3 +259,7 @@ input[type=checkbox] {
     #work-shop-container ul li {
         margin-left: 0px !important;
     }
+
+img {
+    background: url('http://photomarathon.ro/images/giphy.gif') no-repeat;
+}
