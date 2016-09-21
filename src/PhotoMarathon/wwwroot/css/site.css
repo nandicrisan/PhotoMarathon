@@ -101,7 +101,7 @@
 }
 
 .input-validation {
-    color: red;
+    color: #a94442;
     font-size: 13px;
     margin-bottom: 0px;
     text-align: left;
@@ -131,7 +131,7 @@
 }
 
 .input-validation-side {
-    color: red;
+    color: #a94442;
     font-size: 13px;
     margin-bottom: 0px;
     text-align: left;
@@ -247,9 +247,27 @@ input[type=checkbox] {
     display: inline-block;
     border-radius: 1px;
 }
+
 .dropdown {
-    color:#8899a6 !important;
+    color: #8899a6 !important;
 }
+
 #work-shop-container {
-    margin-top:48px;
+    margin-top: 48px;
+}
+
+#order-data {
+    margin: 16px 0 0 0;
+    padding: 8px 8px 8px 8px;
+    border: 1px solid #8899a6;
+    border-radius: 4px;
+    box-shadow: 4px 4px 5px #8899a6;
+}
+
+.input-validation-error {
+    border-color: #a94442 !important;
+}
+
+#order-data div {
+    padding-left: 0px !important;
 }
