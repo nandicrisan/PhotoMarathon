@@ -256,6 +256,15 @@ input[type=checkbox] {
     margin-top: 48px;
 }
 
+    #work-shop-container ul li {
+        margin-left: 0px !important;
+    }
+
+img {
+    background: url('http://photomarathon.ro/images/giphy.gif') no-repeat;
+}
+
+
 #order-data {
     margin: 16px 0 0 0;
     padding: 8px 8px 8px 8px;
