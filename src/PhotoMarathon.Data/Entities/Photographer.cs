@@ -36,5 +36,8 @@ namespace PhotoMarathon.Data.Entities
         public int? WorkshopId { get; set; }
         public virtual WorkShop Workshop { get; set; }
 
-        public DateTime DateAdded { get; set; }    }
+        public DateTime DateAdded { get; set; }
+
+        public virtual BillingData BillingData { get; set; }
+    }
 }

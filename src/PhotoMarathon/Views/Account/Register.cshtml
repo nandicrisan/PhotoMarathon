@@ -41,36 +41,64 @@
                         <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
-
-                        <div class="squaredFour display-inline-block">
-                            <input asp-for="RegisterForWorkShop" type="checkbox" value="true" id="workshop" name="check" />
+                        <div class="display-inline-block">
+                            <input asp-for="RegisterForWorkShop" type="checkbox" value="false" id="workshop" name="check" />
                             <label for="workshop"></label>
                         </div>
                         <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
                         <div class="row">
                             <div class="form-group col-md-12" id="workshops" style="display:none; margin-top:15px;">
-                                <select class="ui dropdown fluid" name="WorkshopId">
+                                <select class="ui dropdown fluid" name="WorkshopId" id="workshops-select">
                                     @foreach (var workShop in workShops)
                                     {
-                                        <option value="@workShop.Id">@workShop.Name</option>
+                                        <option data-price="@workShop.Price" value="@workShop.Id">@workShop.Name</option>
                                     }
                                 </select>
+                                <div id="order-data">
+                                    <h5>Adresă de facturare</h5>
+                                    <div class="col-md-12">
+                                        <p class="radio-label vertical-align-middle">Persoană fizică &nbsp;</p>
+                                        <input asp-for="BillingData.LegalPerson" type="radio" checked class="radio-input" value="false" />
+                                        <p class="radio-label vertical-align-middle"> &nbsp;Persoană juridică &nbsp;</p>
+                                        <input asp-for="BillingData.LegalPerson" type="radio" class="radio-input" value="true" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input asp-for="BillingData.Address" class="underline" placeholder="Adresă">
+                                        <span asp-validation-for="BillingData.Address" class="input-validation-side"></span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input asp-for="BillingData.NrReg" class="underline" placeholder="Numărul de înregistrare">
+                                        <span asp-validation-for="BillingData.NrReg" class="input-validation-side"></span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input asp-for="BillingData.Cnp" class="underline" placeholder="CUI/CNP">
+                                        <span asp-validation-for="BillingData.Cnp" class="input-validation-side"></span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input asp-for="BillingData.Bank" class="underline" placeholder="Banca">
+                                        <span asp-validation-for="BillingData.Bank" class="input-validation-side"></span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input asp-for="BillingData.Cont" class="underline" placeholder="IBAN">
+                                        <span asp-validation-for="BillingData.Cont" class="input-validation-side"></span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="squaredFour display-inline-block">
+                        <div class="display-inline-block">
                             <input asp-for="RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
                             <label for="photoMarathon"></label>
                         </div>
                         <p class="display-inline-block">Maratonul foto &nbsp;</p>
                         <br />
-                        <div class="squaredFour display-inline-block">
+                        <div class="display-inline-block">
                             <input asp-for="Rules" type="checkbox" id="rules" name="check" />
                             <label for="rules"></label>
                         </div>
                         <p class="display-inline-block margin-bottom-none">&nbsp; Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> și sunt de acord cu toate condițiile.</p>
                         <div class="row"></div>
-                        <div class="squaredFour display-inline-block">
+                        <div class="display-inline-block">
                             <input asp-for="HasNewsLetter" type="checkbox" value="true" id="newsletter" name="check" />
                             <label for="newsletter"></label>
                         </div>
@@ -86,10 +114,11 @@
 </main>
 <link rel="stylesheet" type="text/css" href="~/css/Layout/dropdown.min.css" />
 <link rel="stylesheet" type="text/css" href="~/css/Layout/transition.min.css" />
+<link rel="stylesheet" type="text/css" href="~/css/Layout/iCheck/minimal/blue.css" />
 
 @section scripts
 {
-    <script src="~/js/Account/register.js" asp-append-version="true"></script>
+    <script src="~/js/Account/register.min.js" asp-append-version="true"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.1/jquery.validate.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/Layout/dropdown.min.js"></script>
@@ -98,6 +127,11 @@
         $(document).ready(function () {
             Main.SetActiveMenuItem(5);
             $('.ui.dropdown').dropdown();
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue',
+                increaseArea: '20%' // optional
+            });
         })
     </script>
 }
