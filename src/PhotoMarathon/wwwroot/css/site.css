@@ -280,3 +280,10 @@ img {
 #order-data div {
     padding-left: 0px !important;
 }
+
+.exp-time {
+    font-size:17px;
+}
+    .exp-time i {
+        vertical-align:text-top;
+    }
