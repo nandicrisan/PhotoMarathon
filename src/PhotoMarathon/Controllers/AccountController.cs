@@ -42,7 +42,7 @@ namespace PhotoMarathon.Controllers
         {
             var photographer = new Photographer();
             photographer.HasNewsLetter = true;
-            ViewBag.WorkShops = generalService.GetWorkShpos().Data;
+            ViewBag.WorkShops = generalService.GetWorkShpos().Data.GetRange(3, 1);
             return View(photographer);
         }
         [HttpPost]
