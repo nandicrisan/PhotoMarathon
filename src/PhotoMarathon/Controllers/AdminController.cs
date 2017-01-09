@@ -7,6 +7,7 @@ using PhotoMarathon.Models;
 using PhotoMarathon.Service.Filters;
 using PhotoMarathon.Service.Services;
 using PhotoMarathon.Service.Utils;
+using PhotoMarathon.Utils;
 using System;
 using System.IO;
 
@@ -152,6 +153,8 @@ namespace PhotoMarathon.Controllers
                 }
             }
             Result<BlogItem> addRes;
+            //Set slug
+            blogitem.Slug = WebUtils.GenerateSlug(blogitem.Title);
             if (blogitem.Id == 0)
                 addRes = blogService.Add(blogitem);
             else

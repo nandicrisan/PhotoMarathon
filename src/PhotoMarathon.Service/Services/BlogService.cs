@@ -136,7 +136,6 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
-                blogItem.DateAdded = DateTime.Now;
                 blogRepository.Update(blogItem);
                 SaveChanges();
                 return new Result<BlogItem>(blogItem);
@@ -206,9 +205,9 @@ namespace PhotoMarathon.Service.Services
             if (filter == null) return new Func<BlogItem, object>(q => q.DateAdded);
             switch (filter.iSortCol_0)
             {
-                case 0:
-                    return new Func<BlogItem, object>(c => c.Title);
                 case 1:
+                    return new Func<BlogItem, object>(c => c.Title);
+                case 2:
                     return new Func<BlogItem, object>(c => c.CreatedBy);
                 default:
                     return new Func<BlogItem, object>(q => q.DateAdded);
