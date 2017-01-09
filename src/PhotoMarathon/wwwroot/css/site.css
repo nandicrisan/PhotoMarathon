@@ -2,7 +2,7 @@
 .overlay {
     /* Height & width depends on how you want to reveal the overlay (see JS below) */
     height: 100%;
-    width: 100%;
+    width: 0;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -28,7 +28,7 @@
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
-    color: #818181;
+    color: #f1f1f1;
     display: block; /* Display block instead of inline */
     transition: 0.3s; /* Transition effects on hover (color) */
 }
@@ -67,9 +67,9 @@
 .navbar .rotate {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    -ms-transform: rotate(8deg);
-    -webkit-transform: rotate(8deg);
-    transform: rotate(8deg);
+    -ms-transform: rotate(6deg);
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
     width: 170px;
     margin-top: 9px;
     -webkit-backface-visibility: hidden;
@@ -232,7 +232,29 @@ input[type=checkbox] {
 .image-title {
     position: absolute;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 5%;
+    background-color: rgba(255, 255, 255, 0.20);
+    padding: 30px;
+}
+
+@media screen and (max-width: 260px) {
+    .image-title {
+        padding: 5px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width:261px) and (max-width: 480px) {
+    .image-title {
+        padding: 10px;
+        font-size: 26px;
+    }
+}
+
+.image-title {
+    position: absolute;
+    width: 100%;
+    margin-top: 5%;
     background-color: rgba(255, 255, 255, 0.20);
     padding: 30px;
 }

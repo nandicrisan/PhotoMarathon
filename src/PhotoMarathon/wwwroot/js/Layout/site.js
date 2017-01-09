@@ -154,8 +154,7 @@ jQuery(document).ready(function () {
     }
 
     //Messages
-    if (typeof ServerMessage !== 'undefined')
-    {
+    if (typeof ServerMessage !== 'undefined') {
         noty({
             layout: 'top',
             type: ServerMessageType,
@@ -176,4 +175,8 @@ jQuery(document).ready(function () {
 Main.SetActiveMenuItem = function (page) {
     $("#top #site-menu li").removeClass("current-menu-item");
     $("#top #site-menu li:nth-of-type(" + page + ")").addClass("current-menu-item");
+}
+
+Main.SetOverlay = function () {
+    document.getElementById("myNav").style.width = "100%";
 }
