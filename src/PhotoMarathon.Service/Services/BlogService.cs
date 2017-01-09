@@ -19,6 +19,7 @@ namespace PhotoMarathon.Service.Services
         Result<List<string[]>> BuildForDatatable(BlogFilter filter);
         Result<int> Count(BlogFilter filter);
         Result<BlogItem> Get(int id);
+        Result<BlogItem> Get(string id);
         Result Delete(int id);
         Result<BlogItem> Edit(BlogItem blogItem);
         Result<List<DateFilter>> GetDateFilter();
@@ -108,6 +109,19 @@ namespace PhotoMarathon.Service.Services
             try
             {
                 return new Result<BlogItem>(blogRepository.GetById(id));
+            }
+            catch (Exception ex)
+            {
+                return new Result<BlogItem>(ex);
+            }
+        }
+
+        public Result<BlogItem> Get(string slug)
+        {
+            try
+            {
+                Expression<Func<BlogItem, bool>> predicate = p => p.Slug == slug;
+                    return new Result<BlogItem>(blogRepository.Get(predicate));
             }
             catch (Exception ex)
             {
