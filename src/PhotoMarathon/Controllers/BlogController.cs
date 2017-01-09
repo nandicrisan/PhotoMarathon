@@ -24,6 +24,7 @@ namespace PhotoMarathon.Controllers
             filter.iPage = p;
             filter.iDisplayStart = p;
             filter.iDisplayLength = 6;
+            filter.sSortDir_0 = "desc";
             if (y == 0)
                 y = DateTime.Now.Year;
             viewModel.SelectedYear = y;

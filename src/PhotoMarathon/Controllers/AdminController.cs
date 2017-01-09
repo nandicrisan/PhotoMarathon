@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.PlatformAbstractions;
 using PhotoMarathon.Data.Entities;
+using PhotoMarathon.Models;
 using PhotoMarathon.Service.Filters;
 using PhotoMarathon.Service.Services;
 using PhotoMarathon.Service.Utils;
+using PhotoMarathon.Utils;
 using System;
 using System.IO;
 
@@ -37,7 +39,10 @@ namespace PhotoMarathon.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel();
+            homeViewModel.PhotograperCount = accountService.Count(new PhotographerFilter()).Data;
+            homeViewModel.NewsletterCount = newsletterService.Count(new PhotoLetterFilter()).Data;
+            return View(homeViewModel);
         }
         public IActionResult Photographers()
         {
@@ -148,6 +153,8 @@ namespace PhotoMarathon.Controllers
                 }
             }
             Result<BlogItem> addRes;
+            //Set slug
+            blogitem.Slug = WebUtils.GenerateSlug(blogitem.Title);
             if (blogitem.Id == 0)
                 addRes = blogService.Add(blogitem);
             else

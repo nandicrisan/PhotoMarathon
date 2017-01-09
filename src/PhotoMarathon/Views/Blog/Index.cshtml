@@ -24,7 +24,7 @@
                             <div class="margin-2"></div>
                             @for (int i = 1; i <= Model.Pages; i++)
                             {
-                                <a href="~/blog?p=@i" class="button @(i == Model.CurrentPage ? "filled":"")">@i</a>
+                                <a href="~/blog?p=@i&y=@Model.SelectedYear&m=@Model.SelectedMonth" class="button @(i == Model.CurrentPage ? "filled":"")">@i</a>
                             }
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="widget widget_archives">
                         <h6 class="title">Archives</h6>
-                        <ul class="fa-ul">
+                        <ul class="fa-ul
                             @foreach (var datef in Model.DateFilter)
                             {
                                 <li class="cat-item @(datef.Year == Model.SelectedYear ? "current-cat":"")">
@@ -52,7 +52,10 @@
                                     <ul class="fa-ul">
                                         @foreach (var month in datef.Months)
                                         {
-                                            <li class="cat-item @(month.Month == Model.SelectedMonth ? "current-cat":"")"><i class="fa-li fa fa-caret-right"></i><a href="~/blog?p=@Model.CurrentPage&y=@datef.Year&m=@month.Month">@month.MonthName</a> (@month.Items)</li>
+                                            if (month.Items > 0)
+                                            {
+                                                <li class="cat-item @(month.Month == Model.SelectedMonth ? "current-cat" : "")"><i class="fa-li fa fa-caret-right"></i><a href="~/blog?p=@Model.CurrentPage&y=@datef.Year&m=@month.Month">@month.MonthName</a> (@month.Items)</li>
+                                            }
                                         }
                                     </ul>
                                 </li>

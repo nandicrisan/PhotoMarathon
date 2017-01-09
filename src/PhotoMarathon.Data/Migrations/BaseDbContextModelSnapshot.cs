@@ -212,6 +212,8 @@ namespace PhotoMarathon.Data.Migrations
 
                     b.Property<string>("ShortDescription");
 
+                    b.Property<string>("Slug");
+
                     b.Property<string>("Title")
                         .IsRequired();
 
