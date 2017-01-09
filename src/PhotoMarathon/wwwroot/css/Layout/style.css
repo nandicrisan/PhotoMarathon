@@ -1538,6 +1538,7 @@ img.round {
             display: block;
             width: 100%;
             -webkit-transform-style: preserve-3d;
+            max-height:150px;
         }
 
     .owl-carousel.owl-text-select-on .owl-item {
