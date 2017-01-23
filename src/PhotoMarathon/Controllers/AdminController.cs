@@ -18,6 +18,7 @@ namespace PhotoMarathon.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
+        private readonly IGeneralService generalService;
         private readonly IAccountService accountService;
         private readonly INewsLetterService newsletterService;
         private readonly IBlogService blogService;
@@ -29,11 +30,13 @@ namespace PhotoMarathon.Controllers
             IAccountService accountService,
             INewsLetterService newsletterService,
             IBlogService blogService,
-            IHostingEnvironment hostingEnvironment)
+            IHostingEnvironment hostingEnvironment,
+            IGeneralService generalService)
         {
             this.accountService = accountService;
             this.newsletterService = newsletterService;
             this.blogService = blogService;
+            this.generalService = generalService;
             this._hostingEnvironment = hostingEnvironment;
         }
 
@@ -46,8 +49,13 @@ namespace PhotoMarathon.Controllers
         }
         public IActionResult Photographers()
         {
-            return View();
+            var regStatus = generalService.GetRegisterStatus();
+            if (regStatus.IsOk())
+                return View(regStatus.Data);
+
+            return View(new RegisterStatus());
         }
+
         public IActionResult GetPhotograpers(PhotographerFilter filter)
         {
             //Get the data in a string list filtered by the PhotographerFilter

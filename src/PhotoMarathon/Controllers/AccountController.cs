@@ -40,10 +40,20 @@ namespace PhotoMarathon.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            var viewModel = new RegisterViewModel();
+
             var photographer = new Photographer();
             photographer.HasNewsLetter = true;
             ViewBag.WorkShops = generalService.GetWorkShpos().Data.GetRange(3, 1);
-            return View(photographer);
+            viewModel.Photographer = photographer;
+
+            var registerStatus = generalService.GetRegisterStatus();
+
+            viewModel.RegisterStatus = new RegisterStatus();
+            if (registerStatus.IsOk())
+                viewModel.RegisterStatus = registerStatus.Data;
+
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult Register(Photographer photographer)
@@ -60,7 +70,8 @@ namespace PhotoMarathon.Controllers
                 return View(photographer);
             }
             var result = accountService.AddPhotographer(photographer);
-            var newsLetter = new Newsletter {
+            var newsLetter = new Newsletter
+            {
                 DateAdded = DateTime.Now,
                 Email = photographer.Email,
                 Name = photographer.FirstName + " " + photographer.LastName
@@ -106,6 +117,21 @@ namespace PhotoMarathon.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
+        [HttpPost]
+        public IActionResult RegisterStatus(RegisterStatus model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = generalService.SetRegisterStatus(model);
+                if (result.IsOk())
+                    return RedirectToAction("Photographers", "Admin");
+
+                TempData.Add("Message", result.Message);
+                return RedirectToAction("Photographers", "Admin");
+            }
+            return RedirectToAction("Photographers", "Admin");
         }
     }
 }

@@ -304,8 +304,9 @@ img {
 }
 
 .exp-time {
-    font-size:17px;
+    font-size: 17px;
 }
+
     .exp-time i {
-        vertical-align:text-top;
+        vertical-align: text-top;
     }

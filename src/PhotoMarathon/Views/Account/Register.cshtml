@@ -1,23 +1,25 @@
-﻿@model PhotoMarathon.Data.Entities.Photographer
+﻿@model PhotoMarathon.Models.RegisterViewModel
 @{
     ViewData["Title"] = "Înscriere";
     List<PhotoMarathon.Data.Entities.WorkShop> workShops = ViewBag.WorkShops;
 }
 
+@if (Model.RegisterStatus.Inactive)
+{
+    @Html.Partial("_Overlay", Model.RegisterStatus.Message)
+}
+
 <main id="content" role="main">
     <div class="container container-boxes">
         <div class="row box white-bg">
-            @if (!Model.Active)
-            {
-                <div class="col-sm-12">
-                    <div class="black-input">
-                        <h3 class="ubuntu-font">Înscrie-te</h3>
-                        <p>
-                            Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
-                        </p>
-                    </div>
+            <div class="col-sm-12">
+                <div class="black-input">
+                    <h3 class="ubuntu-font">Înscrie-te</h3>
+                    <p>
+                        Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
+                    </p>
                 </div>
-            }
+            </div>
             <div class="col-sm-3">
                 <div class="margin-1"></div>
                 <img src="~/images/start-line2.jpg" />
@@ -25,18 +27,18 @@
             <div class="col-sm-9">
                 <div class="black-input">
                     <form asp-controller="Account" asp-action="Register" method="post" class="no-bottom">
-                        <label asp-for="FirstName" class="sr-only">Nume</label>
-                        <input asp-for="FirstName" class="underline" placeholder="Nume">
-                        <span asp-validation-for="FirstName" class="input-validation-side rubberBand"></span>
+                        <label asp-for="Photographer.FirstName" class="sr-only">Nume</label>
+                        <input asp-for="Photographer.FirstName" class="underline" placeholder="Nume">
+                        <span asp-validation-for="Photographer.FirstName" class="input-validation-side rubberBand"></span>
                         <label for="prename" class="sr-only">Prenume</label>
-                        <input asp-for="LastName" class="underline" placeholder="Prenume">
-                        <span asp-validation-for="LastName" class="input-validation-side"></span>
+                        <input asp-for="Photographer.LastName" class="underline" placeholder="Prenume">
+                        <span asp-validation-for="Photographer.LastName" class="input-validation-side"></span>
                         <label for="email" class="sr-only">Email</label>
-                        <input asp-for="Email" class="underline" placeholder="Adresă de email">
-                        <span asp-validation-for="Email" class="input-validation-side"></span>
+                        <input asp-for="Photographer.Email" class="underline" placeholder="Adresă de email">
+                        <span asp-validation-for="Photographer.Email" class="input-validation-side"></span>
                         <label for="phone" class="sr-only">Nr. de telefon</label>
-                        <input asp-for="PhoneNumber" class="underline" placeholder="Nr. de telefon">
-                        <span asp-validation-for="PhoneNumber" class="input-validation-side"></span>
+                        <input asp-for="Photographer.PhoneNumber" class="underline" placeholder="Nr. de telefon">
+                        <span asp-validation-for="Photographer.PhoneNumber" class="input-validation-side"></span>
                         <div class="margin-1"></div>
                         <p for="fotop" class="radio-label vertical-align-middle">Fotograf amator &nbsp;</p>
                         <input type="radio" class="radio-input" name="IsProfessionist" value="false" />
@@ -45,7 +47,7 @@
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
                         <div class="display-inline-block">
-                            <input asp-for="RegisterForWorkShop" type="checkbox" value="false" id="workshop" name="check" />
+                            <input asp-for="Photographer.RegisterForWorkShop" type="checkbox" value="false" id="workshop" name="check" />
                             <label for="workshop"></label>
                         </div>
                         <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
@@ -90,23 +92,23 @@
                             </div>
                         </div>
                         <div class="display-inline-block">
-                            <input asp-for="RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
+                            <input asp-for="Photographer.RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
                             <label for="photoMarathon"></label>
                         </div>
                         <p class="display-inline-block">Maratonul foto &nbsp;</p>
                         <br />
                         <div class="display-inline-block">
-                            <input asp-for="Rules" type="checkbox" id="rules" name="check" />
+                            <input asp-for="Photographer.Rules" type="checkbox" id="rules" name="check" />
                             <label for="rules"></label>
                         </div>
                         <p class="display-inline-block margin-bottom-none">&nbsp; Am citit regulamentul concursului de <a asp-controller="Home" asp-action="Rules">aici</a> și sunt de acord cu toate condițiile.</p>
                         <div class="row"></div>
                         <div class="display-inline-block">
-                            <input asp-for="HasNewsLetter" type="checkbox" value="true" id="newsletter" name="check" />
+                            <input asp-for="Photographer.HasNewsLetter" type="checkbox" value="true" id="newsletter" name="check" />
                             <label for="newsletter"></label>
                         </div>
                         <p class="display-inline-block">&nbsp; Vreau să primesc și alte informatii legate de Photo Marathon 2016</p>
-                        <span asp-validation-for="Rules" class="input-validation"></span>
+                        <span asp-validation-for="Photographer.Rules" class="input-validation"></span>
                         <div class="margin-1"></div>
                         <input type="submit" value="Trimite">
                     </form>

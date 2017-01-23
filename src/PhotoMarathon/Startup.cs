@@ -56,6 +56,7 @@ namespace PhotoMarathon
             services.AddTransient<IEntityBaseRepository<WorkShop>, EntityBaseRepository<WorkShop>>();
             services.AddTransient<IEntityBaseRepository<Photographer>, EntityBaseRepository<Photographer>>();
             services.AddTransient<IEntityBaseRepository<BlogItem>, EntityBaseRepository<BlogItem>>();
+            services.AddTransient<IEntityBaseRepository<RegisterStatus>, EntityBaseRepository<RegisterStatus>>();
             //identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<BaseDbContext>()
