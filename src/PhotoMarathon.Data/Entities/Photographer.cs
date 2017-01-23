@@ -39,5 +39,8 @@ namespace PhotoMarathon.Data.Entities
         public DateTime DateAdded { get; set; }
 
         public virtual BillingData BillingData { get; set; }
+
+        public bool Active { get; set; }
+        public string InactiveMessage { get; set; }
     }
 }

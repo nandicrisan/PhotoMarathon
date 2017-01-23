@@ -7,14 +7,17 @@
 <main id="content" role="main">
     <div class="container container-boxes">
         <div class="row box white-bg">
-            <div class="col-sm-12">
-                <div class="black-input">
-                    <h3 class="ubuntu-font">Înscrie-te</h3>
-                    <p>
-                        Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
-                    </p>
+            @if (!Model.Active)
+            {
+                <div class="col-sm-12">
+                    <div class="black-input">
+                        <h3 class="ubuntu-font">Înscrie-te</h3>
+                        <p>
+                            Completează formularul și înscrie-te la competiția Photo Marathon, unde cele mai bune fotografii sunt premiate și promovate în cadrul expoziției Photo Marathon’16! Mai mult decât atât, poți participa și la workshop-urile special pregătite pentru tine!
+                        </p>
+                    </div>
                 </div>
-            </div>
+            }
             <div class="col-sm-3">
                 <div class="margin-1"></div>
                 <img src="~/images/start-line2.jpg" />
@@ -55,35 +58,35 @@
                                     }
                                 </select>
                                 @*<div id="order-data">
-                                    <h5>Adresă de facturare</h5>
-                                    <div class="col-md-12">
-                                        <p class="radio-label vertical-align-middle">Persoană fizică &nbsp;</p>
-                                        <input asp-for="BillingData.LegalPerson" type="radio" checked class="radio-input" value="false" />
-                                        <p class="radio-label vertical-align-middle"> &nbsp;Persoană juridică &nbsp;</p>
-                                        <input asp-for="BillingData.LegalPerson" type="radio" class="radio-input" value="true" />
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input asp-for="BillingData.Address" class="underline" placeholder="Adresă">
-                                        <span asp-validation-for="BillingData.Address" class="input-validation-side"></span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input asp-for="BillingData.NrReg" class="underline" placeholder="Numărul de înregistrare">
-                                        <span asp-validation-for="BillingData.NrReg" class="input-validation-side"></span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input asp-for="BillingData.Cnp" class="underline" placeholder="CUI/CNP">
-                                        <span asp-validation-for="BillingData.Cnp" class="input-validation-side"></span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input asp-for="BillingData.Bank" class="underline" placeholder="Banca">
-                                        <span asp-validation-for="BillingData.Bank" class="input-validation-side"></span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input asp-for="BillingData.Cont" class="underline" placeholder="IBAN">
-                                        <span asp-validation-for="BillingData.Cont" class="input-validation-side"></span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>*@
+                                        <h5>Adresă de facturare</h5>
+                                        <div class="col-md-12">
+                                            <p class="radio-label vertical-align-middle">Persoană fizică &nbsp;</p>
+                                            <input asp-for="BillingData.LegalPerson" type="radio" checked class="radio-input" value="false" />
+                                            <p class="radio-label vertical-align-middle"> &nbsp;Persoană juridică &nbsp;</p>
+                                            <input asp-for="BillingData.LegalPerson" type="radio" class="radio-input" value="true" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input asp-for="BillingData.Address" class="underline" placeholder="Adresă">
+                                            <span asp-validation-for="BillingData.Address" class="input-validation-side"></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input asp-for="BillingData.NrReg" class="underline" placeholder="Numărul de înregistrare">
+                                            <span asp-validation-for="BillingData.NrReg" class="input-validation-side"></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input asp-for="BillingData.Cnp" class="underline" placeholder="CUI/CNP">
+                                            <span asp-validation-for="BillingData.Cnp" class="input-validation-side"></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input asp-for="BillingData.Bank" class="underline" placeholder="Banca">
+                                            <span asp-validation-for="BillingData.Bank" class="input-validation-side"></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input asp-for="BillingData.Cont" class="underline" placeholder="IBAN">
+                                            <span asp-validation-for="BillingData.Cont" class="input-validation-side"></span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>*@
                             </div>
                         </div>
                         <div class="display-inline-block">
