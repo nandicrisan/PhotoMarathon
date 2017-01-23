@@ -48,7 +48,8 @@ namespace PhotoMarathon.Controllers
                 viewModel.DateFilter = dateFilter.Data;
             return View(viewModel);
         }
-        public IActionResult Article(int id)
+
+        public IActionResult Article(string id)
         {
             var blogItem = blogService.Get(id);
             return View(blogItem.Data);
