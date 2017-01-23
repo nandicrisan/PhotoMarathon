@@ -241,6 +241,7 @@ input[type=checkbox] {
     .image-title {
         padding: 5px;
         font-size: 16px;
+        background-color: rgba(255, 255, 255, 0.60) !important;
     }
 }
 
@@ -248,6 +249,7 @@ input[type=checkbox] {
     .image-title {
         padding: 10px;
         font-size: 26px;
+        background-color: rgba(255, 255, 255, 0.60) !important;
     }
 }
 

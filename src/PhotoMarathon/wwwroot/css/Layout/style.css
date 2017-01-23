@@ -1538,7 +1538,7 @@ img.round {
             display: block;
             width: 100%;
             -webkit-transform-style: preserve-3d;
-            max-height:150px;
+            max-height: 150px;
         }
 
     .owl-carousel.owl-text-select-on .owl-item {
@@ -1917,10 +1917,11 @@ img.round {
 
 #site-menu ul {
     padding-left: 0;
-    margin-top: 1.5em;
+    margin-top: 0em;
     margin-bottom: 0;
     font-family: 'Roboto', sans-serif;
     list-style: none;
+    font-size: 12px;
 }
 
     #site-menu ul ul {
@@ -2561,7 +2562,8 @@ img.round {
     }
 
     #site-menu ul {
-        margin-top: 2em;
+        margin-top: 0em;
+        font-size: 12px;
     }
 
     .thumb.featured .info .big-title {
@@ -2878,6 +2880,7 @@ img.round {
         #site-menu ul {
             margin-top: 0;
             text-align: right;
+            font-size: 1em;
         }
 
         #site-menu li {
