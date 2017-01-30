@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PhotoMarathon.Data.Entities.ContactMessage
+@{
     ViewData["Title"] = "Contact";
 }
 
@@ -63,13 +64,15 @@
                     <h5>Trimite-ne un mesaj</h5>
                     <div class="sep red"></div>
                     <div class="margin-1"></div>
-                    <form action="contact1.html" class="no-bottom">
-                        <label for="name" class="sr-only">Nume</label>
-                        <input type="text" class="underline" name="name" id="name" placeholder="Nume..." required>
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="email" class="underline" name="email" id="email" placeholder="Adresă de email..." required>
-                        <label for="message" class="sr-only">Mesaj</label>
-                        <textarea class="underline" name="message" id="message" cols="30" rows="6" placeholder="Mesaj..." required></textarea>
+                    <form asp-controller="Contact" asp-action="Message" class="no-bottom">
+                        <label asp-for="Name" class="sr-only">Nume</label>
+                        <input asp-for="Name" type="text" class="underline" name="name" placeholder="Nume..." required>
+                        <span asp-validation-for="Name" class="input-validation-side rubberBand"></span>
+                        <label asp-for="EmailAddress" class="sr-only">Email</label>
+                        <input class="underline" asp-for="EmailAddress" placeholder="Adresă de email..." required>
+                        <span asp-validation-for="EmailAddress" class="input-validation-side rubberBand"></span>
+                        <label asp-for="Message" class="sr-only">Mesaj</label>
+                        <textarea asp-for="Message" class="underline" cols="30" rows="6" placeholder="Mesaj..." required></textarea>
                         <div class="margin-1"></div>
                         <input type="submit" value="Trimite">
                     </form>

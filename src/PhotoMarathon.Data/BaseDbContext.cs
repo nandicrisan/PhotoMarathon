@@ -17,6 +17,7 @@ namespace PhotoMarathon.Data
         DbSet<BlogItem> BlogItems { get; set; }
         DbSet<BillingData> BillingDatas { get; set; }
         DbSet<RegisterStatus> RegisterStatus { get; set; }
+        DbSet<ContactMessage> ContactMessages { get; set; }
         #endregion
 
         //Model configurations

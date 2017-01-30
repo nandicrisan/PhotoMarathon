@@ -26,11 +26,14 @@ namespace PhotoMarathon.Controllers
             filter.iDisplayLength = 6;
             filter.sSortDir_0 = "desc";
             if (y == 0)
-                y = DateTime.Now.Year;
+                y = 2000;
             viewModel.SelectedYear = y;
             viewModel.SelectedMonth = m;
             filter.start = new DateTime(y, 1, 1);
-            filter.end = filter.start.Value.AddYears(1);
+            if (y == 2000)
+                filter.end = filter.start.Value.AddYears(50);
+            else
+                filter.end = filter.start.Value.AddYears(1);
             if (m != 0)
             {
                 filter.start = filter.start.Value.AddMonths(m - 1);

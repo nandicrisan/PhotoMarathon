@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PhotoMarathon.Data.Entities;
 
 namespace PhotoMarathon.Controllers
 {
@@ -21,7 +22,7 @@ namespace PhotoMarathon.Controllers
 
         public IActionResult Contact()
         {
-            return View();
+            return View(new ContactMessage());
         }
 
         public IActionResult Rules()

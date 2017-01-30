@@ -23,6 +23,7 @@ namespace PhotoMarathon.Controllers
         private readonly INewsLetterService newsletterService;
         private readonly IBlogService blogService;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IContactService _contactService;
 
         public object AppDomain { get; private set; }
 
@@ -31,13 +32,15 @@ namespace PhotoMarathon.Controllers
             INewsLetterService newsletterService,
             IBlogService blogService,
             IHostingEnvironment hostingEnvironment,
-            IGeneralService generalService)
+            IGeneralService generalService,
+            IContactService contactService)
         {
             this.accountService = accountService;
             this.newsletterService = newsletterService;
             this.blogService = blogService;
             this.generalService = generalService;
-            this._hostingEnvironment = hostingEnvironment;
+            _hostingEnvironment = hostingEnvironment;
+            _contactService = contactService;
         }
 
         public IActionResult Index()
@@ -55,7 +58,6 @@ namespace PhotoMarathon.Controllers
 
             return View(new RegisterStatus());
         }
-
         public IActionResult GetPhotograpers(PhotographerFilter filter)
         {
             //Get the data in a string list filtered by the PhotographerFilter
@@ -180,5 +182,12 @@ namespace PhotoMarathon.Controllers
             return RedirectToAction("Blog");
         }
         #endregion
+        public IActionResult Suggestions()
+        {
+            var messList = _contactService.GetAll();
+            if (!messList.IsOk())
+                return StatusCode(500, messList.Message);
+            return View(messList.Data);
+        }
     }
 }

@@ -51,12 +51,14 @@ namespace PhotoMarathon
             services.AddTransient<IGeneralService, GeneralService>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IContactService, ContactService>();
             //Repositories
             services.AddTransient<IEntityBaseRepository<Newsletter>, EntityBaseRepository<Newsletter>>();
             services.AddTransient<IEntityBaseRepository<WorkShop>, EntityBaseRepository<WorkShop>>();
             services.AddTransient<IEntityBaseRepository<Photographer>, EntityBaseRepository<Photographer>>();
             services.AddTransient<IEntityBaseRepository<BlogItem>, EntityBaseRepository<BlogItem>>();
             services.AddTransient<IEntityBaseRepository<RegisterStatus>, EntityBaseRepository<RegisterStatus>>();
+            services.AddTransient<IEntityBaseRepository<ContactMessage>, EntityBaseRepository<ContactMessage>>();
             //identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<BaseDbContext>()

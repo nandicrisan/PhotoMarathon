@@ -312,3 +312,7 @@ img {
     .exp-time i {
         vertical-align: text-top;
     }
+
+.box.white-bg input, .box.white-bg textarea  {
+    color: #292f33; 
+}
