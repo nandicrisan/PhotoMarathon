@@ -19,7 +19,7 @@
                 {
                     "bSortable": true,
                     "mRender": function (data, type, full) {
-                        if (full[5] != "True") {
+                        if (full[5] == "True") {
                             return "Profesionist";
                         }
                         else {
