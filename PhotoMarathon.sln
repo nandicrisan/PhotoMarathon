@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26127.3
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D7EA0BF-3D33-40E6-91A5-8D093AC46564}"
 EndProject
@@ -10,11 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMarathon", "src\PhotoMarathon\PhotoMarathon.csproj", "{8CF747AB-69AE-48D8-88C8-2BE9AD77A9E7}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhotoMarathon.Web", "src\PhotoMarathon\PhotoMarathon.Web.xproj", "{8CF747AB-69AE-48D8-88C8-2BE9AD77A9E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMarathon.Data", "src\PhotoMarathon.Data\PhotoMarathon.Data.csproj", "{CFE4F63A-570C-473E-92E7-59E452E83ABD}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhotoMarathon.Data", "src\PhotoMarathon.Data\PhotoMarathon.Data.xproj", "{CFE4F63A-570C-473E-92E7-59E452E83ABD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMarathon.Service", "src\PhotoMarathon.Service\PhotoMarathon.Service.csproj", "{03BFE44F-9AAC-4400-9A02-7AECCC3497CA}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhotoMarathon.Service", "src\PhotoMarathon.Service\PhotoMarathon.Service.xproj", "{03BFE44F-9AAC-4400-9A02-7AECCC3497CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
