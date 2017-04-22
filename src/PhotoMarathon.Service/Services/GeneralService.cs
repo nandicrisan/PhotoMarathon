@@ -52,8 +52,6 @@ namespace PhotoMarathon.Service.Services
             {
                 return new Result<RegisterStatus>(ResultStatus.ERROR, ex.Message);
             }
-
-
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using PhotoMarathon.Data.Entities.Base;
+using PhotoMarathon.Data.Entities.Enumes;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoMarathon.Data.Entities
 {
@@ -39,5 +39,10 @@ namespace PhotoMarathon.Data.Entities
         public DateTime DateAdded { get; set; }
 
         public virtual BillingData BillingData { get; set; }
+
+        //New
+        public string City { get; set; }
+        public int Age { get; set; }
+        public EditionsEnum EditionId { get; set; }
     }
 }

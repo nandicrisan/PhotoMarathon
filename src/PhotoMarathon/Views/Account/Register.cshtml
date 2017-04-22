@@ -30,15 +30,39 @@
                         <label asp-for="Photographer.FirstName" class="sr-only">Nume</label>
                         <input asp-for="Photographer.FirstName" class="underline" placeholder="Nume">
                         <span asp-validation-for="Photographer.FirstName" class="input-validation-side rubberBand"></span>
+
                         <label for="prename" class="sr-only">Prenume</label>
                         <input asp-for="Photographer.LastName" class="underline" placeholder="Prenume">
                         <span asp-validation-for="Photographer.LastName" class="input-validation-side"></span>
+
                         <label for="email" class="sr-only">Email</label>
                         <input asp-for="Photographer.Email" class="underline" placeholder="Adresă de email">
                         <span asp-validation-for="Photographer.Email" class="input-validation-side"></span>
+
                         <label for="phone" class="sr-only">Nr. de telefon</label>
                         <input asp-for="Photographer.PhoneNumber" class="underline" placeholder="Nr. de telefon">
                         <span asp-validation-for="Photographer.PhoneNumber" class="input-validation-side"></span>
+
+                        <label for="phone" class="sr-only">Oraș</label>
+                        <input asp-for="Photographer.City" class="underline" placeholder="Oraș">
+                        <span asp-validation-for="Photographer.City" class="input-validation-side"></span>
+
+                        <label for="phone" class="sr-only">Vârstă</label>
+                        <input asp-for="Photographer.Age" class="underline" placeholder="Vârstă">
+                        <span asp-validation-for="Photographer.Age" class="input-validation-side"></span>
+
+                        <p class="display-inline-block margin-bottom-none">Editia la care te inscrii</p>
+                        <div class="row">
+                            <div class="form-group col-md-12" style="margin:8px 0 8px 0;">
+                                <select class="ui dropdown fluid" name="EditionId">
+                                    <option value="0">Nespecificat</option>
+                                    <option value="1">Photo Marathon Cluj Napoca</option>
+                                    <option value="2">Photo Marathon Timisoara</option>
+                                    <option value="3">Photo Marathon Sibiu</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="margin-1"></div>
                         <p for="fotop" class="radio-label vertical-align-middle">Fotograf amator &nbsp;</p>
                         <input type="radio" class="radio-input" name="IsProfessionist" value="false" />

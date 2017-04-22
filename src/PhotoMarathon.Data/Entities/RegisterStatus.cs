@@ -1,8 +1,4 @@
 ﻿using PhotoMarathon.Data.Entities.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PhotoMarathon.Data.Entities
 {

@@ -8,9 +8,10 @@ using PhotoMarathon.Data;
 namespace PhotoMarathon.Data.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170130184943_REgistration_field_update")]
+    partial class REgistration_field_update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -222,66 +223,6 @@ namespace PhotoMarathon.Data.Migrations
                     b.ToTable("BlogItems");
                 });
 
-            modelBuilder.Entity("PhotoMarathon.Data.Entities.Cms.Article", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<int?>("SectionId");
-
-                    b.Property<string>("Slug");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SectionId");
-
-                    b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("PhotoMarathon.Data.Entities.Cms.Page", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<string>("Slug");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Pages");
-                });
-
-            modelBuilder.Entity("PhotoMarathon.Data.Entities.Cms.Section", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<int?>("PageId");
-
-                    b.Property<string>("Slug");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PageId");
-
-                    b.ToTable("Sections");
-                });
-
             modelBuilder.Entity("PhotoMarathon.Data.Entities.ContactMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -436,20 +377,6 @@ namespace PhotoMarathon.Data.Migrations
                         .WithOne("BillingData")
                         .HasForeignKey("PhotoMarathon.Data.Entities.BillingData", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PhotoMarathon.Data.Entities.Cms.Article", b =>
-                {
-                    b.HasOne("PhotoMarathon.Data.Entities.Cms.Section", "Section")
-                        .WithMany("Articles")
-                        .HasForeignKey("SectionId");
-                });
-
-            modelBuilder.Entity("PhotoMarathon.Data.Entities.Cms.Section", b =>
-                {
-                    b.HasOne("PhotoMarathon.Data.Entities.Cms.Page", "Page")
-                        .WithMany("Sections")
-                        .HasForeignKey("PageId");
                 });
 
             modelBuilder.Entity("PhotoMarathon.Data.Entities.Photographer", b =>
