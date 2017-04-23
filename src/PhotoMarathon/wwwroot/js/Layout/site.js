@@ -99,11 +99,17 @@ jQuery(document).ready(function () {
 
     $(window).scroll(function () {
         if ($(document).scrollTop() > 30) {
-            $('.navbar .img-logo').addClass('rotate');
+            //$('.navbar .img-logo2017').animate({ height: 0 }, 2);
+            $('.navbar .logo2017').slideUp("slow");
             $('.navbar').addClass('shrink');
+
+            //$('.navbar .img-logo2017').animate({ opacity: 0 }, { queue: false });
         } else {
-            $('.navbar .img-logo').removeClass('rotate');
+            //$('.navbar .img-logo2017').animate({ height: 'auto' }, 2);
+            $('.navbar .logo2017').slideDown("slow");
             $('.navbar').removeClass('shrink');
+
+            //$('.navbar .img-logo2017').animate({ opacity: 1 }, { queue: false });
         }
     });
 
