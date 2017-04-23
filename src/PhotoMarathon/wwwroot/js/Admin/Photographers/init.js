@@ -20,10 +20,10 @@
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (full[5] == "True") {
-                            return "Profesionist";
+                            return "Amator";
                         }
                         else {
-                            return "Amator";
+                            return "Profesionist";
                         }
                     }
                 },//Is professionist or amator

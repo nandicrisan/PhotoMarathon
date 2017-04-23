@@ -13,7 +13,10 @@ namespace PhotoMarathon.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var page = _cmsService.GetPage("home");
+            if (!page.IsOk())
+                return new StatusCodeResult(404);
+            return View(page.Data);
         }
 
         //slug:despre

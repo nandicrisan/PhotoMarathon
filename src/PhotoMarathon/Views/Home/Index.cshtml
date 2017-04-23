@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model PhotoMarathon.Data.Entities.Cms.Page
 @{
     ViewData["Title"] = "Pagina principală";
 }
@@ -29,16 +29,12 @@
                                 <img src="~/images/about.jpg" alt="" width="715" height="556" style="height:556px;">
                                 <span class="info" style="background-color:#292f33;padding-top:8%;">
                                     <span class="excerpt">
-                                        <h4>Esti pasionat de fotografie?</h4><br />
-                                        PHOTO MARATHON este singurul eveniment din România care oferă fotografilor amatori și profesioniști oportunitatea de a experimenta arta fotografică în medii neconvenționale, beneficiind de o experiență completă.
-                                        <br />
-                                        <br />
-                                        <strong>Pune arta fotografică în mișcare alături de noi!</strong><br />
-                                        Evenimentul desfășurat pe parcursul a 4 zile pune la dispoziția pasionaților de fotografie un maraton fotografic, unic în zona Transilvaniei, cu premii în valoare de 6.000 lei.
-                                        Alături de competiție, cei interesați pot participa și la maratonul de expoziții și de workshop-uri.
-                                        <br />
-                                        <i class="fa fa-angle-right" aria-hidden="true" style="color:#fd4ec3;font-size:86px;"></i>
+                                        @{ var leftBoxArticle = Model.Sections.FirstOrDefault(p => p.Slug == "boxa-stanga");}
+                                        <h4>@leftBoxArticle.Title</h4><br/>
+                                        @Html.Raw(leftBoxArticle.Content)
+                                        <i class="fa fa-angle-right" aria-hidden="true" style="color: #fd4ec3; font-size: 86px;"></i>
                                     </span>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -49,7 +45,8 @@
                         <div class="photo">
                             <a asp-controller="Marathon" asp-action="Photographic">
                                 <img src="~/images/homepage/1.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Maraton de fotografie</strong><span class="excerpt">8 ore, 4 teme, 2 categorii distincte și premii în valoare de 6.000 lei</span></span>
+                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Maraton de fotografie</strong><span class="excerpt">8 ore, 4 teme, 2 categorii distincte, premii în valoare totală de 6.000 lei și o expoziție post-eveniment
+                                </span></span>
                             </a>
                         </div>
                     </div>
@@ -71,7 +68,8 @@
                         <div class="photo">
                             <a asp-controller="Account" asp-action="Register">
                                 <img src="~/images/homepage/4.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Înscrie-te</strong><span class="excerpt">Pune arta fotografică în mişcare. Intră în competiție acum!</span></span>
+                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Înscrie-te</strong><span class="excerpt">Pune arta fotografică în mişcare. Intră în competiție acum! 
+                                </span></span>
                             </a>
                         </div>
                     </div>
@@ -82,7 +80,8 @@
                         <div class="photo">
                             <a asp-controller="Marathon" asp-action="Exposition">
                                 <img src="~/images/homepage/3.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Expoziții</strong><span class="excerpt">4 locuri, 4 fotografi, 4 teme și 4 fundaluri sonore specifice</span></span>
+                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Expoziții</strong><span class="excerpt">Teme inedite și locuri neconvenționale
+                                </span></span>
                             </a>
                         </div>
                     </div>
@@ -150,7 +149,8 @@
                         <div class="photo">
                             <a asp-controller="Blog" asp-action="Index">
                                 <img src="~/images/homepage/7.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Blog</strong><span class="excerpt">Povești prin obiectivul Photo Marathon</span></span>
+                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Blog</strong><span class="excerpt">Povești prin obiectivul Photo Marathon
+                                </span></span>
                             </a>
                         </div>
                     </div>
@@ -161,7 +161,8 @@
                         <div class="photo">
                             <a asp-controller="Home" asp-action="Partners">
                                 <img src="~/images/homepage/5.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Parteneri</strong><span class="excerpt">Află cine susține Photo Marathon</span></span>
+                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Parteneri</strong><span class="excerpt">Află cine susține Photo Marathon
+                                </span></span>
                             </a>
                         </div>
                     </div>

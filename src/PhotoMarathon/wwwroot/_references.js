@@ -10,7 +10,6 @@
 /// <reference path="js/admin/blog/init.js" />
 /// <reference path="js/admin/photographers/init.js" />
 /// <reference path="js/admin/photographers/photographer.js" />
-/// <reference path="js/admin/photographers/photographers.js" />
 /// <reference path="js/admin/photoletter/init.js" />
 /// <reference path="js/admin/photoletter/photoletter.min.js" />
 /// <reference path="js/admin/register.min.js" />
