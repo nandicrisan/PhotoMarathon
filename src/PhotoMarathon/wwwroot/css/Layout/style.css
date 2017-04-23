@@ -225,6 +225,7 @@ form {
     margin-bottom: 1.5em;
     font-size: 1em;
     line-height: 2em;
+    font-family: "Raleway";
 }
 
     p:empty {
@@ -3068,7 +3069,7 @@ img.round {
         text-transform: uppercase;
         letter-spacing: 0px;
         color: white;
-        font-size:20px;
+        font-size: 20px;
     }
 
     .thumb.dark-overlay .info .title {

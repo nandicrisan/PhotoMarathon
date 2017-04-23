@@ -266,7 +266,8 @@ input[type=checkbox] {
 }
 
 .ubuntu-font {
-    font-family: 'Ubuntu Condensed', sans-serif !important;
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 800;
 }
 
 .red-line {
