@@ -131,7 +131,7 @@ jQuery(document).ready(function () {
         }
         if ($('#news-email')[0].checkValidity() && $('#news-name')[0].checkValidity()) {
             $.ajax({
-                url: localStorage.getItem("siteRoot") + "/NewsLetter/Add",
+                url: localStorage.getItem("siteRootAdmin") + "/NewsLetter/Add",
                 type: "POST",
                 data: {
                     Name: $("#news-name").val(),

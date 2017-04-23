@@ -8,9 +8,10 @@ using PhotoMarathon.Data;
 namespace PhotoMarathon.Data.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170422102639_name_for_cms_page")]
+    partial class name_for_cms_page
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -237,8 +238,6 @@ namespace PhotoMarathon.Data.Migrations
 
                     b.Property<string>("Slug");
 
-                    b.Property<string>("Subtitle");
-
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
@@ -258,8 +257,6 @@ namespace PhotoMarathon.Data.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Slug");
-
-                    b.Property<string>("Subtitle");
 
                     b.Property<string>("Title");
 
@@ -282,8 +279,6 @@ namespace PhotoMarathon.Data.Migrations
                     b.Property<int?>("PageId");
 
                     b.Property<string>("Slug");
-
-                    b.Property<string>("Subtitle");
 
                     b.Property<string>("Title");
 

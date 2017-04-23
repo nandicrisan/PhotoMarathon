@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="../bootstrap-treeview.js" />
 /// <reference path="js/about/page.js" />
 /// <reference path="js/account/admin-layout.min.js" />
 /// <reference path="js/account/register.js" />

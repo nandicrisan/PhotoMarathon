@@ -1,7 +1,7 @@
 ﻿
 Blog.Delete = function (id) {
     $.ajax({
-        url: localStorage.getItem("siteRoot") + "/deleteblog",
+        url: localStorage.getItem("siteRootAdmin") + "/deleteblog",
         type: "POST",
         data: {
             id: id

@@ -1,69 +1,68 @@
-﻿@{
+﻿@model PhotoMarathon.Data.Entities.Cms.Page
+@{
     ViewData["Title"] = "Expoziții";
 }
 
 <main id="content" role="main">
     <div class="container">
-        @*<div class="col-md-3">
-            <img src="~/images/expo/expoPage.jpg" class="img-responsive" />
-        </div>*@
         <div class="col-md-12">
             <div class="margin-3"></div>
             <div class="inner">
                 <div>
-                    <h4 class="ubuntu-font">Expoziții</h4>
-                    <p>Timp de 4 zile, maratonul de expoziții oferă o experiență unică vizitatorilor, adunând cele mai creative lucrări fotografice în spaţii neconvenționale din Cluj-Napoca. Cele 4 expoziții derulate atipic încurajează vizitatorii să pătrundă în universul fotografiei și să cunoască artistul prin intermediul creațiilor expuse, oferindu-le posibilitatea de a experimenta prin intermediul simţurilor arta fotografică.</p>
+                    <h3 class="ubuntu-font">@Model.Title</h3>
+                    <p>@Html.Raw(Model.Sections.FirstOrDefault(p=>p.Slug == "descriere").Content)</p>
                 </div>
 
                 <div class="tab-container">
                     <ul class="tabs clearfix">
                         <li class="active team-member col-xs-3" style="margin:0 !important;">
                             <a href="#tab-1" class="team-photo">
-                                <img src="~/images/expo/2017/SorinOnisor.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Adi Bulboacă</span><span class="description">Omul din tren</span></span></span>
+                                <img src="~/images/expo/AdiBulboacă.jpg" width="640" height="640" alt="">
+                                @{
+                                    var tab1 = Model.Sections.FirstOrDefault(p => p.Slug == "taburi").Articles.FirstOrDefault(p => p.Slug == "tab-1");
+                                }
+                                <span class="info"><span class="text"><span class="name">@tab1.Title</span><span class="description">@tab1.Subtitle</span></span></span>
                             </a>
                         </li>
                         <li class="team-member col-xs-3" style="margin:0 !important;">
                             <a href="#tab-2" class="team-photo">
-                                <img src="~/images/expo/2017/CosticaAcsinte.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Hajdu Tamás</span><span class="description">Greatest clicks</span></span></span>
+                                <img src="~/images/expo/HajduTamás.jpg" width="640" height="640" alt="">
+                                @{
+                                    var tab2 = Model.Sections.FirstOrDefault(p => p.Slug == "taburi").Articles.FirstOrDefault(p => p.Slug == "tab-2");
+                                }
+                                <span class="info"><span class="text"><span class="name">@tab2.Title</span><span class="description">@tab2.Subtitle</span></span></span>
                             </a>
                         </li>
                         <li class="team-member col-xs-3" style="margin:0 !important;">
                             <a href="#tab-3" class="team-photo">
-                                <img src="~/images/expo/2017/VladPetri.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Alex Gâlmeanu</span><span class="description">Cinemagraphs</span></span></span>
+                                <img src="~/images/expo/AlexGâlmeanu.jpg" width="640" height="640" alt="">
+                                @{
+                                    var tab3 = Model.Sections.FirstOrDefault(p => p.Slug == "taburi").Articles.FirstOrDefault(p => p.Slug == "tab-3");
+                                }
+                                <span class="info"><span class="text"><span class="name">@tab3.Title</span><span class="description">@tab3.Subtitle</span></span></span>
                             </a>
                         </li>
                         <li class="team-member col-xs-3" style="margin:0 !important;">
                             <a href="#tab-4" class="team-photo">
-                                <img src="~/images/expo/2017/OliverMerceJuju.jpg" width="640" height="640" alt="">
-                                <span class="info"><span class="text"><span class="name">Vlad Cupșa</span><span class="description">My side of the concert</span></span></span>
+                                <img src="~/images/expo/VladCupșa.jpg" width="640" height="640" alt="">
+                                @{
+                                    var tab4 = Model.Sections.FirstOrDefault(p => p.Slug == "taburi").Articles.FirstOrDefault(p => p.Slug == "tab-4");
+                                }
+                                <span class="info"><span class="text"><span class="name">@tab4.Title</span><span class="description">@tab4.Subtitle</span></span></span>
                             </a>
                         </li>
                     </ul>
                     <div id="tab-1" class="tab_content" style="display:block">
-                        <h4 class="ubuntu-font"><a href="https://www.facebook.com/events/303173746717577/">Omul din tren – Adi Bulboacă – Gara mică</a></h4>
-                        <h5 class="ubuntu-font exp-time"><i class="fa fa-clock-o" aria-hidden="true"></i> Joi 13 octombrie, vernisaj 19:30-20:30, &nbsp Vineri-duminică de la 12:00-20:00</h5>
-                        <p>Adi Bulboacă iubește trenurile. A petrecut 30 de zile în peste 100 de trenuri și a adunat mii de cadre cu poveștile călătorilor. De cele mai multe ori, trenul îl poartă către un spectacol de teatru, acolo unde îl privește din aparat. Expoziția lui Adi aduce în atenția publicului pasiunea sa pentru trenuri și cadrele pe care le-a surprins în călătoria pe șine.</p>
+                       @Html.Raw(tab1.Content)
                     </div>
                     <div id="tab-2" class="tab_content" style="display:none">
-                        <h4 class="ubuntu-font"><a href="https://www.facebook.com/events/661095054064520/">Greatest clicks – Hajdu Tamás – Turnul croitorilor</a></h4>
-                        <h5 class="ubuntu-font exp-time"><i class="fa fa-clock-o" aria-hidden="true"></i> Joi-duminică între orele 10:00-18:00</h5>
-                        <p>Hajdu Tamás este un vânător a cărui vigilenţă pentru detaliile ascunse dincolo de învelişul aparentei banalităţi pare să se ascută cu fiecare ieşire din casă. În fotografiile lui, realitatea îşi dezvăluie misterele, poezia, cacofoniile, absurdul şi jocurile subtile, pe care numai privirea ce transformă observaţia în artă le poate recupera din efemeritate.</p>
+                        @Html.Raw(tab2.Content)
                     </div>
                     <div id="tab-3" class="tab_content" style="display:none">
-                        <h4 class="ubuntu-font"><a href="https://www.facebook.com/events/309046536123139/">Cinemagraphs – Alex Gâlmeanu – Urania Palace</a></h4>
-                        <h5 class="ubuntu-font exp-time"><i class="fa fa-clock-o" aria-hidden="true"></i> Joi-duminică între orele 12:00-20:00</h5>
-                        <p>Portretele sale animate scot din rutină privirea obișnuită, iar ritmul alert al secvențelor dezvăluie personaje misterioase care spun povești nesfârșite. Cinemagraphs este un experiment ce invită vizitatorii să interacționeze cu arta fotografică într-un mod inedit.</p>
+                        @Html.Raw(tab3.Content)
                     </div>
                     <div id="tab-4" class="tab_content" style="display:none">
-                        <h4 class="ubuntu-font"><a href="https://www.facebook.com/events/1778760465729131/">My side of the concert – Vlad Cupșa – Atelier Cafe</a></h4>
-                        <h5 class="ubuntu-font exp-time"><i class="fa fa-clock-o" aria-hidden="true"></i> Joi 13 octombrie, vernisaj 18:30-19:30, &nbsp Vineri-duminică de la 13:00-23:00</h5>
-                        <p>
-                            Expoziția lui Vlad reprezintă o adevărată provocare, după sute de galerii create și peste o sută de mii de poze editate, la întâlniri nocturne cu Lightroom și cafea.
-                            Stări oscilante, emoții care copleșesc la o simplă privire, producții de scenă impunătoare și artiști fericiți sunt elementele care definesc imaginile care-i vor uimi pe toți cei care trec pragul Atelier Cafe.
-                        </p>
+                        @Html.Raw(tab4.Content)
                     </div>
                 </div>
                 <div class="clear"></div>
