@@ -12,6 +12,7 @@ using PhotoMarathon.Data.Infrastructure;
 using PhotoMarathon.Data.Repository;
 using PhotoMarathon.Service.Services;
 using System.Globalization;
+using PhotoMarathon.Data.Entities.Cms;
 
 namespace PhotoMarathon
 {
@@ -52,6 +53,7 @@ namespace PhotoMarathon
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<ICmsService, CmsService>();
             //Repositories
             services.AddTransient<IEntityBaseRepository<Newsletter>, EntityBaseRepository<Newsletter>>();
             services.AddTransient<IEntityBaseRepository<WorkShop>, EntityBaseRepository<WorkShop>>();
@@ -59,6 +61,10 @@ namespace PhotoMarathon
             services.AddTransient<IEntityBaseRepository<BlogItem>, EntityBaseRepository<BlogItem>>();
             services.AddTransient<IEntityBaseRepository<RegisterStatus>, EntityBaseRepository<RegisterStatus>>();
             services.AddTransient<IEntityBaseRepository<ContactMessage>, EntityBaseRepository<ContactMessage>>();
+            services.AddTransient<IEntityBaseRepository<Page>, EntityBaseRepository<Page>>();
+            services.AddTransient<IEntityBaseRepository<Section>, EntityBaseRepository<Section>>();
+            services.AddTransient<IEntityBaseRepository<Article>, EntityBaseRepository<Article>>();
+            services.AddTransient<ICmsRepository, CmsRepository>();
             //identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<BaseDbContext>()

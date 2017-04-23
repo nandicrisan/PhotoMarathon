@@ -9,7 +9,12 @@ using PhotoMarathon.Service.Services;
 using PhotoMarathon.Service.Utils;
 using PhotoMarathon.Utils;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
+using PhotoMarathon.Data.Entities.Cms;
+using PhotoMarathon.Data.Entities.Enumes;
+using PhotoMarathon.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,12 +23,13 @@ namespace PhotoMarathon.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        private readonly IGeneralService generalService;
-        private readonly IAccountService accountService;
-        private readonly INewsLetterService newsletterService;
-        private readonly IBlogService blogService;
+        private readonly IGeneralService _generalService;
+        private readonly IAccountService _accountService;
+        private readonly INewsLetterService _newsletterService;
+        private readonly IBlogService _blogService;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IContactService _contactService;
+        private readonly ICmsService _cmsService;
 
         public object AppDomain { get; private set; }
 
@@ -33,26 +39,28 @@ namespace PhotoMarathon.Controllers
             IBlogService blogService,
             IHostingEnvironment hostingEnvironment,
             IGeneralService generalService,
-            IContactService contactService)
+            IContactService contactService,
+            ICmsService cmsService)
         {
-            this.accountService = accountService;
-            this.newsletterService = newsletterService;
-            this.blogService = blogService;
-            this.generalService = generalService;
+            _accountService = accountService;
+            _newsletterService = newsletterService;
+            _blogService = blogService;
+            _generalService = generalService;
             _hostingEnvironment = hostingEnvironment;
             _contactService = contactService;
+            _cmsService = cmsService;
         }
 
         public IActionResult Index()
         {
             var homeViewModel = new HomeViewModel();
-            homeViewModel.PhotograperCount = accountService.Count(new PhotographerFilter()).Data;
-            homeViewModel.NewsletterCount = newsletterService.Count(new PhotoLetterFilter()).Data;
+            homeViewModel.PhotograperCount = _accountService.Count(new PhotographerFilter()).Data;
+            homeViewModel.NewsletterCount = _newsletterService.Count(new PhotoLetterFilter()).Data;
             return View(homeViewModel);
         }
         public IActionResult Photographers()
         {
-            var regStatus = generalService.GetRegisterStatus();
+            var regStatus = _generalService.GetRegisterStatus();
             if (regStatus.IsOk())
                 return View(regStatus.Data);
 
@@ -61,11 +69,11 @@ namespace PhotoMarathon.Controllers
         public IActionResult GetPhotograpers(PhotographerFilter filter)
         {
             //Get the data in a string list filtered by the PhotographerFilter
-            var result = accountService.BuildForDatatable(filter);
+            var result = _accountService.BuildForDatatable(filter);
             if (!result.IsOk()) return Json("-1");
 
             // Get the count of all records filtered by the PhotographerFilter
-            var count = accountService.Count(filter);
+            var count = _accountService.Count(filter);
             if (!count.IsOk()) return Json("-1");
             var iTotalRecords = count.Data;
             var iTotalDisplayRecords = count.Data;
@@ -85,10 +93,10 @@ namespace PhotoMarathon.Controllers
         }
         public IActionResult GetPhotoletters(PhotoLetterFilter filter)
         {
-            var result = newsletterService.BuildForDatatable(filter);
+            var result = _newsletterService.BuildForDatatable(filter);
             if (!result.IsOk()) return Json("-1");
 
-            var count = newsletterService.Count(filter);
+            var count = _newsletterService.Count(filter);
             if (!count.IsOk()) return Json("-1");
             var iTotalRecords = count.Data;
             var iTotalDisplayRecords = count.Data;
@@ -108,10 +116,10 @@ namespace PhotoMarathon.Controllers
         }
         public IActionResult GetBlogItems(BlogFilter filter)
         {
-            var result = blogService.BuildForDatatable(filter);
+            var result = _blogService.BuildForDatatable(filter);
             if (!result.IsOk()) return Json("-1");
 
-            var count = blogService.Count(filter);
+            var count = _blogService.Count(filter);
             if (!count.IsOk()) return Json("-1");
             var iTotalRecords = count.Data;
             var iTotalDisplayRecords = count.Data;
@@ -129,13 +137,13 @@ namespace PhotoMarathon.Controllers
             var blogItem = new BlogItem();
             if (id != 0)
             {
-                blogItem = blogService.Get(id).Data;
+                blogItem = _blogService.Get(id).Data;
             }
             return View(blogItem);
         }
         public IActionResult DeleteBlog(int id)
         {
-            var deleteRes = blogService.Delete(id);
+            var deleteRes = _blogService.Delete(id);
             if (deleteRes.IsOk())
                 return StatusCode((int)deleteRes.Status, deleteRes.Message);
             return StatusCode(200);
@@ -166,9 +174,9 @@ namespace PhotoMarathon.Controllers
             //Set slug
             blogitem.Slug = WebUtils.GenerateSlug(blogitem.Title);
             if (blogitem.Id == 0)
-                addRes = blogService.Add(blogitem);
+                addRes = _blogService.Add(blogitem);
             else
-                addRes = blogService.Edit(blogitem);
+                addRes = _blogService.Edit(blogitem);
             if (addRes.IsOk())
             {
                 TempData.Add("Message", "Salvat");
@@ -188,6 +196,122 @@ namespace PhotoMarathon.Controllers
             if (!messList.IsOk())
                 return StatusCode(500, messList.Message);
             return View(messList.Data);
+        }
+
+        public IActionResult Cms()
+        {
+            //Generate tree model
+            var pages = _cmsService.GetAllPages();
+            if(!pages.IsOk())
+                return new StatusCodeResult(500);
+            var tree =new List<Node>();
+            foreach (var page in pages.Data)
+            {
+                var pageNode = new Node
+                {
+                    text = page.Name,
+                    id = page.Id,
+                    type = CmsStructureType.Page
+                };
+                if (page.Sections != null)
+                {
+                    pageNode.nodes = new List<Node>();
+                    foreach (var section in page.Sections)
+                    {
+                        var sectionNode = new Node
+                        {
+                            text = section.Name,
+                            id = section.Id,
+                            type = CmsStructureType.Section
+                        };
+                        if (section.Articles != null)
+                        {
+                            sectionNode.nodes = new List<Node>();
+                            foreach (var article in section.Articles)
+                            {
+                                sectionNode.nodes.Add(new Node
+                                {
+                                    text = article.Name,
+                                    id = article.Id,
+                                    type = CmsStructureType.Article
+                                });
+                            }
+                        }
+                        pageNode.nodes.Add(sectionNode);
+                    }
+                }
+                tree.Add(pageNode);
+            }
+            ViewBag.Tree = JsonConvert.SerializeObject(tree);
+            return View(tree);
+        }
+
+        public string GetCmsData(CmsStructureType type, int id)
+        {
+            switch (type)
+            {
+                case CmsStructureType.Undefined:
+                    return "";
+                case CmsStructureType.Page:
+                    var page = _cmsService.GetPage(id);
+                    return JsonConvert.SerializeObject(page.Data);
+                case CmsStructureType.Section:
+                    var section = _cmsService.GetSection(id);
+                    return JsonConvert.SerializeObject(section.Data);
+                case CmsStructureType.Article:
+                    var article = _cmsService.GetArticle(id);
+                    return JsonConvert.SerializeObject(article.Data);
+                default:
+                    break;
+                    return "";
+            }
+            return "";
+        }
+        public string SaveCmsData(CmsStructureType type, int id, string content, string title, string subtitle, string slug, string name)
+        {
+            switch (type)
+            {
+                case CmsStructureType.Undefined:
+                    return "";
+                case CmsStructureType.Page:
+                    var page = new Page
+                    {
+                        Title = title,
+                        Subtitle = subtitle,
+                        Id = id,
+                        Slug = slug,
+                        Name = name
+                    };
+                    _cmsService.EditPage(page);
+                    return JsonConvert.SerializeObject("");
+                case CmsStructureType.Section:
+                    var section = new Section
+                    {
+                        Content = content,
+                        Title = title,
+                        Subtitle = subtitle,
+                        Id = id,
+                        Slug=slug,
+                        Name = name
+                    };
+                    _cmsService.EditSection(section);
+                    return JsonConvert.SerializeObject("");
+                case CmsStructureType.Article:
+                    var article = new Article
+                    {
+                        Content = content,
+                        Title = title,
+                        Subtitle = subtitle,
+                        Id = id,
+                        Slug = slug,
+                        Name = name
+                    };
+                    _cmsService.EditArticle(article);
+                    return JsonConvert.SerializeObject("");
+                default:
+                    break;
+            }
+            return "";
         }
     }
 }

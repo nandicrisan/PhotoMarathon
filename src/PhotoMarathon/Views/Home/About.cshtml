@@ -1,9 +1,10 @@
-﻿@{
+﻿@model PhotoMarathon.Data.Entities.Cms.Page
+@{
     ViewData["Title"] = "About";
 }
 <div>
     <h3 class="text-center image-title ubuntu-font">
-        Împreună punem arta fotografică în mişcare!
+       @Model.Title
     </h3>
     <img src="~/images/wallp5.jpg" class="img-responsive" />
 </div>
@@ -16,10 +17,7 @@
             <a name="description"></a>
             <div class="margin-5"></div>
             <div class="row">
-                <p>
-                    PHOTO MARATHON este singurul eveniment din România care oferă atât fotografilor amatori, cât şi celor profesionişti, oportunitatea de a experimenta arta fotografică, într-o manieră inedită, punându-le la încercare imaginaţia şi creativitatea.
-                </p>
-                <p>Photo Marathon adună în același loc pasionații de fotografie din zona Transilvaniei și le oferă o experiență unică prin intermediul celor 3 componente:</p>
+               @Html.Raw(Model.Sections.FirstOrDefault(p=>p.Slug == "descriere-1").Content)
                 <div class="margin-4"></div>
             </div>
 
@@ -27,7 +25,8 @@
                 <div class="col-md-4">
                     <i class="fa fa-camera-retro font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
-                    <h6>Maratonul foto</h6>
+                    @{ var tabs = Model.Sections.FirstOrDefault(p => p.Slug == "descriere-tabs").Articles;}
+                    <h6>@tabs.FirstOrDefault(p => p.Slug == "tab-1").Title</h6>
                     <div class="owl-dots position-relative">
                         <div class="owl-dot active">
                             <span class="red-line"></span>
@@ -35,34 +34,34 @@
                     </div>
                     <div class="margin-1"></div>
                     <p class="small">
-                        Maratonul fotografic, unic în zona Transilvaniei, oferă participanților oportunitatea de a-și testa limitele și creativitatea, câștigând premii în valoare de 6.000 de lei.
+                        @Html.Raw(tabs.FirstOrDefault(p=>p.Slug == "tab-1").Content)
                     </p>
                     <div class="margin-5"></div>
                 </div>
                 <div class="col-md-4">
                     <i class="fa fa-file-image-o font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
-                    <h6>Maratonul de workshop-uri</h6>
+                    <h6>@tabs.FirstOrDefault(p => p.Slug == "tab-2").Title</h6>
                     <div class="owl-dots position-relative">
                         <div class="owl-dot active">
                             <span class="red-line"></span>
                         </div>
                     </div>
                     <div class="margin-1"></div>
-                    <p class="small">Pe parcursul unei singure zile, maratonul de ateliere oferă fotografilor profesioniști și amatori workshop-uri prin care să își dezvolte și să-și aprofundeze tehnicile și tacticile de lucru. </p>
+                    <p class="small">@Html.Raw(tabs.FirstOrDefault(p => p.Slug == "tab-2").Content)</p>
                     <div class="margin-5"></div>
                 </div>
                 <div class="col-md-4">
                     <i class="fa fa-picture-o font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
-                    <h6>Maratonul de expoziții</h6>
+                    <h6>@tabs.FirstOrDefault(p => p.Slug == "tab-3").Title</h6>
                     <div class="owl-dots position-relative">
                         <div class="owl-dot active">
                             <span class="red-line"></span>
                         </div>
                     </div>
                     <div class="margin-1"></div>
-                    <p class="small">Timp de 4 zile, maratonul de expoziţii provoacă vizitatorii să cunoască şi să simtă fotografia prin intermediul simţurilor umane: vizual, olfactiv, tactil şi auditiv.</p>
+                    <p class="small">@Html.Raw(tabs.FirstOrDefault(p => p.Slug == "tab-3").Content)</p>
                     <div class="margin-5"></div>
                 </div>
             </div>
@@ -71,7 +70,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p>
-                    Mai mult decât atât, cei care iau parte la acest eveniment, intră automat în comunitatea Photo Marathon, beneficiind de acces la expozițiile, competițiile și evenimentele organizate special pentru a dezvolta comunitatea fotografilor amatori și profesioniști.
+                    @Html.Raw(Model.Sections.FirstOrDefault(p=>p.Slug == "descriere-2").Content)
                 </p>
                 <p class="text-center"><a asp-action="Register" asp-controller="Account">Te-am convins? Înscrie-te acum la PHOTO MARATHON!</a></p>
             </div>

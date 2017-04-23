@@ -1,20 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhotoMarathon.Data.Entities;
+using PhotoMarathon.Service.Services;
 
 namespace PhotoMarathon.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICmsService _cmsService;
+        public HomeController(ICmsService cmsService)
+        {
+            _cmsService = cmsService;
+        }
         public IActionResult Index()
         {
             return View();
         }
 
+        //slug:despre
         public IActionResult About()
         {
-            return View();
+            var page = _cmsService.GetPage("despre");
+            if(!page.IsOk())
+                return new StatusCodeResult(404);
+            return View(page.Data);
         }
-
+    
         public IActionResult Partners()
         {
             return View();

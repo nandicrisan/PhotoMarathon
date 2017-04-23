@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using PhotoMarathon.Data.Entities;
 using PhotoMarathon.Models;
 using PhotoMarathon.Service.Services;
-using PhotoMarathon.Service.Utils;
 using System;
 using System.Threading.Tasks;
 
@@ -12,10 +11,9 @@ namespace PhotoMarathon.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IGeneralService generalService;
-        private readonly IAccountService accountService;
-        private readonly INewsLetterService newsLetterService;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IGeneralService _generalService;
+        private readonly IAccountService _accountService;
+        private readonly INewsLetterService _newsLetterService;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public AccountController(IGeneralService generalService,
@@ -24,11 +22,10 @@ namespace PhotoMarathon.Controllers
             INewsLetterService newsLetterService,
             SignInManager<ApplicationUser> signInManager)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
-            this.generalService = generalService;
-            this.accountService = accountService;
-            this.newsLetterService = newsLetterService;
+            this._generalService = generalService;
+            this._accountService = accountService;
+            this._newsLetterService = newsLetterService;
         }
 
         // GET: /<controller>/
@@ -44,10 +41,10 @@ namespace PhotoMarathon.Controllers
 
             var photographer = new Photographer();
             photographer.HasNewsLetter = true;
-            ViewBag.WorkShops = generalService.GetWorkShpos().Data.GetRange(3, 1);
+            ViewBag.WorkShops = _generalService.GetWorkShpos().Data.GetRange(3, 1);
             viewModel.Photographer = photographer;
 
-            var registerStatus = generalService.GetRegisterStatus();
+            var registerStatus = _generalService.GetRegisterStatus();
 
             viewModel.RegisterStatus = new RegisterStatus();
             if (registerStatus.IsOk())
@@ -55,32 +52,33 @@ namespace PhotoMarathon.Controllers
 
             return View(viewModel);
         }
+
         [HttpPost]
         public IActionResult Register(Photographer photographer)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.WorkShops = generalService.GetWorkShpos().Data;
+                ViewBag.WorkShops = _generalService.GetWorkShpos().Data;
                 return View(photographer);
             }
             if (!photographer.Rules)
             {
-                ViewBag.WorkShops = generalService.GetWorkShpos().Data;
+                ViewBag.WorkShops = _generalService.GetWorkShpos().Data;
                 ModelState.AddModelError("Rules", "Te rugăm să confirmi că ai citit şi eşti de acord cu regulamentul");
                 return View(photographer);
             }
-            var result = accountService.AddPhotographer(photographer);
+            var result = _accountService.AddPhotographer(photographer);
             var newsLetter = new Newsletter
             {
                 DateAdded = DateTime.Now,
                 Email = photographer.Email,
                 Name = photographer.FirstName + " " + photographer.LastName
             };
-            var addNewsLetter = newsLetterService.Add(newsLetter);
+            var addNewsLetter = _newsLetterService.Add(newsLetter);
             if (!result.IsOk() || !result.IsOk())
             {
                 ModelState.AddModelError("Rules", "Eroare! Te rugăm să încerci mai târziu.");
-                ViewBag.WorkShops = generalService.GetWorkShpos().Data;
+                ViewBag.WorkShops = _generalService.GetWorkShpos().Data;
                 return View(photographer);
             }
             TempData.Add("Message", "Te-ai înregistrat cu succes!");
@@ -124,7 +122,7 @@ namespace PhotoMarathon.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = generalService.SetRegisterStatus(model);
+                var result = _generalService.SetRegisterStatus(model);
                 if (result.IsOk())
                     return RedirectToAction("Photographers", "Admin");
 

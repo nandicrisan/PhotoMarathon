@@ -15,11 +15,11 @@ namespace PhotoMarathon.Service.Services
     }
     public class ContactService : BaseService, IContactService
     {
-        private readonly IEntityBaseRepository<ContactMessage> contactMessageRepository;
+        private readonly IEntityBaseRepository<ContactMessage> _contactMessageRepository;
         public ContactService(IUnitOfWork unitOfWork,
             IEntityBaseRepository<ContactMessage> contactMessageRepository):base(unitOfWork)
         {
-            this.contactMessageRepository = contactMessageRepository;
+            this._contactMessageRepository = contactMessageRepository;
         }
 
         public Result Add(ContactMessage contactMessage)
@@ -27,7 +27,7 @@ namespace PhotoMarathon.Service.Services
             try
             {
                 contactMessage.DateAdded = DateTime.Now;
-                contactMessageRepository.Add(contactMessage);
+                _contactMessageRepository.Add(contactMessage);
                 SaveChanges();
                 return new Result();
             }
@@ -41,7 +41,7 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
-                return new Result<List<ContactMessage>>(contactMessageRepository.GetAll().ToList());
+                return new Result<List<ContactMessage>>(_contactMessageRepository.GetAll().ToList());
             }
             catch (Exception ex)
             {

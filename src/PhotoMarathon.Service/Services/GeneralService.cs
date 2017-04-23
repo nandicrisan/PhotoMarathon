@@ -17,26 +17,25 @@ namespace PhotoMarathon.Service.Services
 
     public class GeneralService : BaseService, IGeneralService
     {
-        private readonly IEntityBaseRepository<WorkShop> workShopRepository;
-        private readonly IEntityBaseRepository<RegisterStatus> registerStatusRepository;
+        private readonly IEntityBaseRepository<WorkShop> _workShopRepository;
+        private readonly IEntityBaseRepository<RegisterStatus> _registerStatusRepository;
         public GeneralService(IEntityBaseRepository<WorkShop> workShopRepository, IEntityBaseRepository<RegisterStatus> registerStatusRepository, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            this.workShopRepository = workShopRepository;
-            this.registerStatusRepository = registerStatusRepository;
+            _workShopRepository = workShopRepository;
+            _registerStatusRepository = registerStatusRepository;
         }
 
         public Result<RegisterStatus> GetRegisterStatus()
         {
-            var registerStatus = registerStatusRepository.GetAll().ToList();
-            if (registerStatus.Count() > 0)
+            var registerStatus = _registerStatusRepository.GetAll().ToList();
+            if (registerStatus.Any())
                 return new Result<RegisterStatus>(registerStatus.FirstOrDefault());
-
             return new Result<RegisterStatus>(ResultStatus.EMPTY);
         }
 
         public Result<List<WorkShop>> GetWorkShpos()
         {
-            var workShops = workShopRepository.GetAll();
+            var workShops = _workShopRepository.GetAll();
             return new Result<List<WorkShop>>(workShops.ToList());
         }
 
@@ -44,7 +43,7 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
-                registerStatusRepository.Update(model);
+                _registerStatusRepository.Update(model);
                 SaveChanges();
                 return new Result<RegisterStatus>(ResultStatus.OK);
             }

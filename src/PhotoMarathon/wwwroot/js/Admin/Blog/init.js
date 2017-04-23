@@ -10,7 +10,7 @@ $(document).ready(function () {
         "iDisplayLength": 10,
         "stateSave": true,
         "order": [[3, "desc"]],
-        "sAjaxSource": localStorage.getItem("siteRoot") + "/GetBlogItems",
+        "sAjaxSource": localStorage.getItem("siteRootAdmin") + "/GetBlogItems",
         "aoColumns": [
                 { "bSortable": true },//Title
                 { "bSortable": true },//Created by

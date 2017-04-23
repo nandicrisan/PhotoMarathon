@@ -1,0 +1,88 @@
+﻿@using Microsoft.ApplicationInsights.AspNetCore
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="row">
+    <div class="col-md-3" id="tree-view"></div>
+    <div class="col-md-9">
+        <div class="row">
+            <input type="hidden" id="cms-slug" />
+            <input type="hidden" id="cms-name" />
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Titlu</label>
+                <input type="text" class="form-control" id="cms-title" placeholder="Titlu">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Subtitlu</label>
+                <input type="text" class="form-control" id="cms-subtitle" placeholder="Subtitlu">
+            </div>
+        </div>
+        <textarea id="cms-editor" rows="16" cols="120"></textarea>
+        <div class="box-footer">
+            <button class="btn btn-info pull-right" type="submit" id="cms-save">Salvare</button>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/lib/bootstrap-treeview.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=0st9kecblx5xojentphl5j6kieqrk240snddvbrhkfo58oh0"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tree-view').treeview({ data: @Html.Raw(ViewBag.Tree) });
+            tinymce.init({
+                selector: '#cms-editor', height: 400,
+                //add paste plugin
+                //add paste plugin
+                plugins : 'paste',
+                //Keeps Paste Text feature active until user deselects the Paste as Text button
+                paste_text_sticky : true,
+                //select pasteAsPlainText on startup
+                valid_children : '+body[style]',
+            });
+            $('#tree-view').on('nodeSelected',
+                function(event, data) {
+                    //if (data.type == 1) {
+                    //    tinyMCE.get('cms-editor').disable();
+                    //} else {
+                    //    tinyMCE.get('cms-editor').enable();
+                    //}
+                    $.ajax({
+                        url: localStorage.siteRootAdmin + "/getcmsdata",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            id: data.id,
+                            type: data.type
+                        }
+                    }).done(function(response) {
+                        tinyMCE.get('cms-editor').setContent(response.Content);
+                        //$("#cms-editor").val(response.Content),
+                        $("#cms-title").val(response.Title);
+                        $("#cms-subtitle").val(response.Subtitle);
+                        $("#cms-slug").val(response.Slug);
+                        $("#cms-name").val(response.Name);
+                    });
+                });
+            $("#cms-save").click(function() {
+                $.ajax({
+                    url: localStorage.siteRootAdmin + "/savecmsdata",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        Id: $('#tree-view').treeview('getSelected')[0].id,
+                        Content: tinyMCE.get('cms-editor').getContent(),
+                        //Content: $("#cms-editor").val(),
+                        type: $('#tree-view').treeview('getSelected')[0].type,
+                        Title: $("#cms-title").val(),
+                        Subtitle: $("#cms-subtitle").val(),
+                        Slug: $("#cms-slug").val(),
+                        Name: $("#cms-name").val()
+                    }
+                }).done(function(response) {
+                    noty({ text: "Salvat.", type: "success", layout: "topRight" });
+                });
+            });
+        })
+    </script>
+}

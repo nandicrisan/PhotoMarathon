@@ -26,19 +26,19 @@ namespace PhotoMarathon.Service.Services
     }
     public class BlogService : BaseService, IBlogService
     {
-        private readonly IEntityBaseRepository<BlogItem> blogRepository;
+        private readonly IEntityBaseRepository<BlogItem> _blogRepository;
 
         public BlogService(IUnitOfWork unitOfWork,
             IEntityBaseRepository<BlogItem> blogRepository) : base(unitOfWork)
         {
-            this.blogRepository = blogRepository;
+            this._blogRepository = blogRepository;
         }
         public Result<BlogItem> Add(BlogItem blogItem)
         {
             try
             {
                 blogItem.DateAdded = DateTime.Now;
-                blogRepository.Add(blogItem);
+                _blogRepository.Add(blogItem);
                 SaveChanges();
                 return new Result<BlogItem>(blogItem);
             }
@@ -55,7 +55,7 @@ namespace PhotoMarathon.Service.Services
                 var predicate = CreatePredicate(filter);
                 var orderby = GetSortedFunction(filter);
                 var orderDirection = GetOrderDirection(filter);
-                var blogItems = blogRepository.FindByIncluding(predicate, orderby, orderDirection, filter.iDisplayStart, filter.iDisplayLength) as List<BlogItem>;
+                var blogItems = _blogRepository.FindByIncluding(predicate, orderby, orderDirection, filter.iDisplayStart, filter.iDisplayLength) as List<BlogItem>;
                 return new Result<List<BlogItem>>(blogItems);
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace PhotoMarathon.Service.Services
             try
             {
                 var predicate = CreatePredicate(filter);
-                var count = blogRepository.Count(predicate);
+                var count = _blogRepository.Count(predicate);
                 return new Result<int>(count);
             }
             catch (Exception ex)
@@ -108,7 +108,7 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
-                return new Result<BlogItem>(blogRepository.GetById(id));
+                return new Result<BlogItem>(_blogRepository.GetById(id));
             }
             catch (Exception ex)
             {
@@ -121,7 +121,7 @@ namespace PhotoMarathon.Service.Services
             try
             {
                 Expression<Func<BlogItem, bool>> predicate = p => p.Slug == slug;
-                    return new Result<BlogItem>(blogRepository.Get(predicate));
+                    return new Result<BlogItem>(_blogRepository.Get(predicate));
             }
             catch (Exception ex)
             {
@@ -133,10 +133,10 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
-                var blogItem = blogRepository.GetById(id);
+                var blogItem = _blogRepository.GetById(id);
                 if (blogItem == null)
                     return new Result(ResultStatus.NOT_FOUND);
-                blogRepository.Delete(blogItem);
+                _blogRepository.Delete(blogItem);
                 SaveChanges();
                 return new Result();
             }
@@ -150,7 +150,7 @@ namespace PhotoMarathon.Service.Services
         {
             try
             {
-                blogRepository.Update(blogItem);
+                _blogRepository.Update(blogItem);
                 SaveChanges();
                 return new Result<BlogItem>(blogItem);
             }
@@ -184,7 +184,7 @@ namespace PhotoMarathon.Service.Services
                         };
                         currentYear++;
                     }
-                    var articleCount = blogRepository.Count(predicate);
+                    var articleCount = _blogRepository.Count(predicate);
                     tempDateFilter.Months.Add(new MonthFilter
                     {
                         Month = date.Month,

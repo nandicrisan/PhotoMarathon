@@ -9,7 +9,7 @@
         "iDisplayLength": 10,
         "stateSave": true,
         "order": [[4, "desc"]],
-        "sAjaxSource": localStorage.getItem("siteRoot") + "/GetPhotograpers",
+        "sAjaxSource": localStorage.getItem("siteRootAdmin") + "/GetPhotograpers",
         "aoColumns": [
                 { "bSortable": true },//First name
                 { "bSortable": true },//Last name
