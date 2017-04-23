@@ -97,7 +97,11 @@
 .photo-lett {
     text-align: left;
     color: white;
-    margin-top: 24px;
+    margin-top: 20px;
+    font-family: "Raleway";
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 5px;
 }
 
 .input-validation {
@@ -262,7 +266,8 @@ input[type=checkbox] {
 }
 
 .ubuntu-font {
-    font-family: 'Ubuntu Condensed', sans-serif !important;
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 800;
 }
 
 .red-line {
@@ -313,6 +318,10 @@ img {
         vertical-align: text-top;
     }
 
-.box.white-bg input, .box.white-bg textarea  {
-    color: #292f33; 
+.box.white-bg input, .box.white-bg textarea {
+    color: white;
+}
+
+.img-logo2017 {
+    height: auto !important;
 }

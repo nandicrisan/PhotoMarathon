@@ -13,8 +13,9 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic%7CRoboto:400,700%7CDroid+Serif">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet" type="text/css">
+        @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic%7CRoboto:400,700%7CDroid+Serif">*@
+        <link href="https://fonts.googleapis.com/css?family=Exo|Raleway:400,800|Roboto:300,400,700" rel="stylesheet">
+        @*<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet" type="text/css">*@
         <link rel="stylesheet" href="~/css/Layout/style.css" />
         <link rel="stylesheet" href="~/css/Layout/style-dark.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -68,9 +69,13 @@
 <body>
     <header id="top" class="navbar navbar-fixed-top" role="banner">
         <div class="container">
+            <div class="row logo2017">
+                <a href="@Url.Action("Index","Home")">
+                    <img src="~/images/logo2017.png" alt="PhotoMarathon" class="img-responsive img-logo2017" style="width:100%">
+                </a>
+            </div>
             <div class="inner">
                 <div class="site-title">
-                    <h1><a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo11b.png" alt="PhotoMarathon" class="img-responsive img-logo" width="200"></a></h1>
                     <a href="#site-menu" class="site-menu-toggle">
                         <span class="sr-only">Toggle navigation</span>
                         <em class="first"></em><em class="middle"></em><em class="last"></em>
@@ -89,6 +94,18 @@
                             <li class=""><a asp-controller="Blog" asp-action="Index">Blog</a></li>
                             <li class=""><a asp-controller="Home" asp-action="Partners">Parteneri</a></li>
                             <li class=""><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li style="float:right"><a style="padding:3px;" href="https://www.facebook.com/photomarathon.ro/" target="_blank"><img class="img-responsive" src="~/images/social/youtube.png" style="width:30px;position:relative;" /></a></li>
+
+                            <li style="float:right"><a style="padding:3px;" href="https://www.instagram.com/photomarathon.ro/" target="_blank"><img class="img-responsive" src="~/images/social/pint.png" style="width:30px;position:relative;" /></a></li>
+
+                            <li style="float:right"><a style="padding:3px;" href="https://ro.pinterest.com/photomarathon/" target="_blank"><img class="img-responsive" src="~/images/social/insta.png" style="width:30px;position:relative;" /></a></li>
+
+                            <li style="float:right">
+                                <a style="padding:3px;" href="https://www.youtube.com/channel/UC7xgv1Th5Fd3YbrEYqzAoyA" target="_blank"><img class="img-responsive" src="~/images/social/fb.png" style="width:30px;position:relative;" /></a>
+                            </li>
+
+
+
                         </ul>
                     </nav>
                 </div>
@@ -96,7 +113,7 @@
             </div>
         </div>
     </header>
-    <div style="padding-top:100px;">
+    <div style="padding-top:165px;">
         @RenderBody()
     </div>
     <footer id="footer" role="contentinfo">
@@ -105,7 +122,6 @@
                 <div class="col-sm-4">
                     <div class="box white-bg">
                         <h5 class="photo-lett">Abonează-te la Photoletter </h5>
-                        <div class="sep red"></div>
                         <div class="margin-1"></div>
                         <label for="name" class="sr-only">Nume</label>
                         <input type="text" class="underline" name="name" id="news-name" placeholder="Nume..." required="">
@@ -117,16 +133,10 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <p>
-                        <a asp-controller="Home" asp-action="Index" class="mini-logo img-responsive"><img src="~/images/logo11b.png" alt="PhotoMarathon" width="175"></a>
+                    <p style="margin-bottom:0px;margin-top:10px;">
+                        <a asp-controller="Home" asp-action="Index" class="mini-logo img-responsive"><img src="~/images/logo2017.png" alt="PhotoMarathon" width="325"></a>
                     </p>
-                    <p>&copy; 2016 Photo Marathon. Toate drepturile rezervate.</p>
-                    <p>
-                        <a href="https://www.facebook.com/photomarathon.ro/" target="_blank" class="social-link"><i class="fa fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/photomarathon.ro/" target="_blank" class="social-link"><i class="fa fa-instagram"></i></a>
-                        <a href="https://ro.pinterest.com/photomarathon/" target="_blank" class="social-link"><i class="fa fa-pinterest"></i></a>
-                        <a href="https://www.youtube.com/channel/UC7xgv1Th5Fd3YbrEYqzAoyA" target="_blank" class="social-link"><i class="fa fa-youtube"></i></a>
-                    </p>
+                    <p>&copy; 2017 Photo Marathon. Toate drepturile rezervate.</p>
                 </div>
             </div>
         </div>
