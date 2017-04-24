@@ -2,11 +2,6 @@
 @{
     ViewData["Title"] = "Pagina principală";
 }
-<style>
-    .thumb .info {
-        opacity: inherit !important;
-    }
-</style>
 
 <environment names="Development">
     <link rel="stylesheet" href="~/css/Index/index.css" />
@@ -32,7 +27,7 @@
                         <div class="photo">
                             <a asp-controller="Home" asp-action="About">
                                 <img src="~/images/about.jpg" alt="" width="715" height="556" style="height:556px;">
-                                <span class="info" style="background-color:#292f33;padding-top:0;">
+                                <span class="info" style="background-color:#292f33;padding-top:0;opacity: inherit !important;">
                                     <span class="excerpt">
                                         @{ var leftBoxArticle = Model.Sections.FirstOrDefault(p => p.Slug == "boxa-stanga");}
                                         <h4>@leftBoxArticle.Title</h4><br />
