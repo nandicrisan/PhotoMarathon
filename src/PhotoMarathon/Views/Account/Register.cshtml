@@ -43,78 +43,82 @@
                         <input asp-for="Photographer.PhoneNumber" class="underline" placeholder="Nr. de telefon">
                         <span asp-validation-for="Photographer.PhoneNumber" class="input-validation-side"></span>
 
-                        <label for="phone" class="sr-only">Oraș</label>
+                        <label for="city" class="sr-only">Oraș</label>
                         <input asp-for="Photographer.City" class="underline" placeholder="Oraș">
                         <span asp-validation-for="Photographer.City" class="input-validation-side"></span>
 
-                        <label for="phone" class="sr-only">Vârstă</label>
+                        <label for="age" class="sr-only">Vârstă</label>
                         <input asp-for="Photographer.Age" class="underline" placeholder="Vârstă" value="">
                         <span asp-validation-for="Photographer.Age" class="input-validation-side"></span>
 
+
+                        <label for="camera" class="sr-only">Aparatul pe care îl vei folosi în competiţie:</label>
+                        <input asp-for="Photographer.Camera" class="underline" placeholder="Aparatul pe care îl vei folosi în competiţie" value="">
+
                         @*<p class="display-inline-block margin-bottom-none">Editia la care te inscrii</p>
-                        <div class="row">
-                            <div class="form-group col-md-12" style="margin:8px 0 8px 0;">
-                                <select class="ui dropdown fluid" name="EditionId">
-                                    <option value="0">Nespecificat</option>
-                                    <option value="1">Photo Marathon Cluj Napoca</option>
-                                    <option value="2">Photo Marathon Timisoara</option>
-                                    <option value="3">Photo Marathon Sibiu</option>
-                                </select>
-                            </div>
-                        </div>*@
+                            <div class="row">
+                                <div class="form-group col-md-12" style="margin:8px 0 8px 0;">
+                                    <select class="ui dropdown fluid" name="EditionId">
+                                        <option value="0">Nespecificat</option>
+                                        <option value="1">Photo Marathon Cluj Napoca</option>
+                                        <option value="2">Photo Marathon Timisoara</option>
+                                        <option value="3">Photo Marathon Sibiu</option>
+                                    </select>
+                                </div>
+                            </div>*@
 
                         <div class="margin-1"></div>
                         <p for="fotop" class="radio-label vertical-align-middle">Fotograf amator &nbsp;</p>
-                        <input type="radio" class="radio-input" name="IsProfessionist" value="false" />
+                        <input type="radio" class="radio-input" name="Photographer.IsProfessionist" value="false" />
                         <p for="fotop" class="radio-label vertical-align-middle"> &nbsp;Fotograf profesionist &nbsp;</p>
-                        <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
+                        <input type="radio" class="radio-input" name="Photographer.IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
                         @*<div class="display-inline-block">
-                            <input asp-for="Photographer.RegisterForWorkShop" type="checkbox" value="false" id="workshop" name="check" />
-                            <label for="workshop"></label>
-                        </div>*@
+                                <input asp-for="Photographer.RegisterForWorkShop" type="checkbox" value="false" id="workshop" name="check" />
+                                <label for="workshop"></label>
+                            </div>*@
                         @*<p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>*@
-                        <div class="row">
-                            <div class="form-group col-md-12" id="workshops" style="display:none; margin-top:15px;">
-                                <select class="ui dropdown fluid" name="WorkshopId" id="workshops-select">
-                                    @foreach (var workShop in workShops)
-                                    {
-                                        <option data-price="@workShop.Price" value="@workShop.Id">@workShop.Name</option>
-                                    }
-                                </select>
-                                @*<div id="order-data">
-                                        <h5>Adresă de facturare</h5>
-                                        <div class="col-md-12">
-                                            <p class="radio-label vertical-align-middle">Persoană fizică &nbsp;</p>
-                                            <input asp-for="BillingData.LegalPerson" type="radio" checked class="radio-input" value="false" />
-                                            <p class="radio-label vertical-align-middle"> &nbsp;Persoană juridică &nbsp;</p>
-                                            <input asp-for="BillingData.LegalPerson" type="radio" class="radio-input" value="true" />
+                        @* <div class="row">
+                                <div class="form-group col-md-12" id="workshops" style="display:none; margin-top:15px;">
+                                    <select class="ui dropdown fluid" name="WorkshopId" id="workshops-select">
+                                        @foreach (var workShop in workShops)
+                                        {
+                                            <option data-price="@workShop.Price" value="@workShop.Id">@workShop.Name</option>
+                                        }
+                                    </select>
+                                    <div id="order-data">
+                                            <h5>Adresă de facturare</h5>
+                                            <div class="col-md-12">
+                                                <p class="radio-label vertical-align-middle">Persoană fizică &nbsp;</p>
+                                                <input asp-for="BillingData.LegalPerson" type="radio" checked class="radio-input" value="false" />
+                                                <p class="radio-label vertical-align-middle"> &nbsp;Persoană juridică &nbsp;</p>
+                                                <input asp-for="BillingData.LegalPerson" type="radio" class="radio-input" value="true" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input asp-for="BillingData.Address" class="underline" placeholder="Adresă">
+                                                <span asp-validation-for="BillingData.Address" class="input-validation-side"></span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input asp-for="BillingData.NrReg" class="underline" placeholder="Numărul de înregistrare">
+                                                <span asp-validation-for="BillingData.NrReg" class="input-validation-side"></span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input asp-for="BillingData.Cnp" class="underline" placeholder="CUI/CNP">
+                                                <span asp-validation-for="BillingData.Cnp" class="input-validation-side"></span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input asp-for="BillingData.Bank" class="underline" placeholder="Banca">
+                                                <span asp-validation-for="BillingData.Bank" class="input-validation-side"></span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input asp-for="BillingData.Cont" class="underline" placeholder="IBAN">
+                                                <span asp-validation-for="BillingData.Cont" class="input-validation-side"></span>
+                                            </div>
+                                            <div class="clearfix"></div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <input asp-for="BillingData.Address" class="underline" placeholder="Adresă">
-                                            <span asp-validation-for="BillingData.Address" class="input-validation-side"></span>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input asp-for="BillingData.NrReg" class="underline" placeholder="Numărul de înregistrare">
-                                            <span asp-validation-for="BillingData.NrReg" class="input-validation-side"></span>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input asp-for="BillingData.Cnp" class="underline" placeholder="CUI/CNP">
-                                            <span asp-validation-for="BillingData.Cnp" class="input-validation-side"></span>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input asp-for="BillingData.Bank" class="underline" placeholder="Banca">
-                                            <span asp-validation-for="BillingData.Bank" class="input-validation-side"></span>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input asp-for="BillingData.Cont" class="underline" placeholder="IBAN">
-                                            <span asp-validation-for="BillingData.Cont" class="input-validation-side"></span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>*@
-                            </div>
-                        </div>
+                                </div>
+                            </div>*@
                         <div class="display-inline-block">
                             <input asp-for="Photographer.RegisterForMarathon" type="checkbox" value="true" id="photoMarathon" name="check" />
                             <label for="photoMarathon"></label>

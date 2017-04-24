@@ -44,5 +44,6 @@ namespace PhotoMarathon.Data.Entities
         public string City { get; set; }
         public int Age { get; set; }
         public EditionsEnum EditionId { get; set; }
+        public string Camera { get; set; }
     }
 }

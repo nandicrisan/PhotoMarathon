@@ -20,10 +20,10 @@
                     "bSortable": true,
                     "mRender": function (data, type, full) {
                         if (full[5] == "True") {
-                            return "Amator";
+                            return "Profesionist";
                         }
                         else {
-                            return "Profesionist";
+                            return "Amator";
                         }
                     }
                 },//Is professionist or amator
@@ -38,7 +38,9 @@
                             return "Nu";
                         }
                     }
-                },//Register for marathon
+                },
+            { "bSortable": false },
+            { "bSortable": false }//Register for marathon
         ],
     });
 });

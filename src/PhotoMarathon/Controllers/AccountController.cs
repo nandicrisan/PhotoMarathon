@@ -6,6 +6,7 @@ using PhotoMarathon.Models;
 using PhotoMarathon.Service.Services;
 using System;
 using System.Threading.Tasks;
+using PhotoMarathon.Data.Entities.Enumes;
 
 namespace PhotoMarathon.Controllers
 {
@@ -41,7 +42,7 @@ namespace PhotoMarathon.Controllers
 
             var photographer = new Photographer();
             photographer.HasNewsLetter = true;
-            ViewBag.WorkShops = _generalService.GetWorkShpos().Data.GetRange(3, 1);
+            //ViewBag.WorkShops = _generalService.GetWorkShpos().Data.GetRange(3, 1);
             viewModel.Photographer = photographer;
 
             var registerStatus = _generalService.GetRegisterStatus();
@@ -67,6 +68,8 @@ namespace PhotoMarathon.Controllers
                 ModelState.AddModelError("Rules", "Te rugăm să confirmi că ai citit şi eşti de acord cu regulamentul");
                 return View(photographer);
             }
+            //Set current edition
+            photographer.EditionId = EditionsEnum.Timisoara17;
             var result = _accountService.AddPhotographer(photographer);
             var newsLetter = new Newsletter
             {

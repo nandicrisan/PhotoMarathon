@@ -80,7 +80,9 @@ namespace PhotoMarathon.Service.Services
                     photographer.DateAdded.ToString(),
                     photographer.IsProfessionist.ToString(),
                     workshopName,
-                    photographer.RegisterForMarathon.ToString()
+                    photographer.RegisterForMarathon.ToString(),
+                    photographer.Camera,
+                    photographer.EditionId.ToString()
                 });
             }
             return new Result<List<string[]>>(aaData);
