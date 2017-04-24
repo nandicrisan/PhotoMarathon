@@ -6,7 +6,7 @@
     <div class="post-box vertical clearfix">
         <div class="extra-info">
             <p class="meta small">@((int)DateTime.Now.Subtract(Model.DateAdded).TotalDays) day(s) ago by <a href="#">@Model.CreatedBy</a></p>
-            <h5><a href="~/blog/article/@Model.Slug">@Model.Title</a></h5>
+            <h5 style="color:black;"><a href="~/blog/article/@Model.Slug">@Model.Title</a></h5>
         </div>
         <a href="~/blog/article/@Model.Slug" class="image-link arrow-icon dark-overlay"><img src="~/images/Blog/@Model.MainImageName" width="434" height="434" alt=""></a>
     </div>

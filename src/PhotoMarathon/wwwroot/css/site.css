@@ -113,7 +113,8 @@
 }
 
 .black-input input {
-    color: black;
+    color: white;
+    border-color: #b5506b;
 }
 
     .black-input input :hover {
@@ -324,4 +325,8 @@ img {
 
 .img-logo2017 {
     height: auto !important;
+}
+
+.current-menu-item a {
+    color: #b5506b !important;
 }
