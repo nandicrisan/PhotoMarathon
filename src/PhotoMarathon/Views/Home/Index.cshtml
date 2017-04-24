@@ -27,7 +27,7 @@
                         <div class="photo">
                             <a asp-controller="Home" asp-action="About">
                                 <img src="~/images/about.jpg" alt="" width="715" height="556" style="height:556px;">
-                                <span class="info" style="background-color:#292f33;padding-top:8%;">
+                                <span class="info" style="background-color:#292f33;padding-top:0;">
                                     <span class="excerpt">
                                         @{ var leftBoxArticle = Model.Sections.FirstOrDefault(p => p.Slug == "boxa-stanga");}
                                         <h4>@leftBoxArticle.Title</h4><br/>
@@ -45,7 +45,7 @@
                         <div class="photo">
                             <a asp-controller="Marathon" asp-action="Photographic">
                                 <img src="~/images/homepage/1.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Maraton de fotografie</strong><span class="excerpt">8 ore, 4 teme, 2 categorii distincte, premii în valoare totală de 6.000 lei și o expoziție post-eveniment
+                                <span class="info" style="padding-top:30%;"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Maraton de fotografie</strong><span class="excerpt">8 ore, 4 teme, 2 categorii distincte, premii în valoare totală de 6.000 lei și o expoziție post-eveniment
                                 </span></span>
                             </a>
                         </div>
@@ -55,9 +55,9 @@
                 <div class="box col-xs-6 col-sm-4 col-md-3">
                     <div class="thumb">
                         <div class="photo">
-                            <a asp-controller="Marathon" asp-action="Workshop">
+                            <a> @*asp-controller="Marathon" asp-action="Workshop"*@
                                 <img src="~/images/homepage/2.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Workshop-uri</strong><span class="excerpt">Află mai multe despre ce înseamnă industria foto la ateliere pentru fotografi amatori și profesioniști</span></span>
+                                @*<span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Workshop-uri</strong><span class="excerpt">Află mai multe despre ce înseamnă industria foto la ateliere pentru fotografi amatori și profesioniști</span></span>*@
                             </a>
                         </div>
                     </div>

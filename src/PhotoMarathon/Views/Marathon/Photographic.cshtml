@@ -12,7 +12,7 @@
                 <h6 class="heading"><span>@sectionIter.Title</span></h6>
                 @Html.Raw(sectionIter.Content)
             }
-            <p><a asp-controller="Account" asp-action="Register">Înscrie-te acum!</a>
+            <p><strong><a asp-controller="Account" asp-action="Register" style="color:#b5506b">Înscrie-te acum!</a></strong>
             </p>
         </div>
         <div class="col-sm-4">
@@ -28,7 +28,7 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            Main.SetActiveMenuItem(4);
+            Main.SetActiveMenuItem(3);
         })
     </script>
 }

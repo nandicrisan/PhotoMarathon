@@ -11,7 +11,7 @@
 
 <main id="content" role="main">
     <div class="container container-boxes">
-        <div class="row box white-bg">
+        <div class="row box">
             <div class="col-sm-12">
                 <div class="black-input">
                     <h3 class="ubuntu-font">Înscrie-te</h3>
@@ -48,10 +48,10 @@
                         <span asp-validation-for="Photographer.City" class="input-validation-side"></span>
 
                         <label for="phone" class="sr-only">Vârstă</label>
-                        <input asp-for="Photographer.Age" class="underline" placeholder="Vârstă">
+                        <input asp-for="Photographer.Age" class="underline" placeholder="Vârstă" value="">
                         <span asp-validation-for="Photographer.Age" class="input-validation-side"></span>
 
-                        <p class="display-inline-block margin-bottom-none">Editia la care te inscrii</p>
+                        @*<p class="display-inline-block margin-bottom-none">Editia la care te inscrii</p>
                         <div class="row">
                             <div class="form-group col-md-12" style="margin:8px 0 8px 0;">
                                 <select class="ui dropdown fluid" name="EditionId">
@@ -61,7 +61,7 @@
                                     <option value="3">Photo Marathon Sibiu</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>*@
 
                         <div class="margin-1"></div>
                         <p for="fotop" class="radio-label vertical-align-middle">Fotograf amator &nbsp;</p>
@@ -70,11 +70,11 @@
                         <input type="radio" class="radio-input" name="IsProfessionist" value="true" />
                         <div class="margin-1"></div>
                         <p>Mă înscriu la:</p>
-                        <div class="display-inline-block">
+                        @*<div class="display-inline-block">
                             <input asp-for="Photographer.RegisterForWorkShop" type="checkbox" value="false" id="workshop" name="check" />
                             <label for="workshop"></label>
-                        </div>
-                        <p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>
+                        </div>*@
+                        @*<p class="display-inline-block margin-bottom-none">Workshop &nbsp;</p>*@
                         <div class="row">
                             <div class="form-group col-md-12" id="workshops" style="display:none; margin-top:15px;">
                                 <select class="ui dropdown fluid" name="WorkshopId" id="workshops-select">

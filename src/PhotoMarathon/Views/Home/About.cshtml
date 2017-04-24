@@ -22,7 +22,7 @@
             </div>
 
             <div class="row owl-services owl-red-dots text-center">
-                <div class="col-md-4">
+                <div class="col-md-offset-1 col-md-4">
                     <i class="fa fa-camera-retro font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
                     @{ var tabs = Model.Sections.FirstOrDefault(p => p.Slug == "descriere-tabs").Articles;}
@@ -33,12 +33,12 @@
                         </div>
                     </div>
                     <div class="margin-1"></div>
-                    <p class="small">
+                    @*<p class="small">*@
                         @Html.Raw(tabs.FirstOrDefault(p=>p.Slug == "tab-1").Content)
-                    </p>
-                    <div class="margin-5"></div>
+                    @*</p>*@
+                    <div class="margin-3"></div>
                 </div>
-                <div class="col-md-4">
+                @*<div class="col-md-4">
                     <i class="fa fa-file-image-o font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
                     <h6>@tabs.FirstOrDefault(p => p.Slug == "tab-2").Title</h6>
@@ -49,9 +49,9 @@
                     </div>
                     <div class="margin-1"></div>
                     <p class="small">@Html.Raw(tabs.FirstOrDefault(p => p.Slug == "tab-2").Content)</p>
-                    <div class="margin-5"></div>
-                </div>
-                <div class="col-md-4">
+                    <div class="margin-3"></div>
+                </div>*@
+                <div class="col-md-offset-2 col-md-4">
                     <i class="fa fa-picture-o font-size-82" aria-hidden="true"></i>
                     <div class="margin-2"></div>
                     <h6>@tabs.FirstOrDefault(p => p.Slug == "tab-3").Title</h6>
@@ -62,11 +62,10 @@
                     </div>
                     <div class="margin-1"></div>
                     <p class="small">@Html.Raw(tabs.FirstOrDefault(p => p.Slug == "tab-3").Content)</p>
-                    <div class="margin-5"></div>
+                    <div class="margin-3"></div>
                 </div>
             </div>
         </div>
-        <div class="margin-2"></div>
         <div class="row">
             <div class="col-md-12">
                 <p>
