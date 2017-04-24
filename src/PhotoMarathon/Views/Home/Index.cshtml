@@ -30,7 +30,7 @@
                                 <span class="info" style="background-color:#292f33;padding-top:0;">
                                     <span class="excerpt">
                                         @{ var leftBoxArticle = Model.Sections.FirstOrDefault(p => p.Slug == "boxa-stanga");}
-                                        <h4>@leftBoxArticle.Title</h4><br/>
+                                        <h4>@leftBoxArticle.Title</h4><br />
                                         @Html.Raw(leftBoxArticle.Content)
                                         <i class="fa fa-angle-right" aria-hidden="true" style="color: #fd4ec3; font-size: 86px;"></i>
                                     </span>
@@ -45,8 +45,11 @@
                         <div class="photo">
                             <a asp-controller="Marathon" asp-action="Photographic">
                                 <img src="~/images/homepage/1.png" alt="" width="434" height="434">
-                                <span class="info" style="padding-top:30%;"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Maraton de fotografie</strong><span class="excerpt">8 ore, 4 teme, 2 categorii distincte, premii în valoare totală de 6.000 lei și o expoziție post-eveniment
-                                </span></span>
+                                <span class="info" style="padding-top:30%;">
+                                    <i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Maraton de fotografie</strong><span class="excerpt">
+                                        8 ore, 4 teme, 2 categorii distincte, premii în valoare totală de 6.000 lei și o expoziție post-eveniment
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -55,7 +58,8 @@
                 <div class="box col-xs-6 col-sm-4 col-md-3">
                     <div class="thumb">
                         <div class="photo">
-                            <a> @*asp-controller="Marathon" asp-action="Workshop"*@
+                            <a>
+                                @*asp-controller="Marathon" asp-action="Workshop"*@
                                 <img src="~/images/homepage/2.png" alt="" width="434" height="434">
                                 @*<span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Workshop-uri</strong><span class="excerpt">Află mai multe despre ce înseamnă industria foto la ateliere pentru fotografi amatori și profesioniști</span></span>*@
                             </a>
@@ -68,8 +72,11 @@
                         <div class="photo">
                             <a asp-controller="Account" asp-action="Register">
                                 <img src="~/images/homepage/4.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Înscrie-te</strong><span class="excerpt">Pune arta fotografică în mişcare. Intră în competiție acum! 
-                                </span></span>
+                                <span class="info">
+                                    <i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Înscrie-te</strong><span class="excerpt">
+                                        Pune arta fotografică în mişcare. Intră în competiție acum!
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -80,8 +87,11 @@
                         <div class="photo">
                             <a asp-controller="Marathon" asp-action="Exposition">
                                 <img src="~/images/homepage/3.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Expoziții</strong><span class="excerpt">Teme inedite și locuri neconvenționale
-                                </span></span>
+                                <span class="info">
+                                    <i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Expoziții</strong><span class="excerpt">
+                                        Teme inedite și locuri neconvenționale
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -107,19 +117,18 @@
                             <div id="mini-clndr" style="width:260px">
                                 <div class="clndr">
                                     <div class="controls">
-                                        <div class="clndr-previous-button" onclick="Main.BackToCalendar()"><i class="fa fa-times text-right" aria-hidden="true"></i></div><div class="month">Octombrie:</div>
+                                        <div class="clndr-previous-button" onclick="Main.BackToCalendar()"><i class="fa fa-times text-right" aria-hidden="true"></i></div><div class="month">Mai:</div>
                                     </div>
                                     <div class="days-container">
-                                        <div class="days">
+                                        <div class="days" style="width:100%;">
                                             <div class="headers">
                                                 <div class="day-header" style="width:100%;height:21px;"><span class="text-center">Evenimente:</span></div>
                                             </div>
                                             <br />
-                                            <ul style="font-size:13px;">
-                                                <li>Expoziții (13-16 octombrie)</li>
-                                                <li>Workshop-uri (14 octombrie)</li>
-                                                <li>Maraton Foto (15 octombrie)</li>
-                                                <li>Jurizare & premiere (16 octombrie)</li>
+                                            <ul style="font-size:13px;color:black;">
+                                                <li>Expoziții (11-14 mai)</li>
+                                                <li>Maraton Foto (13 mai)</li>
+                                                <li>Jurizare & premiere (14 mai)</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -149,8 +158,11 @@
                         <div class="photo">
                             <a asp-controller="Blog" asp-action="Index">
                                 <img src="~/images/homepage/7.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Blog</strong><span class="excerpt">Povești prin obiectivul Photo Marathon
-                                </span></span>
+                                <span class="info">
+                                    <i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Blog</strong><span class="excerpt">
+                                        Povești prin obiectivul Photo Marathon
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -161,8 +173,11 @@
                         <div class="photo">
                             <a asp-controller="Home" asp-action="Partners">
                                 <img src="~/images/homepage/5.png" alt="" width="434" height="434">
-                                <span class="info"><i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Parteneri</strong><span class="excerpt">Află cine susține Photo Marathon
-                                </span></span>
+                                <span class="info">
+                                    <i class="fa fa-chevron-right" aria-hidden="true" style="color:#fd4ec3;font-size:52px;"></i><strong class="title">Parteneri</strong><span class="excerpt">
+                                        Află cine susține Photo Marathon
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>

@@ -5,31 +5,31 @@ Main.InitCalendar = function () {
     var nextMonth = moment().add('month', 1).format('YYYY-MM');
     var lotsOfEvents = [
         {
-            date: '2016-10-13',
+            date: '2017-05-11',
             title: 'Expoziții'
         },
         {
-            date: '2016-10-14',
+            date: '2017-05-12',
             title: 'Expoziții'
         },
         {
-            date: '2016-10-14',
-            title: 'Workshop-uri'
-        },
-        {
-            date: '2016-10-15',
+            date: '2017-05-13',
             title: 'Expoziții'
         },
         {
-            date: '2016-10-15',
+            date: '2017-05-14',
+            title: 'Expoziții'
+        },
+        {
+            date: '2017-05-13',
             title: 'Maraton Foto'
         },
         {
-            date: '2016-10-16',
-            title: 'Expoziții'
+            date: '2017-05-14',
+            title: 'Maraton Foto'
         },
         {
-            date: '2016-10-16',
+            date: '2016-10-14',
             title: 'Jurizare & premiere'
         },
     ];
@@ -40,7 +40,7 @@ Main.InitCalendar = function () {
         template: $('#calendar-template').html(),
         events: lotsOfEvents,
         weekOffset: 1,
-        startWithMonth: "2016-10-1",
+        startWithMonth: "2017-05-1",
         clickEvents: {
             click: function (target) {
                 $("#events").removeClass("animated slideOutRight");
