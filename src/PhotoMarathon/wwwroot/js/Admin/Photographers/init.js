@@ -39,7 +39,9 @@
                         }
                     }
                 },
-            { "bSortable": false },
+            { "bSortable": false },//Age
+            { "bSortable": false },//City
+            { "bSortable": false },//Camera
             { "bSortable": false }//Register for marathon
         ],
     });

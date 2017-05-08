@@ -40,7 +40,10 @@ namespace PhotoMarathon.Controllers
 
         public IActionResult Rules()
         {
-            return View();
+            var page = _cmsService.GetPage("regulament");
+            if (!page.IsOk())
+                return new StatusCodeResult(404);
+            return View(page.Data);
         }
 
         public IActionResult Error()

@@ -81,6 +81,8 @@ namespace PhotoMarathon.Service.Services
                     photographer.IsProfessionist.ToString(),
                     workshopName,
                     photographer.RegisterForMarathon.ToString(),
+                    photographer.Age.ToString(),
+                    photographer.City,
                     photographer.Camera,
                     photographer.EditionId.ToString()
                 });
