@@ -59,14 +59,24 @@ namespace PhotoMarathon.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.WorkShops = _generalService.GetWorkShpos().Data;
-                return View(photographer);
+                var viewModel = new RegisterViewModel
+                {
+                    Photographer = photographer,
+                    Workshops = _generalService.GetWorkShpos().Data,
+                    RegisterStatus = _generalService.GetRegisterStatus().Data
+            };
+                return View(viewModel);
             }
             if (!photographer.Rules)
             {
-                ViewBag.WorkShops = _generalService.GetWorkShpos().Data;
+                var viewModel = new RegisterViewModel
+                {
+                    Photographer = photographer,
+                    Workshops = _generalService.GetWorkShpos().Data,
+                    RegisterStatus = _generalService.GetRegisterStatus().Data
+                };
                 ModelState.AddModelError("Rules", "Te rugăm să confirmi că ai citit şi eşti de acord cu regulamentul");
-                return View(photographer);
+                return View(viewModel);
             }
             //Set current edition
             photographer.EditionId = EditionsEnum.Timisoara17;
@@ -80,8 +90,13 @@ namespace PhotoMarathon.Controllers
             var addNewsLetter = _newsLetterService.Add(newsLetter);
             if (!result.IsOk() || !result.IsOk())
             {
+                var viewModel = new RegisterViewModel
+                {
+                    Photographer = photographer,
+                    Workshops = _generalService.GetWorkShpos().Data,
+                    RegisterStatus = _generalService.GetRegisterStatus().Data
+                };
                 ModelState.AddModelError("Rules", "Eroare! Te rugăm să încerci mai târziu.");
-                ViewBag.WorkShops = _generalService.GetWorkShpos().Data;
                 return View(photographer);
             }
             TempData.Add("Message", "Te-ai înregistrat cu succes!");

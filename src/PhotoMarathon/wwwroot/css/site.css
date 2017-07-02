@@ -330,3 +330,7 @@ img {
 .current-menu-item a {
     color: #b5506b !important;
 }
+
+.team-member, .team-member.team-info {
+    width: 20%;
+}

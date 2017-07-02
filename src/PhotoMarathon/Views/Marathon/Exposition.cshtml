@@ -51,6 +51,15 @@
                                 <span class="info"><span class="text"><span class="name">@tab4.Title</span><span class="description">@tab4.Subtitle</span></span></span>
                             </a>
                         </li>
+                        <li class="team-member col-xs-3" style="margin:0 !important;">
+                            <a href="#tab-4" class="team-photo">
+                                <img src="~/images/expo/2017/3.jpg" width="640" height="640" alt="">
+                                @{
+                                    var tab5 = Model.Sections.FirstOrDefault(p => p.Slug == "taburi").Articles.FirstOrDefault(p => p.Slug == "tab-5");
+                                }
+                                <span class="info"><span class="text"><span class="name">@tab5.Title</span><span class="description">@tab5.Subtitle</span></span></span>
+                            </a>
+                        </li>
                     </ul>
                     <div id="tab-1" class="tab_content" style="display:block">
                        @Html.Raw(tab1.Content)

@@ -45,5 +45,7 @@ namespace PhotoMarathon.Data.Entities
         public int Age { get; set; }
         public EditionsEnum EditionId { get; set; }
         public string Camera { get; set; }
+        [DataType(DataType.Date, ErrorMessage = "Data nu este corectă")]
+        public DateTime BornDate { get; set; }
     }
 }
